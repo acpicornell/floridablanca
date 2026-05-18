@@ -38,9 +38,11 @@ def export() -> dict:
     auths = dict(con.execute("SELECT code, label FROM authority_codes").fetchall())
     juris = dict(con.execute("SELECT code, label FROM jurisdiction_codes").fetchall())
     dists = dict(con.execute("SELECT code, label FROM district_codes").fetchall())
-    munis = dict(con.execute(
-        "SELECT code, name FROM current_municipalities ORDER BY code"
-    ).fetchall())
+    muni_rows = con.execute(
+        "SELECT code, name, name_official FROM current_municipalities ORDER BY code"
+    ).fetchall()
+    munis          = {r[0]: r[1] for r in muni_rows}
+    munis_official = {r[0]: r[2] for r in muni_rows}
 
     pueblos_rows = con.execute(
         "SELECT cod, name_current, name_1787, category_code, authority_code, "
@@ -70,7 +72,8 @@ def export() -> dict:
             "district": dist,
             "district_label": dists.get(dist),
             "current_municipality_code": mcod,
-            "current_municipality_name": munis.get(mcod),
+            "current_municipality_name":          munis.get(mcod),
+            "current_municipality_name_official": munis_official.get(mcod),
             "manuscript_page": mpage,
             "ine_photogram": photo,
             "in_tables": {
@@ -220,7 +223,8 @@ def export() -> dict:
             "jurisdictions":  [{"code": k, "label": v} for k, v in juris.items()],
             "districts":      [{"code": k, "label": v} for k, v in dists.items()],
             "current_municipalities":
-                [{"code": k, "name": v} for k, v in munis.items()],
+                [{"code": k, "name": v, "name_official": munis_official.get(k)}
+                 for k, v in munis.items()],
         },
         "pueblos": pueblos,
         "comentario": docs.get("comentario", ""),

@@ -196,6 +196,8 @@ function renderPobles() {
   const { sortKey, sortDir, filtered } = STATE;
   const valueFor = (p) => {
     if (sortKey === "population") return housingTotal(p) ?? -1;
+    if (sortKey === "municipality_official")
+      return p.current_municipality_name_official ?? p.current_municipality_name ?? "";
     return p[sortKey] ?? "";
   };
   filtered.sort((a, b) => {
@@ -212,17 +214,25 @@ function renderPobles() {
 
   $("#filter-count").textContent = `${filtered.length} pobles`;
 
-  const rows = filtered.map((p) => `
+  const rows = filtered.map((p) => {
+    const muniOfficial = p.current_municipality_name_official;
+    const muniINE      = p.current_municipality_name;
+    const muniCell = muniOfficial
+      ? `<span title="Forma INE 1986: ${muniINE || "—"}">${muniOfficial}</span>`
+      : (muniINE || "");
+    return `
     <tr data-cod="${p.cod}">
       <td>${p.cod}</td>
       <td><strong>${p.name_current}</strong></td>
       <td><em>${p.name_1787 || ""}</em></td>
+      <td>${muniCell}</td>
       <td>${p.category ? `<span class="pill" title="${p.category_label || ""}">${p.category}</span>` : ""}</td>
       <td>${p.jurisdiction ? `<span class="pill ${p.jurisdiction.toLowerCase()}" title="${p.jurisdiction_label || ""}">${p.jurisdiction}</span>` : ""}</td>
       <td title="${p.authority_label || ""}">${p.authority || ""}</td>
       <td title="${p.district_label || ""}">${p.district || ""}</td>
       <td class="num">${fmt(housingTotal(p))}</td>
-    </tr>`).join("");
+    </tr>`;
+  }).join("");
   $("#pobles-tbody").innerHTML = rows;
 
   $$("#pobles-tbody tr").forEach((tr) =>
@@ -248,7 +258,8 @@ const CSV_COLUMNS = [
   ["district",                  (p) => p.district],
   ["district_label",            (p) => p.district_label],
   ["current_municipality_code", (p) => p.current_municipality_code],
-  ["current_municipality_name", (p) => p.current_municipality_name],
+  ["current_municipality_name_1986",     (p) => p.current_municipality_name],
+  ["current_municipality_name_official", (p) => p.current_municipality_name_official],
   ["manuscript_page_1787",      (p) => p.manuscript_page],
   ["ine_photogram",             (p) => p.ine_photogram],
   ["population_total",          (p) => housingTotal(p)],
@@ -319,9 +330,14 @@ function renderDetailHTML(p) {
     ["Jurisdicció",         p.jurisdiction ? `${p.jurisdiction} — ${p.jurisdiction_label || ""}` : null],
     ["Intendència",         p.intendancy],
     ["Partit",              p.district_label],
-    ["Municipi actual",     p.current_municipality_name
-                              ? `${String(p.current_municipality_code).padStart(3,"0")} ${p.current_municipality_name}`
-                              : null],
+    ["Municipi actual",     p.current_municipality_name_official
+                              ? `${String(p.current_municipality_code).padStart(3,"0")} ${p.current_municipality_name_official}`
+                              + (p.current_municipality_name && p.current_municipality_name !== p.current_municipality_name_official
+                                  ? ` <small style="font-weight:400; color:var(--text-muted);">(INE 1986: ${p.current_municipality_name})</small>`
+                                  : "")
+                              : (p.current_municipality_name
+                                  ? `${String(p.current_municipality_code).padStart(3,"0")} ${p.current_municipality_name}`
+                                  : null)],
     ["Manuscrit 1787 (RAH)", p.manuscript_page ? `p. ${p.manuscript_page}` : null],
     ["Fotograma INE",       p.ine_photogram],
   ].filter(([, v]) => v != null && v !== "");

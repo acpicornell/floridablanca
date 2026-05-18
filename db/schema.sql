@@ -55,11 +55,17 @@ CREATE TABLE IF NOT EXISTS district_codes (
     label  TEXT NOT NULL
 );
 
--- 1986 municipalities (printed code table, pp. 5638).
--- 65 rows: ALARO (001) ... VILLAFRANCA DE BONANY (065).
+-- 1986 municipalities (printed code table, pp. 5638). 65 rows: the
+-- INE facsimile uses the Castilian / administrative form in force in
+-- 1986 ("ANDRAITX", "MAHON", "POLLENSA", "VILLACARLOS", …). The
+-- `name_official` column carries the current official Catalan form
+-- ("Andratx", "Maó", "Pollença", "es Castell", …) as fixed by Decret
+-- 36/1988 and subsequent corrections; populated by load_lookups.py
+-- from the Viquipèdia "Llista de municipis de les Illes Balears".
 CREATE TABLE IF NOT EXISTS current_municipalities (
-    code   INTEGER PRIMARY KEY,           -- 1..65
-    name   TEXT NOT NULL
+    code           INTEGER PRIMARY KEY,           -- 1..65
+    name           TEXT NOT NULL,                 -- INE 1986 form (Castilian)
+    name_official  TEXT                           -- current official Catalan form
 );
 
 -- Pueblos --------------------------------------------------------------

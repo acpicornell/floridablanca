@@ -57,92 +57,103 @@ DISTRICTS = [
     ("MEN", "Menorca"),
 ]
 
-# pp. 5638 — 65 municipalities active in 1986. Verbatim from the
-# printed table; preserve original orthography (e.g. "SANTAÑY" with
-# tilde, "BAÑALBUFAR" with eñe, "BINISALEM" without).
+# pp. 5638 — 65 municipalities active in 1986. The first column is
+# the INE 1986 administrative (Castilian) form, preserved verbatim
+# from the printed table. The third column is the current official
+# Catalan form, as fixed by Decret 36/1988 / 2/2004 and verified
+# against the Viquipèdia article "Llista de municipis de les Illes
+# Balears". Definite articles use the lowercase Balearic salat form
+# ("es Mercadal", "ses Salines", "sa Pobla") per the official decree.
 CURRENT_MUNICIPALITIES = [
-    (1,  "ALARO"),
-    (2,  "ALAYOR"),
-    (3,  "ALCUDIA"),
-    (4,  "ALGAIDA"),
-    (5,  "ANDRAITX"),
-    (6,  "ARTA"),
-    (7,  "BAÑALBUFAR"),
-    (8,  "BINISALEM"),
-    (9,  "BUGER"),
-    (10, "BUÑOLA"),
-    (11, "CALVIA"),
-    (12, "CAMPANET"),
-    (13, "CAMPOS DEL PUERTO"),
-    (14, "CAPDEPERA"),
-    (15, "CIUDADELA"),
-    (16, "CONSELL"),
-    (17, "COSTITX"),
-    (18, "DEYA"),
-    (19, "ESCORCA"),
-    (20, "ESPORLAS"),
-    (21, "ESTELLENCHS"),
-    (22, "FELANITX"),
-    (23, "FERRERIAS"),
-    (24, "FORMENTERA"),
-    (25, "FORNALUTX"),
-    (26, "IBIZA"),
-    (27, "INCA"),
-    (28, "LLORET DE VISTA ALEGRE"),
-    (29, "LLOSETA"),
-    (30, "LLUBI"),
-    (31, "LLUCHMAYOR"),
-    (32, "MAHON"),
-    (33, "MANACOR"),
-    (34, "MANCOR DEL VALLE"),
-    (35, "MARIA DE LA SALUD"),
-    (36, "MARRATXI"),
-    (37, "MERCADAL"),
-    (38, "MONTUIRI"),
-    (39, "MURO"),
-    (40, "PALMA DE MALLORCA"),
-    (41, "PETRA"),
-    (42, "POLLENSA"),
-    (43, "PORRERAS"),
-    (44, "PUEBLA, LA"),
-    (45, "PUIGPUÑENT"),
-    (46, "SAN ANTONIO ABAD"),
-    (47, "SANCELLAS"),
-    (48, "SAN JOSE"),
-    (49, "SAN JUAN"),
-    (50, "SAN JUAN BAUTISTA"),
-    (51, "SAN LORENZO DEL CARDESSAR"),
-    (52, "SAN LUIS"),
-    (53, "SANTA EUGENIA"),
-    (54, "SANTA EULALIA DEL RIO"),
-    (55, "SANTA MARGARITA"),
-    (56, "SANTA MARIA DEL CAMI"),
-    (57, "SANTAÑY"),
-    (58, "SELVA"),
-    (59, "SES SALINES"),
-    (60, "SINEU"),
-    (61, "SOLLER"),
-    (62, "SON SERVERA"),
-    (63, "VALLDEMOSA"),
-    (64, "VILLACARLOS"),
-    (65, "VILLAFRANCA DE BONANY"),
+    (1,  "ALARO",                    "Alaró"),
+    (2,  "ALAYOR",                   "Alaior"),
+    (3,  "ALCUDIA",                  "Alcúdia"),
+    (4,  "ALGAIDA",                  "Algaida"),
+    (5,  "ANDRAITX",                 "Andratx"),
+    (6,  "ARTA",                     "Artà"),
+    (7,  "BAÑALBUFAR",               "Banyalbufar"),
+    (8,  "BINISALEM",                "Binissalem"),
+    (9,  "BUGER",                    "Búger"),
+    (10, "BUÑOLA",                   "Bunyola"),
+    (11, "CALVIA",                   "Calvià"),
+    (12, "CAMPANET",                 "Campanet"),
+    (13, "CAMPOS DEL PUERTO",        "Campos"),
+    (14, "CAPDEPERA",                "Capdepera"),
+    (15, "CIUDADELA",                "Ciutadella de Menorca"),
+    (16, "CONSELL",                  "Consell"),
+    (17, "COSTITX",                  "Costitx"),
+    (18, "DEYA",                     "Deià"),
+    (19, "ESCORCA",                  "Escorca"),
+    (20, "ESPORLAS",                 "Esporles"),
+    (21, "ESTELLENCHS",              "Estellencs"),
+    (22, "FELANITX",                 "Felanitx"),
+    (23, "FERRERIAS",                "Ferreries"),
+    (24, "FORMENTERA",               "Formentera"),
+    (25, "FORNALUTX",                "Fornalutx"),
+    (26, "IBIZA",                    "Eivissa"),
+    (27, "INCA",                     "Inca"),
+    (28, "LLORET DE VISTA ALEGRE",   "Lloret de Vistalegre"),
+    (29, "LLOSETA",                  "Lloseta"),
+    (30, "LLUBI",                    "Llubí"),
+    (31, "LLUCHMAYOR",               "Llucmajor"),
+    (32, "MAHON",                    "Maó"),
+    (33, "MANACOR",                  "Manacor"),
+    (34, "MANCOR DEL VALLE",         "Mancor de la Vall"),
+    (35, "MARIA DE LA SALUD",        "Maria de la Salut"),
+    (36, "MARRATXI",                 "Marratxí"),
+    (37, "MERCADAL",                 "es Mercadal"),
+    (38, "MONTUIRI",                 "Montuïri"),
+    (39, "MURO",                     "Muro"),
+    (40, "PALMA DE MALLORCA",        "Palma"),
+    (41, "PETRA",                    "Petra"),
+    (42, "POLLENSA",                 "Pollença"),
+    (43, "PORRERAS",                 "Porreres"),
+    (44, "PUEBLA, LA",               "sa Pobla"),
+    (45, "PUIGPUÑENT",               "Puigpunyent"),
+    (46, "SAN ANTONIO ABAD",         "Sant Antoni de Portmany"),
+    (47, "SANCELLAS",                "Sencelles"),
+    (48, "SAN JOSE",                 "Sant Josep de sa Talaia"),
+    (49, "SAN JUAN",                 "Sant Joan"),
+    (50, "SAN JUAN BAUTISTA",        "Sant Joan de Labritja"),
+    (51, "SAN LORENZO DEL CARDESSAR","Sant Llorenç des Cardassar"),
+    (52, "SAN LUIS",                 "Sant Lluís"),
+    (53, "SANTA EUGENIA",            "Santa Eugènia"),
+    (54, "SANTA EULALIA DEL RIO",    "Santa Eulària des Riu"),
+    (55, "SANTA MARGARITA",          "Santa Margalida"),
+    (56, "SANTA MARIA DEL CAMI",     "Santa Maria del Camí"),
+    (57, "SANTAÑY",                  "Santanyí"),
+    (58, "SELVA",                    "Selva"),
+    (59, "SES SALINES",              "ses Salines"),
+    (60, "SINEU",                    "Sineu"),
+    (61, "SOLLER",                   "Sóller"),
+    (62, "SON SERVERA",              "Son Servera"),
+    (63, "VALLDEMOSA",               "Valldemossa"),
+    (64, "VILLACARLOS",              "es Castell"),
+    (65, "VILLAFRANCA DE BONANY",    "Vilafranca de Bonany"),
 ]
 
 
 def main() -> None:
     con = duckdb.connect(str(DB_PATH))
+    # UPSERT so this script is safe to re-run after pueblos rows
+    # (which reference the lookups via FK) are already loaded.
     for table, rows in (
         ("category_codes",     CATEGORIES),
         ("authority_codes",    AUTHORITIES),
         ("jurisdiction_codes", JURISDICTIONS),
         ("district_codes",     DISTRICTS),
     ):
-        con.execute(f"DELETE FROM {table}")
-        con.executemany(f"INSERT INTO {table} VALUES (?, ?)", rows)
+        con.executemany(
+            f"INSERT INTO {table} (code, label) VALUES (?, ?) "
+            f"ON CONFLICT (code) DO UPDATE SET label = excluded.label",
+            rows,
+        )
         print(f"  {table}: {len(rows)} rows")
-    con.execute("DELETE FROM current_municipalities")
     con.executemany(
-        "INSERT INTO current_municipalities VALUES (?, ?)",
+        "INSERT INTO current_municipalities (code, name, name_official) "
+        "VALUES (?, ?, ?) "
+        "ON CONFLICT (code) DO UPDATE SET "
+        "  name = excluded.name, name_official = excluded.name_official",
         CURRENT_MUNICIPALITIES,
     )
     print(f"  current_municipalities: {len(CURRENT_MUNICIPALITIES)} rows")
