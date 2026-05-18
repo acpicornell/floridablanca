@@ -231,13 +231,20 @@
   </div>
 
   <div class="chart-card occ-stack-card">
-    <h3>Estructura ocupacional per poble</h3>
-    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
+    <div class="occ-header">
+      <h3>Estructura ocupacional per poble</h3>
+      <div class="occ-mode-toggle" role="radiogroup" aria-label="Mode de visualització">
+        <label><input type="radio" name="occ-mode" value="relative" checked> Composició (%)</label>
+        <label><input type="radio" name="occ-mode" value="absolute"> Valors absoluts</label>
+      </div>
+    </div>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;" id="occ-help">
       Distribució de la població activa declarada (menors i sense
-      professió exclosos) entre set agregats canònics. Cada barra
-      és proporcional al total d'actius del poble; el nombre de la
-      dreta és aquest total. Hover damunt cada segment per al
-      detall.
+      professió exclosos) entre set agregats canònics. En mode
+      "Composició" totes les barres ocupen el 100% i mostren la
+      proporció interna; en "Valors absoluts" la llargada és
+      proporcional al total d'actius del poble (Palma ≈ 20.300,
+      escala màxima).
     </p>
     <div class="occ-legend" id="occ-legend"></div>
     <div class="occ-stack" id="occ-stack"></div>

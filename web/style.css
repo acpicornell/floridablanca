@@ -625,6 +625,38 @@ aside.filters h3 {
 
 /* Occupation stacked-bars per pueblo. */
 .occ-stack-card { margin-bottom: 1.5em; }
+.occ-header {
+  display: flex; flex-wrap: wrap; gap: 0.4em 1.5em;
+  align-items: baseline; margin: 0 0 0.4em;
+}
+.occ-header h3 { margin: 0; }
+.occ-mode-toggle {
+  display: inline-flex; gap: 0.4em;
+  background: var(--num-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15em;
+  font-size: 0.84em;
+}
+.occ-mode-toggle label {
+  display: inline-flex; align-items: center; gap: 0.3em;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background 0.12s;
+}
+.occ-mode-toggle input[type="radio"] {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.occ-mode-toggle label:has(input:checked) {
+  background: var(--accent);
+  color: white;
+}
+.occ-mode-toggle label:hover:not(:has(input:checked)) {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
 .occ-legend {
   display: flex; flex-wrap: wrap; gap: 0.4em 1.1em;
   font-size: 0.82em;
@@ -652,13 +684,21 @@ aside.filters h3 {
 }
 .occ-row:hover { background: var(--accent-light); }
 .occ-row .occ-name { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.occ-row .occ-bar-wrap {
+  display: flex;
+  align-items: center;
+  height: 1.15em;
+  min-width: 0;
+}
 .occ-row .occ-bar {
   display: flex;
-  height: 1.15em;
+  height: 100%;
+  width: 100%;
   border-radius: 2px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
+  transition: width 0.25s ease;
 }
 .occ-row .occ-seg { height: 100%; }
 .occ-row .occ-count {

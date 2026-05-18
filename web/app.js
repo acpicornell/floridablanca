@@ -39,6 +39,7 @@ async function boot() {
   renderPobles();
   renderPyramid();
   renderOccupationStack();
+  bindOccupationToggle();
   renderDemografia();
   renderReligious();
   renderComentari();
@@ -684,8 +685,12 @@ const OCC_GROUPS = [
    ["estudiantes", "demandantes", "otros"]],
 ];
 
-function renderOccupationStack() {
-  // Project each pueblo onto the seven groups.
+// Cache the projected rows so flipping the mode toggle is instant
+// (no DOM re-rendering of the legend, just bar widths).
+let OCC_ROWS_CACHE = null;
+let OCC_MAX_ACTIVE = 0;
+
+function projectOccupationRows() {
   const rows = STATE.pueblos
     .filter((p) => p.population?.occupation)
     .map((p) => {
@@ -702,6 +707,13 @@ function renderOccupationStack() {
     })
     .filter((x) => x.active > 0)
     .sort((a, b) => b.active - a.active);
+  OCC_MAX_ACTIVE = rows.reduce((m, r) => Math.max(m, r.active), 0) || 1;
+  OCC_ROWS_CACHE = rows;
+}
+
+function renderOccupationStack(mode = "relative") {
+  if (!OCC_ROWS_CACHE) projectOccupationRows();
+  const rows = OCC_ROWS_CACHE;
 
   $("#occ-legend").innerHTML = OCC_GROUPS
     .map(([_k, label, cls]) =>
@@ -709,22 +721,38 @@ function renderOccupationStack() {
     ).join("");
 
   $("#occ-stack").innerHTML = rows.map(({ p, groups, active }) => {
+    // Bar width within its wrap: 100% in relative mode; proportional
+    // to the global max in absolute mode.
+    const barWidthPct = mode === "absolute"
+      ? Math.max(1.5, (active / OCC_MAX_ACTIVE) * 100)
+      : 100;
+    // Segment widths inside the bar are always percentages of the
+    // pueblo's own active count — that way the internal composition
+    // stays readable regardless of mode.
     const segments = OCC_GROUPS.map(([key, label, cls]) => {
       const v = groups[key];
       if (!v) return "";
-      const pct = (v / active) * 100;
-      const title = `${label}: ${fmt(v)} (${pct.toFixed(1)}%)`;
-      return `<span class="occ-seg ${cls}" style="width:${pct}%" title="${title}"></span>`;
+      const segPct = (v / active) * 100;
+      const title = `${label}: ${fmt(v)} (${segPct.toFixed(1)}%)`;
+      return `<span class="occ-seg ${cls}" style="width:${segPct}%" title="${title}"></span>`;
     }).join("");
     return `<div class="occ-row" data-cod="${p.cod}">
       <span class="occ-name">${p.name_current}</span>
-      <span class="occ-bar">${segments}</span>
+      <span class="occ-bar-wrap">
+        <span class="occ-bar" style="width:${barWidthPct.toFixed(1)}%">${segments}</span>
+      </span>
       <span class="occ-count">${fmt(active)}</span>
     </div>`;
   }).join("");
 
   $$("#occ-stack .occ-row").forEach((row) =>
     row.addEventListener("click", () => openDetail(Number(row.dataset.cod)))
+  );
+}
+
+function bindOccupationToggle() {
+  $$('input[name="occ-mode"]').forEach((r) =>
+    r.addEventListener("change", () => renderOccupationStack(r.value))
   );
 }
 
