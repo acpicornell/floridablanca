@@ -296,6 +296,31 @@
     <div class="ratio-chart" id="ratio-chart"></div>
   </div>
 
+  <div class="chart-card indicators-card">
+    <h3>Indicadors demogràfics derivats per poble</h3>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
+      Indicadors calculats a partir de les Taules 3 i 4 del cens.
+      Clic damunt una capçalera per ordenar (ascendent / descendent).
+      Hover damunt la capçalera per veure la definició.
+      Clic damunt una fila per obrir la fitxa del poble.
+    </p>
+    <table class="indicators-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-sort="name">Poble</th>
+          <th class="sortable num" data-sort="totalPop"  title="Suma dels grups d'edat a la Taula 3 (població en vivendes familiars)">Població</th>
+          <th class="sortable num" data-sort="meanAge"   title="Edat mitjana ponderada usant els midpoints dels grups d'edat (3,5 / 11,5 / 20,5 / 32,5 / 45 / 60)">Edat mitja</th>
+          <th class="sortable num" data-sort="sexRatio"  title="Homes per cada 100 dones">Masc.</th>
+          <th class="sortable num" data-sort="dependency" title="(menors de 16 + majors de 50) / població de 16-50, en %">Depend.</th>
+          <th class="sortable num" data-sort="widowRateF" title="% de vídues entre dones de 16 anys o més (s'usa el total agregat per evitar errors OCR a les bandes d'edat)">% Vídues</th>
+          <th class="sortable num" data-sort="fertility" title="Infants &lt;7 per cada 100 dones de 25-40 anys">Fertilitat</th>
+          <th class="sortable num" data-sort="agrarianPct" title="% de la població activa dedicada a pagesia (llauradors + jornalers)">% Pagesia</th>
+        </tr>
+      </thead>
+      <tbody id="indicators-tbody"></tbody>
+    </table>
+  </div>
+
   <div class="chart-grid">
     <div class="chart-card">
       <h3>Pobles per nombre d'habitants (top 20)</h3>

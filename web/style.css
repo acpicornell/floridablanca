@@ -707,6 +707,55 @@ aside.filters h3 {
   color: var(--text-muted);
 }
 
+/* Derived demographic-indicators table. Mirrors the Pobles table
+   styling but with right-aligned numeric columns and subtle row
+   hover so the click-through to the pueblo detail is discoverable. */
+.indicators-card { margin-bottom: 1.5em; overflow-x: auto; }
+.indicators-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.indicators-table th, .indicators-table td {
+  text-align: left;
+  padding: 0.45em 0.7em;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.indicators-table th {
+  background: var(--num-bg);
+  font-weight: 600;
+  font-size: 0.82em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+.indicators-table th.sortable:hover { color: var(--accent); }
+.indicators-table th.sorted-asc::after  { content: " ▲"; opacity: 0.6; }
+.indicators-table th.sorted-desc::after { content: " ▼"; opacity: 0.6; }
+.indicators-table tbody tr { cursor: pointer; }
+.indicators-table tbody tr:hover { background: var(--accent-light); }
+.indicators-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.indicators-table th.num { text-align: right; }
+/* Compact spacing inside cells with a colour swatch. */
+.indicators-table .cell-warm {
+  color: #8b3a2f;
+  font-weight: 600;
+}
+.indicators-table .cell-cool {
+  color: #2f5d8b;
+  font-weight: 600;
+}
+
 /* Marital × age × sex stacked-bar pyramid. Same skeleton as the
    population pyramid (V left / age centre / M right) but each bar
    is at 100% width and split into solters / casats / vidus, so the

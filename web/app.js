@@ -42,6 +42,7 @@ async function boot() {
   renderOccupationStack();
   bindOccupationToggle();
   renderRatioChart();
+  renderIndicators();
   renderDemografia();
   renderReligious();
   renderComentari();
@@ -755,6 +756,144 @@ function renderOccupationStack(mode = "relative") {
 function bindOccupationToggle() {
   $$('input[name="occ-mode"]').forEach((r) =>
     r.addEventListener("change", () => renderOccupationStack(r.value))
+  );
+}
+
+// Derived demographic indicators per pueblo. Sortable table with
+// six computed metrics plus the family-housing population total.
+const INDICATOR_STATE = {
+  rows: [],
+  sortKey: "totalPop",
+  sortDir: -1,        // -1 descending (largest pueblo first), +1 ascending
+};
+
+// Midpoints used to estimate mean age from census age bands.
+// >50 is open-ended — we use 60 as a conservative central tendency
+// (life expectancy at 50 in 1787 was roughly +15 years).
+const AGE_MIDPOINTS = { "<7": 3.5, "7-16": 11.5, "16-25": 20.5,
+                        "25-40": 32.5, "40-50": 45, ">50": 60 };
+
+function computeIndicators(p) {
+  const m = p.population?.marital;
+  if (!m || !m.total) return null;
+  const occ = p.population.occupation;
+
+  const tot = (age, sx) => m.total?.[age]?.[sx] || 0;
+  const wid = (age, sx) => m.widowed?.[age]?.[sx] || 0;
+
+  // Population structure from the six printed age bands.
+  let totalPop = 0, totV = 0, totM = 0, ageSum = 0;
+  let young = 0, adult = 0, old = 0;
+  for (const age of PYRAMID_AGES) {
+    const t = tot(age, "T") || (tot(age, "V") + tot(age, "M"));
+    totalPop += t;
+    totV     += tot(age, "V");
+    totM     += tot(age, "M");
+    ageSum   += t * AGE_MIDPOINTS[age];
+    if (age === "<7" || age === "7-16")  young += t;
+    else if (age === ">50")              old   += t;
+    else                                  adult += t;
+  }
+  if (!totalPop) return null;
+
+  const meanAge   = ageSum / totalPop;
+  const sexRatio  = totM ? (totV / totM) * 100 : null;
+  const dependency= adult ? ((young + old) / adult) * 100 : null;
+
+  // Widow rate uses the ALL rollup figures (more reliable than the
+  // band breakdown: in dense pages like PALMA's the model sometimes
+  // mis-OCRs the small VIUDOS digits in individual age cells, but the
+  // single rollup number it reads once is fine). We divide by women
+  // aged 16+ to keep the rate interpretable — children never widow.
+  const widFAll = m.widowed?.all?.M || 0;
+  const totFAll = m.total?.all?.M   || 0;
+  const totFLt16 = (m.total?.["<7"]?.M || 0) + (m.total?.["7-16"]?.M || 0);
+  const totF16plus = totFAll - totFLt16;
+  const widowRateF = totF16plus > 0 ? (widFAll / totF16plus) * 100 : null;
+
+  const totF25_40 = tot("25-40", "M");
+  const inf       = tot("<7", "T") || (tot("<7", "V") + tot("<7", "M"));
+  const fertility = totF25_40 ? (inf / totF25_40) * 100 : null;
+
+  let agrarianPct = null;
+  if (occ) {
+    const active = OCC_GROUPS.reduce(
+      (s, [, , , list]) => s + list.reduce((q, k) => q + (occ[k] || 0), 0), 0,
+    );
+    const agrarian = (occ.labradores || 0) + (occ.jornaleros || 0);
+    agrarianPct = active ? (agrarian / active) * 100 : null;
+  }
+
+  return {
+    p,
+    name: p.name_current,
+    totalPop, meanAge, sexRatio, dependency,
+    widowRateF, fertility, agrarianPct,
+  };
+}
+
+function renderIndicators() {
+  INDICATOR_STATE.rows = STATE.pueblos
+    .map(computeIndicators)
+    .filter(Boolean);
+  bindIndicatorSort();
+  paintIndicators();
+}
+
+function bindIndicatorSort() {
+  $$(".indicators-table th.sortable").forEach((th) => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.sort;
+      if (INDICATOR_STATE.sortKey === key) INDICATOR_STATE.sortDir *= -1;
+      else { INDICATOR_STATE.sortKey = key; INDICATOR_STATE.sortDir = -1; }
+      paintIndicators();
+    });
+  });
+}
+
+function paintIndicators() {
+  const { rows, sortKey, sortDir } = INDICATOR_STATE;
+  const sorted = [...rows].sort((a, b) => {
+    const va = a[sortKey] ?? -Infinity;
+    const vb = b[sortKey] ?? -Infinity;
+    if (typeof va === "string" && typeof vb === "string")
+      return va.localeCompare(vb, "ca") * sortDir;
+    return (va - vb) * sortDir;
+  });
+
+  $$(".indicators-table th.sortable").forEach((th) => {
+    th.classList.remove("sorted-asc", "sorted-desc");
+    if (th.dataset.sort === sortKey)
+      th.classList.add(sortDir > 0 ? "sorted-asc" : "sorted-desc");
+  });
+
+  // Cell tinting for the masculinity ratio: warm when male-skewed,
+  // cool when female-skewed. Avoids re-implementing the diverging
+  // chart's palette but keeps a hint of orientation.
+  const tintMasc = (v) => {
+    if (v == null) return "";
+    if (v >= 105) return "cell-warm";
+    if (v <= 95)  return "cell-cool";
+    return "";
+  };
+
+  const num = (v, frac = 0, suffix = "") =>
+    v == null ? "–" : v.toFixed(frac) + suffix;
+
+  $("#indicators-tbody").innerHTML = sorted.map((r) => `
+    <tr data-cod="${r.p.cod}">
+      <td><strong>${r.name}</strong></td>
+      <td class="num">${fmt(r.totalPop)}</td>
+      <td class="num">${num(r.meanAge, 1)}</td>
+      <td class="num ${tintMasc(r.sexRatio)}">${num(r.sexRatio, 0)}</td>
+      <td class="num">${num(r.dependency, 0, "%")}</td>
+      <td class="num">${num(r.widowRateF, 0, "%")}</td>
+      <td class="num">${num(r.fertility, 0)}</td>
+      <td class="num">${num(r.agrarianPct, 0, "%")}</td>
+    </tr>`).join("");
+
+  $$("#indicators-tbody tr").forEach((tr) =>
+    tr.addEventListener("click", () => openDetail(Number(tr.dataset.cod)))
   );
 }
 
