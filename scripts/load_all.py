@@ -520,19 +520,63 @@ def load_table_7(con: duckdb.DuckDBPyConnection) -> None:
     print(f"  other_centers: {len(rows)} rows")
 
 
+# Catalan paraphrase of the INE 1986 editorial commentary at p. 5631.
+# Original text is not reproduced — INE's 1986 editorial is still
+# protected as a corporate work. Bare numerical facts (population
+# counts, year-over-year growth rates, sex ratios) are not
+# copyrightable, so we restate them in our own structure and prose.
+# The Nota 1787 below is genuine 18th-century source material and
+# remains in the public domain; we keep it verbatim.
+_COMENTARIO_CA = """\
+El facsímil INE de 1986 obre el volum amb un breu comentari editorial \
+(p. 5631) que situa les xifres del 1787 dins una sèrie de llarga durada. \
+Aquesta pestanya en recull els fets numèrics clau, redactats de nou en \
+català. No reprodueix el text original.
+
+L'arxipèlag balear està format per cinc illes i 189 illots. Al moment \
+del cens només quatre eren habitades — Mallorca, Menorca, Eivissa i \
+Formentera — mentre que Cabrera només tenia un destacament militar. \
+Cal notar que el Nomenclátor de 1787 cataloga Formentera com a «isla \
+pequeña sin población», però el cens detallat de Floridablanca li \
+atribueix 1.054 habitants distribuïts en una desena de caseríos.
+
+Floridablanca registra 179.066 habitants per al conjunt de l'arxipèlag. \
+Un segle després el cens de 1887 en compta 313.480, un creixement \
+relatiu del 75 % o, en mitjana anual, del 0,56 % acumulatiu. L'INE \
+projecta per a principis de 1987 unes 648.625 persones, a partir d'una \
+extrapolació lineal entre el cens de 1981 i el padró de 1986: més de \
+tres vegades i mitja la població del 1787, un increment global del \
+262 % o un 0,67 % anual sostingut durant dos segles.
+
+La proporció entre sexes s'ha invertit en aquest interval. El 1787 hi \
+havia uns 10 homes de més per cada miler de dones; el 1987 són les \
+dones les que superen els homes per uns 29 per miler. Dins de \
+l'habitatge col·lectiu el contrast era encara més gran: el 1787 els \
+homes superaven les dones per 571 per cada miler (efecte conjunt de \
+convents masculins i guarnicions), i a l'actualitat la relació s'ha \
+invertit també aquí amb 1.161 dones per cada miler d'homes.
+
+El comentari editorial enumera onze localitats amb consideració de \
+Ciutat: Palma, Mahón, Inca, Manacor, Felanitx, Sóller, Pollença, \
+Llucmajor, Alcúdia, Ciudadela i Eivissa."""
+
+
 def load_comentario(con: duckdb.DuckDBPyConnection) -> None:
-    d = _read("page-03.json")
-    if not d:
-        print("  source_documents: source page-03.json missing, skipped")
-        return
-    body = d.get("body") or ""
+    """Load the Catalan paraphrase + the verbatim 1787 Nota.
+
+    The INE 1986 editorial body is intentionally NOT pulled from
+    page-03.json; we keep the per-page extraction file around for
+    archival reference but the displayed text is our own restatement.
+    The 1787 Nota is genuine pre-1850 source material and is taken
+    verbatim from page-03.json when available.
+    """
+    d = _read("page-03.json") or {}
     note = d.get("note_1787") or ""
-    if d.get("cities"):
-        body += "\n\nCiudades del archipiélago: " + ", ".join(d["cities"]) + "."
     con.execute(
         "INSERT INTO source_documents VALUES (?, ?, ?, ?), (?, ?, ?, ?)",
         [
-            "comentario", "Comentario", "5631", body,
+            "comentario", "Síntesi del comentari editorial INE 1986",
+            "5631", _COMENTARIO_CA,
             "nota_1787", "Nota del Nomenclátor de 1787 (pueblos de Ibiza, p. 328)",
             "5631", note,
         ],
