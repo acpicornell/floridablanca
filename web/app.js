@@ -779,9 +779,9 @@ function computeIndicators(p) {
   const occ = p.population.occupation;
 
   const tot = (age, sx) => m.total?.[age]?.[sx] || 0;
-  const wid = (age, sx) => m.widowed?.[age]?.[sx] || 0;
+  const sin = (age, sx) => m.single?.[age]?.[sx] || 0;
+  const mar = (age, sx) => m.married?.[age]?.[sx] || 0;
 
-  // Population structure from the six printed age bands.
   let totalPop = 0, totV = 0, totM = 0, ageSum = 0;
   let young = 0, adult = 0, old = 0;
   for (const age of PYRAMID_AGES) {
@@ -800,20 +800,36 @@ function computeIndicators(p) {
   const sexRatio  = totM ? (totV / totM) * 100 : null;
   const dependency= adult ? ((young + old) / adult) * 100 : null;
 
-  // Widow rate uses the ALL rollup figures (more reliable than the
-  // band breakdown: in dense pages like PALMA's the model sometimes
-  // mis-OCRs the small VIUDOS digits in individual age cells, but the
-  // single rollup number it reads once is fine). We divide by women
-  // aged 16+ to keep the rate interpretable — children never widow.
+  // Widow rate uses the ALL rollup (more robust than band sum).
   const widFAll = m.widowed?.all?.M || 0;
   const totFAll = m.total?.all?.M   || 0;
   const totFLt16 = (m.total?.["<7"]?.M || 0) + (m.total?.["7-16"]?.M || 0);
   const totF16plus = totFAll - totFLt16;
   const widowRateF = totF16plus > 0 ? (widFAll / totF16plus) * 100 : null;
 
-  const totF25_40 = tot("25-40", "M");
-  const inf       = tot("<7", "T") || (tot("<7", "V") + tot("<7", "M"));
-  const fertility = totF25_40 ? (inf / totF25_40) * 100 : null;
+  // Gross fertility (Vidal definition): children <7 per 100 women
+  // aged 16-40 (combine the 16-25 and 25-40 bands).
+  const inf      = tot("<7", "T") || (tot("<7", "V") + tot("<7", "M"));
+  const womenFert = tot("16-25", "M") + tot("25-40", "M");
+  const fertility = womenFert ? (inf / womenFert) * 100 : null;
+
+  // Marital fertility (Vidal): children <7 per married woman aged
+  // 16-40. Expressed as a ratio (Mallorca 1.59, Menorca 1.51,
+  // Ibiza-Formentera 1.73 in the printed article).
+  const marriedFert = mar("16-25", "M") + mar("25-40", "M");
+  const maritalFert = marriedFert ? (inf / marriedFert) : null;
+
+  // Aging index (Vidal): population >50 / population <16. Vidal
+  // reports Mallorca 0.47, Menorca 0.32, Ibiza-Formentera 0.25.
+  const under16 = (tot("<7", "T") || tot("<7", "V") + tot("<7", "M"))
+                + (tot("7-16", "T") || tot("7-16", "V") + tot("7-16", "M"));
+  const agingIndex = under16 ? (old / under16) : null;
+
+  // Definitive male celibacy >=40: % of men aged 40+ who never
+  // married. Vidal: Palma V 26.22%, Mallorca 16.24%, España 11.98%.
+  const singleV40 = sin("40-50", "V") + sin(">50", "V");
+  const totalV40  = tot("40-50", "V") + tot(">50", "V");
+  const celibacyM40 = totalV40 ? (singleV40 / totalV40) * 100 : null;
 
   let agrarianPct = null;
   if (occ) {
@@ -828,9 +844,16 @@ function computeIndicators(p) {
     p,
     name: p.name_current,
     totalPop, meanAge, sexRatio, dependency,
-    widowRateF, fertility, agrarianPct,
+    widowRateF, fertility, maritalFert, agingIndex, celibacyM40,
+    agrarianPct,
   };
 }
+
+// Vidal (1987) flagged pueblos with documented reliability issues.
+const VIDAL_FLAGS = {
+  28: "Ciutadella: Vidal (1987) la cataloga d'errors interns severs (% casats <25 a 77% és inadmissible). Recomana excloure-la per a anàlisis comparatives d'estructura matrimonial.",
+  66: "Palma: la població comunitària de Palma (2.047 individus) probablement ja era inclosa al recompte general per edat-sexe-estat. Sumar-la a part sobreavalua la població palmesana en ~6%.",
+};
 
 function renderIndicators() {
   INDICATOR_STATE.rows = STATE.pueblos
@@ -880,17 +903,25 @@ function paintIndicators() {
   const num = (v, frac = 0, suffix = "") =>
     v == null ? "–" : v.toFixed(frac) + suffix;
 
-  $("#indicators-tbody").innerHTML = sorted.map((r) => `
+  $("#indicators-tbody").innerHTML = sorted.map((r) => {
+    const flag = VIDAL_FLAGS[r.p.cod]
+      ? `<span class="vidal-flag" title="${VIDAL_FLAGS[r.p.cod]}">⚠</span>`
+      : "";
+    return `
     <tr data-cod="${r.p.cod}">
-      <td><strong>${r.name}</strong></td>
+      <td><strong>${r.name}</strong>${flag}</td>
       <td class="num">${fmt(r.totalPop)}</td>
       <td class="num">${num(r.meanAge, 1)}</td>
       <td class="num ${tintMasc(r.sexRatio)}">${num(r.sexRatio, 0)}</td>
       <td class="num">${num(r.dependency, 0, "%")}</td>
       <td class="num">${num(r.widowRateF, 0, "%")}</td>
       <td class="num">${num(r.fertility, 0)}</td>
+      <td class="num">${num(r.maritalFert, 2)}</td>
+      <td class="num">${num(r.agingIndex, 2)}</td>
+      <td class="num">${num(r.celibacyM40, 0, "%")}</td>
       <td class="num">${num(r.agrarianPct, 0, "%")}</td>
-    </tr>`).join("");
+    </tr>`;
+  }).join("");
 
   $$("#indicators-tbody tr").forEach((tr) =>
     tr.addEventListener("click", () => openDetail(Number(tr.dataset.cod)))

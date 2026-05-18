@@ -755,6 +755,37 @@ aside.filters h3 {
   color: #2f5d8b;
   font-weight: 600;
 }
+.indicators-table .vidal-flag {
+  display: inline-block;
+  margin-left: 0.3em;
+  color: #b88a2a;
+  cursor: help;
+  font-size: 0.95em;
+}
+.indicators-table .vidal-flag:hover { color: #8b3a2f; }
+
+.vidal-notes {
+  margin-top: 1em;
+  padding: 0.7em 1em;
+  background: #fff7e0;
+  border-left: 3px solid #b88a2a;
+  border-radius: 3px;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+.vidal-notes summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent-dark);
+  font-family: Georgia, serif;
+  font-size: 1em;
+  padding: 0.1em 0;
+}
+.vidal-notes summary:hover { color: var(--accent); }
+.vidal-notes ul { margin: 0.4em 0 0.6em 0; padding-left: 1.4em; }
+.vidal-notes li { margin-bottom: 0.55em; }
+.vidal-notes em { color: #4a3a20; }
+.vidal-notes strong { color: var(--accent-dark); }
 
 /* Marital × age × sex stacked-bar pyramid. Same skeleton as the
    population pyramid (V left / age centre / M right) but each bar

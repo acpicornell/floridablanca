@@ -308,17 +308,68 @@
       <thead>
         <tr>
           <th class="sortable" data-sort="name">Poble</th>
-          <th class="sortable num" data-sort="totalPop"  title="Suma dels grups d'edat a la Taula 3 (població en vivendes familiars)">Població</th>
-          <th class="sortable num" data-sort="meanAge"   title="Edat mitjana ponderada usant els midpoints dels grups d'edat (3,5 / 11,5 / 20,5 / 32,5 / 45 / 60)">Edat mitja</th>
-          <th class="sortable num" data-sort="sexRatio"  title="Homes per cada 100 dones">Masc.</th>
-          <th class="sortable num" data-sort="dependency" title="(menors de 16 + majors de 50) / població de 16-50, en %">Depend.</th>
-          <th class="sortable num" data-sort="widowRateF" title="% de vídues entre dones de 16 anys o més (s'usa el total agregat per evitar errors OCR a les bandes d'edat)">% Vídues</th>
-          <th class="sortable num" data-sort="fertility" title="Infants &lt;7 per cada 100 dones de 25-40 anys">Fertilitat</th>
-          <th class="sortable num" data-sort="agrarianPct" title="% de la població activa dedicada a pagesia (llauradors + jornalers)">% Pagesia</th>
+          <th class="sortable num" data-sort="totalPop"   title="Suma dels grups d'edat a la Taula 3 (població en vivendes familiars)">Pob.</th>
+          <th class="sortable num" data-sort="meanAge"    title="Edat mitjana ponderada usant els midpoints dels grups d'edat (3,5 / 11,5 / 20,5 / 32,5 / 45 / 60)">Edat</th>
+          <th class="sortable num" data-sort="sexRatio"   title="Quocient de masculinitat: homes per cada 100 dones">Masc.</th>
+          <th class="sortable num" data-sort="dependency" title="Taxa de dependència: (menors de 16 + majors de 50) per cada 100 persones de 16-50 anys">Dep.</th>
+          <th class="sortable num" data-sort="widowRateF" title="% de vídues entre dones de 16 anys o més (rollup agregat per robustesa)">%Víd</th>
+          <th class="sortable num" data-sort="fertility"  title="Índex de fecunditat bruta (Vidal 1987): infants &lt;7 per cada 100 dones de 16-40 anys">Fert.</th>
+          <th class="sortable num" data-sort="maritalFert" title="Índex de fecunditat matrimonial (Vidal 1987): infants &lt;7 per cada dona CASADA de 16-40 anys">F.matr.</th>
+          <th class="sortable num" data-sort="agingIndex" title="Índex d'envelliment (Vidal 1987): població >50 / població <16. Mallorca conjunt: 0.47 · Menorca: 0.32 · Eivissa-Formentera: 0.25">Env.</th>
+          <th class="sortable num" data-sort="celibacyM40" title="Celibat masculí definitiu (Vidal 1987): % de varons solters d'entre els majors de 40 anys. Palma: 26% · Mallorca: 16% · Espanya: 12%">%Cel.V</th>
+          <th class="sortable num" data-sort="agrarianPct" title="% de la població activa dedicada a pagesia (llauradors + jornalers, Taula 4)">%Agr</th>
         </tr>
       </thead>
       <tbody id="indicators-tbody"></tbody>
     </table>
+
+    <details class="vidal-notes" open>
+      <summary>Notes de fiabilitat (Juan Vidal, 1987)</summary>
+      <p style="margin:0.6em 0 0.4em;">
+        Juan Vidal, J. <em>El censo de Floridablanca en las Islas
+        Baleares</em>, dins <strong>"La Población española en 1787.
+        II Centenario del Censo de Floridablanca"</strong>, Congreso
+        Histórico, INE, Madrid 1991, pp. 567-593. Anàlisi acadèmica
+        canònica del nostre mateix cens. <strong>Tres reserves
+        documentades</strong> aplicables a aquesta web:
+      </p>
+      <ul>
+        <li>
+          <strong>⚠ Ciutadella (cod 28)</strong>: «<em>tan defectuosa
+          confección del censo de Ciudadela que distorsiona los datos
+          de toda la isla</em>». Vidal mostra que els percentatges de
+          casats &lt;25 anys (V 29.51%, F 77.14%) són inadmissibles
+          fins i tot per a una societat de matrimoni precoç com la
+          menorquina; recomana excloure-la per a anàlisis comparatives
+          d'estructura matrimonial.
+        </li>
+        <li>
+          <strong>⚠ Palma (cod 66)</strong>: la població comunitària
+          palmesana (2.047 individus en convents, hospitals, hospici i
+          col·legis) probablement ja estava inclosa al recompte
+          general per edat-sexe-estat de la ciutat. Sumar-la a part
+          (com fa l'edició INE oficial) sobreavalua la població de
+          Palma en ~6%.
+        </li>
+        <li>
+          <strong>Tota Menorca</strong>: probablement subcensada
+          al 1786-87 en un ~10%. El creixement anual implícit entre
+          aquest cens i el d'Aranda-Godoy del 1797 (+0.92% anual) és
+          inversemblant per a un cens complet; els registres
+          parroquials baptismals coetanis donen una taxa de natalitat
+          del 46.81 ‰, també indicatiu de població real superior a la
+          declarada.
+        </li>
+      </ul>
+      <p style="margin:0.4em 0 0; font-size:0.85em;">
+        Punts on Vidal valida les nostres dades: les xifres de
+        Mallorca tenen una concordança quasi perfecta entre suma
+        local i xifres oficials (±0,07%), i els quocients de
+        masculinitat (Mallorca 101, Palma 103, Eivissa 102,
+        Formentera 99,6) s'alineen amb els estàndards demogràfics de
+        l'època.
+      </p>
+    </details>
   </div>
 
   <div class="chart-grid">
