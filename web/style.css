@@ -1013,7 +1013,11 @@ aside.filters h3 {
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 1em 1.2em 1.4em;
+  margin-bottom: 1.5em;
 }
+/* Inside a chart-grid the gap already handles spacing — reset to
+   avoid double separation. */
+.chart-grid > .chart-card { margin-bottom: 0; }
 .chart-card h3 {
   font-family: Georgia, serif;
   margin: 0 0 0.7em;
