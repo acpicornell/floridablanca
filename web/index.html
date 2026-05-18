@@ -32,25 +32,27 @@
 <!-- ===== INICI ===== -->
 <section id="tab-inici" class="tab-content active">
   <div class="home-hero">
-    <h2>El primer cens modern d'Espanya, aplicat a les Balears</h2>
+    <h2>Cens de Floridablanca · Balears 1787</h2>
     <p class="home-lead">
-      L'any 1787, el comte de Floridablanca, primer secretari d'estat de
-      Carles III, va ordenar el primer cens estadístic complet d'Espanya
-      construït sobre criteris uniformes: població per <em>estat civil</em>,
-      <em>edat</em>, <em>sexe</em> i <em>ocupació</em>, més un inventari
-      de comunitats religioses, hospitals i altres institucions. Aquesta
-      web fa cercable el volum balear del cens, publicat en facsímil per
-      l'INE l'any 1986.
+      El primer cens estadístic complet d'Espanya construït sobre criteris
+      uniformes. Aquesta web fa cercable el volum balear, publicat en facsímil
+      per l'INE l'any 1986.
     </p>
+    <div class="home-stats" id="home-stats">
+      <div class="home-stat"><span class="num" id="stat-pueblos">…</span><span class="label">pobles</span></div>
+      <div class="home-stat"><span class="num" id="stat-pop">…</span><span class="label">habitants</span></div>
+      <div class="home-stat"><span class="num">5</span><span class="label">illes</span></div>
+      <div class="home-stat"><span class="num" id="stat-toppop">…</span><span class="label" id="stat-toppop-label">…</span></div>
+    </div>
   </div>
 
-  <div class="home-stats" id="home-stats">
-    <div class="home-stat"><span class="num" id="stat-pueblos">…</span><span class="label">pobles</span></div>
-    <div class="home-stat"><span class="num" id="stat-pop">…</span><span class="label">habitants total</span></div>
-    <div class="home-stat"><span class="num" id="stat-mal">…</span><span class="label">pobles a Mallorca</span></div>
-    <div class="home-stat"><span class="num" id="stat-men">…</span><span class="label">pobles a Menorca</span></div>
-    <div class="home-stat"><span class="num" id="stat-ibi">…</span><span class="label">pobles a Eivissa-Formentera</span></div>
-  </div>
+  <aside class="home-featured" id="home-featured" hidden>
+    <p class="featured-eyebrow">Un poble del cens, a l'atzar</p>
+    <h2 class="featured-title" id="featured-title">…</h2>
+    <p class="featured-meta" id="featured-meta">…</p>
+    <p class="featured-excerpt" id="featured-excerpt">…</p>
+    <button class="featured-open" id="featured-open" type="button">Obrir la fitxa →</button>
+  </aside>
 
   <div class="home-prose">
     <h2>Què és el cens de Floridablanca</h2>
@@ -96,6 +98,41 @@
       mitjançant OCR de visió (Claude Sonnet 4.6) i l'organitza en una
       base de dades relacional pública.
     </p>
+
+    <h2>Nota sobre la grafia dels topònims</h2>
+    <p>
+      Els noms dels pobles que apareixen són els que figuren a l'edició
+      facsímil de l'INE (1986), en <strong>castellà i amb la normativa
+      toponímica administrativa d'aquell moment</strong>. La grafia
+      oficial catalana actual pot ser diferent en molts casos. Per
+      exemple: <em>Andraitx</em> (1986) → <strong>Andratx</strong>,
+      <em>Lluchmayor</em> → <strong>Llucmajor</strong>,
+      <em>Pollensa</em> → <strong>Pollença</strong>,
+      <em>Buñola</em> → <strong>Bunyola</strong>,
+      <em>Mahón</em> → <strong>Maó</strong>,
+      <em>Valldemosa</em> → <strong>Valldemossa</strong>,
+      <em>Santañy</em> → <strong>Santanyí</strong>,
+      <em>Estellenchs</em> → <strong>Estellencs</strong>,
+      <em>Puigpunent</em> → <strong>Puigpunyent</strong>,
+      <em>Campos del Puerto</em> → <strong>Campos</strong>. La
+      columna "Nom (1787)" reprodueix la forma històrica original tal
+      com apareix al Nomenclàtor del cens.
+    </p>
+  </div>
+
+  <div class="sources-grid">
+    <div class="source-card">
+      <h3>Mallorca</h3>
+      <p><span class="num" id="src-mal">…</span> pobles · partits judicials de Palma, Inca, Manacor.</p>
+    </div>
+    <div class="source-card">
+      <h3>Menorca</h3>
+      <p><span class="num" id="src-men">…</span> pobles · governador a Ciutadella, alcaldes anuals.</p>
+    </div>
+    <div class="source-card">
+      <h3>Eivissa i Formentera</h3>
+      <p><span class="num" id="src-ibi">…</span> pobles · tot realenc, quartons històrics.</p>
+    </div>
   </div>
 </section>
 
@@ -136,6 +173,12 @@
   </aside>
 
   <div>
+    <p class="hint-banner">
+      Els noms de la columna <strong>"Nom (1986)"</strong> són els
+      castellans normalitzats per l'INE en l'edició facsímil; la forma
+      oficial catalana actual pot ser diferent (Andraitx → Andratx,
+      Lluchmayor → Llucmajor, Pollensa → Pollença, Mahón → Maó, …).
+    </p>
     <table class="pobles-table">
       <thead>
         <tr>

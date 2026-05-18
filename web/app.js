@@ -63,9 +63,61 @@ function renderHome() {
   const t = STATE.data.meta.totals;
   $("#stat-pueblos").textContent = fmt(t.pueblos);
   $("#stat-pop").textContent     = fmt(t.total_population);
-  $("#stat-mal").textContent     = fmt(t.by_district.MAL || 0);
-  $("#stat-men").textContent     = fmt(t.by_district.MEN || 0);
-  $("#stat-ibi").textContent     = fmt(t.by_district.IBI || 0);
+
+  // Largest pueblo by population.
+  const withPop = STATE.pueblos
+    .map((p) => ({ p, pop: housingTotal(p) }))
+    .filter((x) => x.pop != null)
+    .sort((a, b) => b.pop - a.pop);
+  if (withPop.length) {
+    const top = withPop[0];
+    $("#stat-toppop").textContent       = fmt(top.pop);
+    $("#stat-toppop-label").textContent = `habitants a ${top.p.name_current}`;
+  }
+
+  // Per-district pueblo counts (Mallorca / Menorca / Ibiza-Formentera).
+  $("#src-mal").textContent = fmt(t.by_district.MAL || 0);
+  $("#src-men").textContent = fmt(t.by_district.MEN || 0);
+  $("#src-ibi").textContent = fmt(t.by_district.IBI || 0);
+
+  // Featured pueblo: pick a random one with population data so the
+  // card looks substantive (not an empty entry like ALCUDIETA).
+  const candidates = STATE.pueblos.filter((p) =>
+    housingTotal(p) != null || (p.population && p.population.occupation));
+  if (candidates.length) {
+    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    $("#featured-title").textContent = pick.name_current;
+    const bits = [];
+    if (pick.category_label) bits.push(pick.category_label);
+    if (pick.district_label) bits.push(pick.district_label);
+    if (pick.jurisdiction_label) bits.push(pick.jurisdiction_label.toLowerCase());
+    const pop = housingTotal(pick);
+    if (pop != null) bits.push(`${fmt(pop)} habitants`);
+    $("#featured-meta").textContent = bits.join(" · ");
+
+    // Short excerpt: name_1787 difference + top occupation if available.
+    const excerptParts = [];
+    if (pick.name_1787 && pick.name_1787 !== pick.name_current) {
+      excerptParts.push(`Al Nomenclàtor del 1787 hi apareix com a <em>${pick.name_1787}</em>.`);
+    }
+    const occ = pick.population?.occupation;
+    if (occ) {
+      const sorted = Object.entries(occ)
+        .filter(([k, v]) => v && k !== "total" && k !== "menores_sin_profesion")
+        .sort((a, b) => b[1] - a[1]);
+      if (sorted.length) {
+        const [k, v] = sorted[0];
+        excerptParts.push(`Ocupació més declarada: <strong>${OCC_LABELS[k] || k}</strong> (${fmt(v)}).`);
+      }
+    }
+    if (pick.religious?.length) {
+      excerptParts.push(`${pick.religious.length} comunitats religioses documentades.`);
+    }
+    $("#featured-excerpt").innerHTML = excerptParts.join(" ") || "Vegeu la fitxa per al detall.";
+
+    $("#featured-open").onclick = () => openDetail(pick.cod);
+    $("#home-featured").hidden = false;
+  }
 }
 
 // ===== pobles list ==========================================================
@@ -524,19 +576,148 @@ function renderBars(items, modClass = "") {
   }).join("");
 }
 
-// ===== comunitats religioses (cross-pueblo list) ==========================
+// ===== comunitats religioses (cross-pueblo aggregates + list) =============
+
+// Normalise the printed religious-order strings into ~12 canonical
+// families, with a CSS class for colour. The 1986 facsimile prints
+// 22 distinct labels (Franciscanos vs Franciscanos Observantes vs
+// Capuchinos vs Mínimos vs Alcantarinos — all Franciscan family),
+// which we collapse here so the visualisations stay legible.
+const ORDER_FAMILIES = [
+  // [family_label, css_class, regex matched against the printed string]
+  ["Franciscans (i variants)", "ord-franciscan",  /franciscan|capuchin|mínim|minim|alcantarin|clarisa/i],
+  ["Dominics (Predicadors)",   "ord-dominican",   /dominic|predicador/i],
+  ["Agustins",                 "ord-augustinian", /agustin/i],
+  ["Carmelites",               "ord-carmelite",   /carmelit/i],
+  ["Mercedaris",               "ord-mercedarian", /mercedari/i],
+  ["Trinitaris",               "ord-trinitarian", /trinitari/i],
+  ["Jerònimes",                "ord-jeronymite",  /gerónim|jerónim|jeronim/i],
+  ["Orde del Císter",          "ord-cistercian",  /císter|cister/i],
+  ["Cartoixans",               "ord-cartusian",   /bruno|cartoix/i],
+  ["Pauls (Vincentians)",      "ord-vincentian",  /vicente.*paul|paul/i],
+  ["Clergues regulars",        "ord-other-clergy",/clérigos|clergues/i],
+];
+const ORDER_OTHER = ["Hermitatges i beateris", "ord-secular"];
+
+function classifyOrder(orderStr) {
+  if (!orderStr) return ORDER_OTHER;
+  for (const fam of ORDER_FAMILIES) {
+    if (fam[2].test(orderStr)) return [fam[0], fam[1]];
+  }
+  return ["Altres ordres", "ord-other-clergy"];
+}
+
+function communityMembers(c) {
+  return Object.values(c.members || {}).reduce(
+    (sum, v) => sum + (typeof v === "number" ? v : 0), 0,
+  );
+}
 
 function renderReligious() {
-  // Group all convents grouped by pueblo.
-  const html = STATE.pueblos
-    .filter((p) => p.religious.length > 0)
+  const pueblosWithReligious = STATE.pueblos.filter((p) => p.religious.length > 0);
+  if (pueblosWithReligious.length === 0) {
+    $("#religious-list").innerHTML = "<p><em>Sense dades extretes.</em></p>";
+    return;
+  }
+
+  // ---------- Aggregate by canonical order family ----------------------
+  const byFamily = new Map();   // family_label → { cssClass, members, convents }
+  for (const p of pueblosWithReligious) {
+    for (const c of p.religious) {
+      const [fam, cls] = classifyOrder(c.order);
+      const row = byFamily.get(fam) || { cssClass: cls, members: 0, convents: 0 };
+      row.members  += communityMembers(c);
+      row.convents += 1;
+      byFamily.set(fam, row);
+    }
+  }
+  const familyRows = [...byFamily.entries()]
+    .map(([label, row]) => ({ label, ...row }))
+    .sort((a, b) => b.members - a.members);
+
+  const familyMax = familyRows.reduce((m, x) => Math.max(m, x.members), 0) || 1;
+  const orderBars = familyRows.map((r) => `
+    <div class="order-bar">
+      <span class="label">${r.label}</span>
+      <span class="bar ${r.cssClass}" style="width: ${Math.max(2, (r.members / familyMax) * 100)}%"></span>
+      <span class="meta"><b>${fmt(r.members)}</b> persones · ${r.convents} cases</span>
+    </div>`).join("");
+
+  const legend = familyRows.map((r) =>
+    `<span><span class="swatch ${r.cssClass}"></span>${r.label}</span>`
+  ).join("");
+
+  // ---------- Per-pueblo convent dot map -------------------------------
+  // One row per pueblo with religious communities. The dots are sized
+  // by member count (sqrt for visual fairness) and coloured by order
+  // family. Click forwards to the pueblo detail panel.
+  const allMembers = pueblosWithReligious.flatMap((p) =>
+    p.religious.map(communityMembers));
+  const maxMembers = Math.max(...allMembers, 1);
+  const sortedPueblos = [...pueblosWithReligious]
+    .map((p) => ({
+      p,
+      totalMembers: p.religious.reduce((s, c) => s + communityMembers(c), 0),
+    }))
+    .sort((a, b) => b.totalMembers - a.totalMembers);
+
+  const dotMap = sortedPueblos.map(({ p, totalMembers }) => {
+    const dots = p.religious.map((c) => {
+      const [, cls] = classifyOrder(c.order);
+      const m = communityMembers(c);
+      // Diameter 8-30px, sqrt scale.
+      const size = Math.max(8, Math.round(8 + 22 * Math.sqrt(m / maxMembers)));
+      const title = `${c.name || "(sense nom)"}${c.order ? ` · ${c.order}` : ""} · ${m} persones`;
+      return `<span class="convent-dot ${cls}" style="width:${size}px;height:${size}px" title="${title}"></span>`;
+    }).join("");
+    return `<div class="convent-map-row" data-cod="${p.cod}">
+      <span class="pueblo-name">${p.name_current}</span>
+      <span class="dots">${dots}</span>
+      <span class="count"><b>${p.religious.length}</b> · ${fmt(totalMembers)}</span>
+    </div>`;
+  }).join("");
+
+  // ---------- Bottom: full per-pueblo list (existing behaviour) --------
+  const fullList = pueblosWithReligious
     .sort((a, b) => b.religious.length - a.religious.length)
     .map((p) => `
       <div class="chart-card" style="margin-bottom:1em;">
         <h3>${p.name_current} <span style="font-size:0.7em; color:var(--text-muted); font-weight:400;">— ${p.religious.length} comunitats</span></h3>
         ${p.religious.map((c) => renderConventCard(c, c.type)).join("")}
       </div>`).join("");
-  $("#religious-list").innerHTML = html || "<p><em>Sense dades extretes.</em></p>";
+
+  $("#religious-list").innerHTML = `
+    <div class="chart-card" style="margin-bottom:1.5em;">
+      <h3>Membres per ordre religiós (arxipèlag balear)</h3>
+      <p style="font-size:0.85em; color:var(--text-muted); margin:0 0 0.8em;">
+        Tots els membres de cada ordre sumats a través de les seves
+        cases (professos + novicis + llecs + donats + criats + infants).
+        Permet veure quina ordre era hegemònica al 1787.
+      </p>
+      ${orderBars}
+    </div>
+
+    <div class="chart-card" style="margin-bottom:1.5em;">
+      <h3>Convents per poble</h3>
+      <p style="font-size:0.85em; color:var(--text-muted); margin:0 0 0.6em;">
+        Cada cercle és una comunitat. Diàmetre = nombre total de
+        membres (escala arrel quadrada). Color = ordre religiós.
+        Clic damunt el poble per veure'n el detall.
+      </p>
+      <div class="order-legend">${legend}</div>
+      <div class="convent-map">${dotMap}</div>
+    </div>
+
+    <h3 style="font-family:Georgia,serif; margin:1.5em 0 0.8em; color:var(--accent-dark);">
+      Llista completa per poble
+    </h3>
+    ${fullList}
+  `;
+
+  // Wire up clicks on the convent-map rows.
+  $$("#religious-list .convent-map-row").forEach((row) =>
+    row.addEventListener("click", () => openDetail(Number(row.dataset.cod)))
+  );
 }
 
 // ===== comentari ==========================================================
