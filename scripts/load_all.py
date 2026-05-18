@@ -54,6 +54,19 @@ _JURISDICTION_FIXES = {
     "SF": "SE",
 }
 
+# Hand-verified corrections to current_municipality_code values
+# that the LLM mis-extracted from the printed table (typically by
+# confusing the leading "0" of a three-digit code with a "1", so
+# 012 → 013 etc.). These are OCR fixes — the facsimile prints the
+# correct code, we just mis-read it.
+_MUNICIPALITY_OCR_FIXES = {
+    # cod 107 ULLARO: facsimile prints 012 (CAMPANET); the model
+    # read 013 (CAMPOS DEL PUERTO). Ullaró is a hamlet of Campanet
+    # in es Raiguer, confirmed by enciclopedia.cat and Viquipèdia.
+    107: 12,
+}
+
+
 # Pueblos that the printed INE 1986 facsimile maps to one current
 # municipality, but where reality (segregations approved after the
 # facsimile went to press) puts them in a different municipality
@@ -129,9 +142,12 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
         elif footnote:
             observations = "(*) Pueblo no incluido en el mapa municipal de 1986. " + observations
 
-        # Live administrative override: rewrite current_municipality
-        # for pueblos whose mapping has changed since 1986.
+        # First apply any OCR fix (the facsimile printed value the
+        # model misread), then the live-administrative remap (the
+        # printed value is correct, but reality has moved on).
         current_municipality = pa.get("current_municipality")
+        if cod in _MUNICIPALITY_OCR_FIXES:
+            current_municipality = _MUNICIPALITY_OCR_FIXES[cod]
         if cod in _POST_1986_MUNICIPALITY_REMAP:
             new_cod, _new_name, _new_official, note = _POST_1986_MUNICIPALITY_REMAP[cod]
             current_municipality = new_cod

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-05-18T19:43:06.309011+00:00",
+  "generated_at": "2026-05-18T19:59:11.524752+00:00",
   "source": "INE (1986) — Censo de 1787, Floridablanca. Tomo VI: Provincia de Baleares. Madrid: INE.",
   "totals": {
    "pueblos": 111,
@@ -15515,9 +15515,9 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 13,
-   "current_municipality_name": "CAMPOS DEL PUERTO",
-   "current_municipality_name_official": "Campos",
+   "current_municipality_code": 12,
+   "current_municipality_name": "CAMPANET",
+   "current_municipality_name_official": "Campanet",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
