@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Cens de Floridablanca · Balears 1787</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cens de Floridablanca (1787), Tomo VI – Illes Balears. 111 pobles amb dades administratives, demogràfiques, ocupacions, comunitats religioses i centres benèfics.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cens de Floridablanca · Balears 1787">
+<meta property="og:description" content="111 pobles, dades demogràfiques i administratives del primer cens estadístic modern d'Espanya.">
+<meta property="og:locale" content="ca_ES">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📜%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <h1>Cens de Floridablanca · Balears</h1>
+    <p class="subtitle">Tomo VI del <em>Censo Español executado de Orden del Rey</em> · 1787</p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="inici">Inici</button>
+  <button class="tab"        data-tab="pobles">Pobles</button>
+  <button class="tab"        data-tab="demografia">Demografia</button>
+  <button class="tab"        data-tab="religiosos">Comunitats religioses</button>
+  <button class="tab"        data-tab="comentari">Comentari</button>
+</nav>
+
+<!-- ===== INICI ===== -->
+<section id="tab-inici" class="tab-content active">
+  <div class="home-hero">
+    <h2>El primer cens modern d'Espanya, aplicat a les Balears</h2>
+    <p class="home-lead">
+      L'any 1787, el comte de Floridablanca, primer secretari d'estat de
+      Carles III, va ordenar el primer cens estadístic complet d'Espanya
+      construït sobre criteris uniformes: població per <em>estat civil</em>,
+      <em>edat</em>, <em>sexe</em> i <em>ocupació</em>, més un inventari
+      de comunitats religioses, hospitals i altres institucions. Aquesta
+      web fa cercable el volum balear del cens, publicat en facsímil per
+      l'INE l'any 1986.
+    </p>
+  </div>
+
+  <div class="home-stats" id="home-stats">
+    <div class="home-stat"><span class="num" id="stat-pueblos">…</span><span class="label">pobles</span></div>
+    <div class="home-stat"><span class="num" id="stat-pop">…</span><span class="label">habitants total</span></div>
+    <div class="home-stat"><span class="num" id="stat-mal">…</span><span class="label">pobles a Mallorca</span></div>
+    <div class="home-stat"><span class="num" id="stat-men">…</span><span class="label">pobles a Menorca</span></div>
+    <div class="home-stat"><span class="num" id="stat-ibi">…</span><span class="label">pobles a Eivissa-Formentera</span></div>
+  </div>
+
+  <div class="home-prose">
+    <h2>Què és el cens de Floridablanca</h2>
+    <p>
+      José Moñino, comte de Floridablanca, va impulsar l'any 1787 un cens
+      pensat per donar al govern una <strong>radiografia administrativa i demogràfica</strong>
+      del regne. A diferència del cens d'Aranda (1768), pensat com a
+      recompte parroquial, el de Floridablanca recull per a cada poble la
+      categoria administrativa (vila, lloc, aldea, despoblat, coto rodó,
+      arraval, parròquia, ciutat), l'autoritat (alcalde ordinari, pedani,
+      governador, corregidor…), la jurisdicció (realenga, senyoriu eclesiàstic,
+      senyoriu secular) i la població desagregada per estat civil, grup d'edat
+      i ocupació.
+    </p>
+    <p>
+      El volum balear documenta <strong>111 pobles</strong> distribuïts en
+      tres partits (Mallorca, Menorca i Eivissa-Formentera) i ofereix la
+      llista detallada de <strong>convents de frares i monges</strong>,
+      <strong>hospitals</strong> i <strong>centres benèfics</strong>. La
+      capital, Palma, hi consta amb una població de <strong>34.073 habitants</strong>
+      i 7.465 d'ells entre 25 i 40 anys — un detall que cap font anterior
+      permet creuar.
+    </p>
+
+    <h2>Què té aquesta web</h2>
+    <p>
+      Cada un dels 111 pobles és consultable amb la seva fitxa: dades
+      administratives, distribució demogràfica completa (sexe × estat civil
+      × grup d'edat), tots els oficis declarats, comunitats religioses i
+      hospitals. La pestanya <strong>Demografia</strong> presenta els 20
+      pobles més grans i la composició per illa. La pestanya <strong>Comunitats
+      religioses</strong> llista tots els convents documentats. El
+      <strong>Comentari</strong> reprodueix la nota original del 1787 sobre
+      l'organització judicial de l'arxipèlag.
+    </p>
+
+    <h2>Font</h2>
+    <p>
+      Instituto Nacional de Estadística (1986), <em>Censo de 1787,
+      «Floridablanca». Tomo VI: Provincia de Baleares</em>. Madrid: INE.
+      Facsímil basat en l'original conservat a la Biblioteca de la Real
+      Academia de la Historia. El present projecte n'extreu el contingut
+      mitjançant OCR de visió (Claude Sonnet 4.6) i l'organitza en una
+      base de dades relacional pública.
+    </p>
+  </div>
+</section>
+
+<!-- ===== POBLES ===== -->
+<section id="tab-pobles" class="tab-content">
+  <aside class="filters">
+    <h3>Filtres</h3>
+    <div class="filter-group">
+      <label for="f-text">Cerca pel nom</label>
+      <input type="text" id="f-text" placeholder="ALARO, MAHON, …">
+    </div>
+    <div class="filter-group">
+      <label for="f-district">Partit (illa)</label>
+      <select id="f-district">
+        <option value="">Tots</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-category">Categoria</label>
+      <select id="f-category">
+        <option value="">Totes</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-juris">Jurisdicció</label>
+      <select id="f-juris">
+        <option value="">Totes</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-auth">Autoritat</label>
+      <select id="f-auth">
+        <option value="">Totes</option>
+      </select>
+    </div>
+    <button class="btn-clear" id="btn-clear">Netejar filtres</button>
+    <p class="filter-count" id="filter-count">…</p>
+  </aside>
+
+  <div>
+    <table class="pobles-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-sort="cod">Cod</th>
+          <th class="sortable" data-sort="name_current">Nom (1986)</th>
+          <th class="sortable" data-sort="name_1787">Nom (1787)</th>
+          <th class="sortable" data-sort="category">Cat.</th>
+          <th class="sortable" data-sort="jurisdiction">Juris.</th>
+          <th class="sortable" data-sort="authority">Autoritat</th>
+          <th class="sortable" data-sort="district">Partit</th>
+          <th class="sortable num" data-sort="population">Habitants</th>
+        </tr>
+      </thead>
+      <tbody id="pobles-tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== DEMOGRAFIA ===== -->
+<section id="tab-demografia" class="tab-content">
+  <div class="home-hero">
+    <h2>Demografia comparada</h2>
+    <p class="home-lead">
+      Els 28 pobles que aporten dades demogràfiques completes sumen
+      <span id="demog-total-pop">…</span> habitants. Aquesta secció els
+      ordena per mida, els compara per illa i mostra la piràmide d'edat
+      i estat civil per al conjunt de l'arxipèlag.
+    </p>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Pobles per nombre d'habitants (top 20)</h3>
+      <div id="chart-top-pueblos"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Habitants per partit</h3>
+      <div id="chart-by-district"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Estructura per estat civil i sexe (agregat)</h3>
+      <div id="chart-marital"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Ocupacions declarades (top 15)</h3>
+      <div id="chart-occupations"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMUNITATS RELIGIOSES ===== -->
+<section id="tab-religiosos" class="tab-content">
+  <div class="home-hero">
+    <h2>Comunitats religioses</h2>
+    <p class="home-lead">
+      Convents de frares, convents de monges i altres cases de religió
+      (eremites, beateris) documentats al cens. Cinquanta anys abans de
+      la desamortització de Mendizábal (1836), aquesta era la geografia
+      del clergat regular balear.
+    </p>
+  </div>
+  <div id="religious-list"></div>
+</section>
+
+<!-- ===== COMENTARI ===== -->
+<section id="tab-comentari" class="tab-content">
+  <div class="home-hero">
+    <h2>Comentari de l'INE i nota del 1787</h2>
+    <p class="home-lead">
+      El comentari editorial de l'INE (1986) que introdueix el volum
+      balear, i la nota original del Nomenclàtor de 1787 reproduïda al
+      peu de la relació de pobles d'Eivissa (p. 328).
+    </p>
+  </div>
+  <div class="prose">
+    <div id="comentario-body"></div>
+    <div class="nota" id="nota-1787"></div>
+  </div>
+</section>
+
+<!-- ===== POBLE DETAIL OVERLAY ===== -->
+<div class="detail-overlay" id="detail-overlay">
+  <div class="detail-panel" id="detail-panel">
+    <button class="detail-close" id="detail-close" aria-label="Tancar">✕</button>
+    <div id="detail-content"></div>
+  </div>
+</div>
+
+<footer>
+  Generat a partir del facsímil INE 1986 del cens de Floridablanca (1787),
+  Tomo VI: Provincia de Baleares. Codi: <code>github.com/…/floridablanca</code>.
+  Llicència del codi: AGPL-3.0. Dades originals (1787): domini públic.
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

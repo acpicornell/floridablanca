@@ -1,0 +1,151 @@
+{
+  "pueblos": [
+    {
+      "name": "PALMA",
+      "total": 1232,
+      "males": 735,
+      "females": 497,
+      "friars": [
+        {
+          "name": "Ntrª Srª de La Merced",
+          "order": "Mercedarios",
+          "profesos": 31,
+          "novicios": null,
+          "legos": 7,
+          "donados": 7,
+          "criados": 1,
+          "ninos": 4,
+          "otros": null
+        },
+        {
+          "name": "S. Francisco de Paula ó Mínimos",
+          "order": "Mínimos",
+          "profesos": 38,
+          "novicios": 6,
+          "legos": 9,
+          "donados": 6,
+          "criados": 1,
+          "ninos": 6,
+          "otros": null
+        },
+        {
+          "name": "S.Francisco",
+          "order": "Capuchinos",
+          "profesos": 34,
+          "novicios": 3,
+          "legos": 13,
+          "donados": 1,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "San Antonio de Padua",
+          "order": "Agustinos",
+          "profesos": 4,
+          "novicios": null,
+          "legos": 5,
+          "donados": 5,
+          "criados": 6,
+          "ninos": 3,
+          "otros": null
+        },
+        {
+          "name": "San Cayetano",
+          "order": "Clérigos Regulares",
+          "profesos": 12,
+          "novicios": null,
+          "legos": 3,
+          "donados": 3,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "Casa de La Misión",
+          "order": "S.Vicente de Paul",
+          "profesos": 9,
+          "novicios": 5,
+          "legos": 3,
+          "donados": 3,
+          "criados": 1,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "Oratorio de San Felipe Neri",
+          "order": null,
+          "profesos": 5,
+          "novicios": null,
+          "legos": 2,
+          "donados": 2,
+          "criados": 1,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [
+        {
+          "name": "Santa Teresa",
+          "order": "Carmelitas",
+          "profesas": 20,
+          "novicias": null,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": 1,
+          "donados": 1,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "De la Concepción",
+          "order": "Agustinas",
+          "profesas": 39,
+          "novicias": 5,
+          "sras_seglares": null,
+          "ninas": 5,
+          "criadas": 2,
+          "donados": 2,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "Santa Catalina",
+          "order": "Dominicas",
+          "profesas": 32,
+          "novicias": null,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": 1,
+          "donados": 1,
+          "criados": 2,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "",
+          "order": "Capuchinas",
+          "profesas": 30,
+          "novicias": 2,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": null,
+          "donados": 6,
+          "criados": 1,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    }
+  ],
+  "_meta": {
+    "page": 33,
+    "kind": "table_5_part5",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2324,
+    "output_tokens": 1165
+  }
+}

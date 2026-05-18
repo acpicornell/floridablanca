@@ -1,0 +1,190 @@
+{
+  "pueblos": [
+    {
+      "name": "PALMA",
+      "total": null,
+      "males": null,
+      "females": null,
+      "friars": [
+        {
+          "name": "Monasterio San Bernardo",
+          "order": "Del Cister",
+          "profesos": 15,
+          "novicios": null,
+          "legos": 3,
+          "donados": 1,
+          "criados": 12,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "Santo Domingo",
+          "order": "Predicadores",
+          "profesos": 69,
+          "novicios": 2,
+          "legos": 10,
+          "donados": 1,
+          "criados": 6,
+          "ninos": 5,
+          "otros": null
+        },
+        {
+          "name": "San Francisco",
+          "order": "Franciscanos Observantes",
+          "profesos": 92,
+          "novicios": 2,
+          "legos": 28,
+          "donados": 11,
+          "criados": 7,
+          "ninos": 6,
+          "otros": null
+        },
+        {
+          "name": "De Jesús",
+          "order": "Franciscanos Observantes",
+          "profesos": 37,
+          "novicios": 2,
+          "legos": 10,
+          "donados": 6,
+          "criados": 5,
+          "ninos": 3,
+          "otros": null
+        },
+        {
+          "name": "Del Carmen",
+          "order": "Carmelitas",
+          "profesos": 39,
+          "novicios": 1,
+          "legos": 8,
+          "donados": 1,
+          "criados": null,
+          "ninos": 5,
+          "otros": null
+        },
+        {
+          "name": "Del Socorro",
+          "order": "Agustinos",
+          "profesos": 33,
+          "novicios": 4,
+          "legos": 7,
+          "donados": null,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "Sancti Spiritus",
+          "order": "Trinitarios",
+          "profesos": 43,
+          "novicios": 1,
+          "legos": 9,
+          "donados": 1,
+          "criados": null,
+          "ninos": 2,
+          "otros": null
+        }
+      ],
+      "nuns": [
+        {
+          "name": "Stª Margarita",
+          "order": "Agustinas",
+          "profesas": 40,
+          "novicias": 10,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": null,
+          "donados": 1,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "Stª Clara",
+          "order": "Clarisas",
+          "profesas": 52,
+          "novicias": 6,
+          "sras_seglares": 3,
+          "ninas": null,
+          "criadas": 4,
+          "donados": 1,
+          "criados": 2,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "Stª María Magdalena",
+          "order": "Agustinas",
+          "profesas": 38,
+          "novicias": 1,
+          "sras_seglares": 4,
+          "ninas": null,
+          "criadas": null,
+          "donados": 1,
+          "criados": 1,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "De la Concepción",
+          "order": "Agustinas",
+          "profesas": 52,
+          "novicias": 2,
+          "sras_seglares": 2,
+          "ninas": null,
+          "criadas": 7,
+          "donados": 2,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "San Gerónimo",
+          "order": "Agustinas",
+          "profesas": 56,
+          "novicias": 8,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": null,
+          "donados": 1,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "De la Concepción Olivar",
+          "order": "Franciscanas",
+          "profesas": 45,
+          "novicias": 5,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": 1,
+          "donados": 1,
+          "criados": 1,
+          "otros_var": null,
+          "otros_muj": null
+        },
+        {
+          "name": "Ntrª Srª de Misericordia",
+          "order": "Agustinas",
+          "profesas": 26,
+          "novicias": 4,
+          "sras_seglares": 1,
+          "ninas": null,
+          "criadas": null,
+          "donados": 2,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    }
+  ],
+  "_meta": {
+    "page": 32,
+    "kind": "table_5_part4",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2324,
+    "output_tokens": 1505
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "pueblos": [
+    {
+      "name": "LLUCHMAYOR",
+      "total": 30,
+      "males": 26,
+      "females": 4,
+      "friars": [
+        {
+          "name": "S.Buenaventura",
+          "order": "Franciscanos Observantes",
+          "profesos": 17,
+          "novicios": 2,
+          "legos": 2,
+          "donados": 2,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [
+        {
+          "name": "Beaterio Tercera Orden Franciscana",
+          "titulares_varones": null,
+          "titulares_mujeres": 3,
+          "otros_varones": null,
+          "otros_mujeres": 1
+        }
+      ]
+    },
+    {
+      "name": "MAHON",
+      "total": 110,
+      "males": 76,
+      "females": 34,
+      "friars": [
+        {
+          "name": "De Jesús",
+          "order": "Franciscanos",
+          "profesos": 24,
+          "novicios": 2,
+          "legos": 8,
+          "donados": 1,
+          "criados": 3,
+          "ninos": 2,
+          "otros": null
+        }
+      ],
+      "nuns": [
+        {
+          "name": "De la Concepción",
+          "order": "Franciscanas",
+          "profesas": 33,
+          "novicias": null,
+          "sras_seglares": null,
+          "ninas": 1,
+          "criadas": 1,
+          "donados": null,
+          "criados": 1,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    },
+    {
+      "name": "MANACOR",
+      "total": 23,
+      "males": 19,
+      "females": 4,
+      "friars": [
+        {
+          "name": "Del Carmen",
+          "order": "Carmelitas",
+          "profesos": 17,
+          "novicios": 4,
+          "legos": 9,
+          "donados": 1,
+          "criados": 3,
+          "ninos": 2,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "MERCADAL",
+      "total": 34,
+      "males": 34,
+      "females": null,
+      "friars": [
+        {
+          "name": "S.Vicente Ferrer",
+          "order": "Dominicos",
+          "profesos": 10,
+          "novicios": 1,
+          "legos": 1,
+          "donados": 6,
+          "criados": null,
+          "ninos": 2,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [
+        {
+          "name": "Beaterio de la Enseñanza",
+          "titulares_varones": null,
+          "titulares_mujeres": 2,
+          "otros_varones": null,
+          "otros_mujeres": 2
+        }
+      ]
+    },
+    {
+      "name": "MURO",
+      "total": 11,
+      "males": 11,
+      "females": null,
+      "friars": [
+        {
+          "name": "Agustinos",
+          "order": null,
+          "profesos": 19,
+          "novicios": 4,
+          "legos": 5,
+          "donados": null,
+          "criados": 1,
+          "ninos": 3,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "CIUDADELA",
+      "total": null,
+      "males": null,
+      "females": null,
+      "friars": [
+        {
+          "name": "Santa Ana",
+          "order": "Mínimos",
+          "profesos": 7,
+          "novicios": 2,
+          "legos": 1,
+          "donados": null,
+          "criados": 1,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    }
+  ],
+  "_meta": {
+    "page": 31,
+    "kind": "table_5_part3",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2544,
+    "output_tokens": 1189
+  }
+}

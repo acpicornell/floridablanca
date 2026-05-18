@@ -1,0 +1,167 @@
+{
+  "pueblos": [
+    {
+      "name": "CIUDADELA",
+      "total": 149,
+      "males": 49,
+      "females": 61,
+      "friars": [
+        {
+          "name": "Real Convento",
+          "order": "Franciscanos Observantes",
+          "profesos": 19,
+          "novicios": 6,
+          "legos": 8,
+          "donados": 2,
+          "criados": 2,
+          "ninos": 3,
+          "otros": null
+        },
+        {
+          "name": "S.Antonio Abad",
+          "order": null,
+          "profesos": 3,
+          "novicios": 1,
+          "legos": 5,
+          "donados": null,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        },
+        {
+          "name": "Ntrª Srª del Socorro",
+          "order": "Agustinos",
+          "profesos": 25,
+          "novicios": 8,
+          "legos": 6,
+          "donados": null,
+          "criados": 3,
+          "ninos": 4,
+          "otros": null
+        },
+        {
+          "name": "San Agustín",
+          "order": "Agustinos Calzados",
+          "profesos": 16,
+          "novicios": null,
+          "legos": 7,
+          "donados": null,
+          "criados": null,
+          "ninos": 3,
+          "otros": null
+        },
+        {
+          "name": "Stº Domingo",
+          "order": "Predicadores",
+          "profesos": 6,
+          "novicios": 4,
+          "legos": 3,
+          "donados": 1,
+          "criados": 2,
+          "ninos": 2,
+          "otros": null
+        },
+        {
+          "name": "Stº Domingo",
+          "order": "Predicadores",
+          "profesos": 6,
+          "novicios": null,
+          "legos": 3,
+          "donados": 1,
+          "criados": 2,
+          "ninos": 2,
+          "otros": null
+        },
+        {
+          "name": "S.Francisco",
+          "order": "Franciscanos Observantes",
+          "profesos": 13,
+          "novicios": 5,
+          "legos": 2,
+          "donados": 3,
+          "criados": 4,
+          "ninos": 1,
+          "otros": null
+        }
+      ],
+      "nuns": [
+        {
+          "name": "Santa Clara",
+          "order": "Clarisas",
+          "profesas": 32,
+          "novicias": 7,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": 2,
+          "donados": 1,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    },
+    {
+      "name": "FELANITX",
+      "total": 26,
+      "males": 26,
+      "females": null,
+      "friars": [],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "IBIZA",
+      "total": 29,
+      "males": 15,
+      "females": 14,
+      "friars": [],
+      "nuns": [
+        {
+          "name": "S.Cristóbal",
+          "order": "Agustinas",
+          "profesas": 14,
+          "novicias": null,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": null,
+          "donados": 1,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    },
+    {
+      "name": "INCA",
+      "total": 78,
+      "males": 39,
+      "females": 39,
+      "friars": [],
+      "nuns": [
+        {
+          "name": "S.Bartolomé",
+          "order": "Gerónimas",
+          "profesas": 36,
+          "novicias": 3,
+          "sras_seglares": 2,
+          "ninas": null,
+          "criadas": null,
+          "donados": null,
+          "criados": 1,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    }
+  ],
+  "_meta": {
+    "page": 30,
+    "kind": "table_5_part2",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2324,
+    "output_tokens": 1235
+  }
+}

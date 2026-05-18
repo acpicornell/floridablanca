@@ -1,0 +1,14 @@
+[project]
+name = "floridablanca"
+version = "0.1.0"
+description = "Re-digitalisation of the Balearic volume (Tomo VI) of the Floridablanca Census of 1787, INE facsimile edition (1986)"
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.5.0",
+    "anthropic>=0.100",
+    "python-dotenv>=1.0",
+    "Pillow>=10.0",
+]
+
+[tool.uv]
+package = false

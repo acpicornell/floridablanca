@@ -1,0 +1,125 @@
+{
+  "pueblos": [
+    {
+      "name": "ALAYOR",
+      "total": 24,
+      "males": 24,
+      "females": null,
+      "friars": [
+        {
+          "name": "San Diego",
+          "order": "Franciscanos",
+          "profesos": 13,
+          "novicios": null,
+          "legos": 6,
+          "donados": 1,
+          "criados": 2,
+          "ninos": 2,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [],
+      "notes": "NO CONSTA DATO ALGUNO for monjas"
+    },
+    {
+      "name": "ALCUDIA",
+      "total": 13,
+      "males": 13,
+      "females": null,
+      "friars": [
+        {
+          "name": "S. Francisco de Asís",
+          "order": "Franciscanos",
+          "profesos": 7,
+          "novicios": null,
+          "legos": 2,
+          "donados": 2,
+          "criados": 1,
+          "ninos": 1,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [],
+      "notes": "NO CONSTA DATO ALGUNO for monjas"
+    },
+    {
+      "name": "ALGAYDA",
+      "total": 4,
+      "males": 4,
+      "females": null,
+      "friars": [],
+      "nuns": [],
+      "other": [
+        {
+          "name": "Hermita de San Honorato",
+          "titulares_varones": 4,
+          "titulares_mujeres": null,
+          "otros_varones": null,
+          "otros_mujeres": null
+        }
+      ],
+      "notes": "NO CONSTA DATO ALGUNO for frailes and monjas"
+    },
+    {
+      "name": "ARTA",
+      "total": 23,
+      "males": 21,
+      "females": 2,
+      "friars": [
+        {
+          "name": "San Antonio",
+          "order": "Franciscanos",
+          "profesos": 12,
+          "novicios": null,
+          "legos": 4,
+          "donados": 2,
+          "criados": 3,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [
+        {
+          "name": "Beaterio",
+          "titulares_varones": null,
+          "titulares_mujeres": 1,
+          "otros_varones": null,
+          "otros_mujeres": 1
+        }
+      ],
+      "notes": "NO CONSTA DATO ALGUNO for monjas"
+    },
+    {
+      "name": "CAMPOS DEL PUERTO",
+      "total": 13,
+      "males": 13,
+      "females": null,
+      "friars": [
+        {
+          "name": "S. Francisco de Paula",
+          "order": "Mínimos",
+          "profesos": 7,
+          "novicios": null,
+          "legos": 1,
+          "donados": 1,
+          "criados": 3,
+          "ninos": 1,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [],
+      "notes": "NO CONSTA DATO ALGUNO for monjas"
+    }
+  ],
+  "_meta": {
+    "page": 29,
+    "kind": "table_5_part1",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2324,
+    "output_tokens": 918
+  }
+}

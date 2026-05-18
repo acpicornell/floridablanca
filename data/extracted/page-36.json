@@ -1,0 +1,114 @@
+{
+  "entries": [
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Colegio NSSe de Sapiencia",
+      "role": "Rector",
+      "count": 1
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Colegio NSSe de Sapiencia",
+      "role": "Colegiales",
+      "count": 9
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Colegio NSSe de Sapiencia",
+      "role": "Pensionistas",
+      "count": 3
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Colegio NSSe de Sapiencia",
+      "role": "Criados",
+      "count": 1
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Seminario Conciliar S.Pedro",
+      "role": "Rector y Vicerector",
+      "count": 2
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Seminario Conciliar S.Pedro",
+      "role": "Colegiales",
+      "count": 16
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Seminario Conciliar S.Pedro",
+      "role": "Pensionistas",
+      "count": 28
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Seminario Conciliar S.Pedro",
+      "role": "Criados",
+      "count": 7
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Enseñanza.",
+      "role": "Rectora",
+      "count": 1
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Enseñanza.",
+      "role": "Mujeres",
+      "count": 18
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Piedad o Arrepentidas",
+      "role": "Priora",
+      "count": 1
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Piedad o Arrepentidas",
+      "role": "Mujeres",
+      "count": 15
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Niñas Huérfanas",
+      "role": "Priora",
+      "count": 1
+    },
+    {
+      "cod": 66,
+      "pueblo": "PALMA",
+      "centro": "Casa de Niñas Huérfanas",
+      "role": "Mujeres",
+      "count": 49
+    }
+  ],
+  "summary": {
+    "total": 154,
+    "males": 69,
+    "females": 85
+  },
+  "_meta": {
+    "page": 36,
+    "kind": "table_7",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 1925,
+    "output_tokens": 880
+  }
+}

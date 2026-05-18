@@ -1,0 +1,170 @@
+{
+  "pueblos": [
+    {
+      "name": "PETRA",
+      "total": 20,
+      "males": 20,
+      "females": null,
+      "friars": [
+        {
+          "name": "San Bernardino",
+          "order": "Franciscanos",
+          "profesos": 12,
+          "novicios": 3,
+          "legos": 1,
+          "donados": 2,
+          "criados": 2,
+          "ninos": 1,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "POLLENSA",
+      "total": 18,
+      "males": 18,
+      "females": null,
+      "friars": [
+        {
+          "name": "Ntrª Srª del Rosario",
+          "order": "Predicadores",
+          "profesos": 9,
+          "novicios": 1,
+          "legos": 4,
+          "donados": null,
+          "criados": 1,
+          "ninos": 3,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "SANTA MARIA DEL CAMI",
+      "total": 12,
+      "males": 12,
+      "females": null,
+      "friars": [
+        {
+          "name": "Ntrª Srª de La Soledad",
+          "order": "Mínimos",
+          "profesos": 5,
+          "novicios": 3,
+          "legos": null,
+          "donados": 1,
+          "criados": 1,
+          "ninos": 3,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "SINEU",
+      "total": 64,
+      "males": 27,
+      "females": 37,
+      "friars": [
+        {
+          "name": "Ntrª Srª de Loreto",
+          "order": "Predicadores",
+          "profesos": 7,
+          "novicios": null,
+          "legos": 3,
+          "donados": 3,
+          "criados": 2,
+          "ninos": 1,
+          "otros": null
+        }
+      ],
+      "nuns": [
+        {
+          "name": "De la Concepción",
+          "order": "Franciscanas",
+          "profesas": 36,
+          "novicias": 1,
+          "sras_seglares": null,
+          "ninas": null,
+          "criadas": 4,
+          "donados": null,
+          "criados": null,
+          "otros_var": null,
+          "otros_muj": null
+        }
+      ],
+      "other": []
+    },
+    {
+      "name": "SOLLER",
+      "total": 25,
+      "males": 25,
+      "females": null,
+      "friars": [
+        {
+          "name": "San Juan",
+          "order": "Mínimos",
+          "profesos": 6,
+          "novicios": 2,
+          "legos": 2,
+          "donados": 1,
+          "criados": 1,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": []
+    },
+    {
+      "name": "VALLDEMOSA",
+      "total": 55,
+      "males": 55,
+      "females": null,
+      "friars": [
+        {
+          "name": "San Pedro Alcántara",
+          "order": "Alcantarinos",
+          "profesos": 15,
+          "novicios": 2,
+          "legos": 2,
+          "donados": 2,
+          "criados": 4,
+          "ninos": 2,
+          "otros": null
+        },
+        {
+          "name": "Monasterio La Cartuja",
+          "order": "Orden de San Bruno",
+          "profesos": 17,
+          "novicios": 1,
+          "legos": 6,
+          "donados": 18,
+          "criados": 5,
+          "ninos": null,
+          "otros": null
+        }
+      ],
+      "nuns": [],
+      "other": [
+        {
+          "name": "Hermita Stma. Trinidad",
+          "titulares_varones": 8,
+          "titulares_mujeres": null,
+          "otros_varones": null,
+          "otros_mujeres": null
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "page": 34,
+    "kind": "table_5_part6",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2324,
+    "output_tokens": 1227
+  }
+}

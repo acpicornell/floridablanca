@@ -1,0 +1,285 @@
+{
+  "pueblos": [
+    {
+      "name": "ALAYOR",
+      "total": 4,
+      "males": 4,
+      "females": null,
+      "hospitals": [
+        {
+          "name": "De la Villa",
+          "capellanes": null,
+          "empleados": 1,
+          "facultativos": null,
+          "sirvientes": 1,
+          "enfermos": 2,
+          "enfermas": null,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "CIUDADELA",
+      "total": 49,
+      "males": 21,
+      "females": 28,
+      "hospitals": [
+        {
+          "name": "Stª María Magdalena",
+          "capellanes": 1,
+          "empleados": 4,
+          "facultativos": 2,
+          "sirvientes": 4,
+          "enfermos": 2,
+          "enfermas": 11,
+          "locos": null,
+          "locas": null,
+          "expositos": 8,
+          "expositas": 6,
+          "otros_muj": 11,
+          "otras_acogidas": null,
+          "notes": "Acogidas"
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "FELANITX",
+      "total": 10,
+      "males": 9,
+      "females": 1,
+      "hospitals": [
+        {
+          "name": "De Pobres",
+          "capellanes": null,
+          "empleados": 3,
+          "facultativos": 2,
+          "sirvientes": 2,
+          "enfermos": 2,
+          "enfermas": 1,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "IBIZA",
+      "total": 41,
+      "males": 17,
+      "females": 24,
+      "hospitals": [
+        {
+          "name": "De Pobres",
+          "capellanes": null,
+          "empleados": null,
+          "facultativos": 2,
+          "sirvientes": 2,
+          "enfermos": 2,
+          "enfermas": 2,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": 17,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [
+        {
+          "name": "De Misericordia",
+          "capellanes": null,
+          "empleados": 1,
+          "sirvientes": 2,
+          "hombres": null,
+          "mujeres": null,
+          "ninos": 4,
+          "ninas": 5,
+          "otros": null,
+          "notes": null
+        }
+      ],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "MAHON",
+      "total": 99,
+      "males": 69,
+      "females": 30,
+      "hospitals": [
+        {
+          "name": "Sangre de Jesucristo",
+          "capellanes": 2,
+          "empleados": 7,
+          "facultativos": 2,
+          "sirvientes": 2,
+          "enfermos": 14,
+          "enfermas": 4,
+          "locos": null,
+          "locas": null,
+          "expositos": 42,
+          "expositas": 26,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "MANACOR",
+      "total": 4,
+      "males": 3,
+      "females": 1,
+      "hospitals": [
+        {
+          "name": "De la Villa",
+          "capellanes": null,
+          "empleados": null,
+          "facultativos": null,
+          "sirvientes": 1,
+          "enfermos": 2,
+          "enfermas": 1,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "PALMA",
+      "total": 576,
+      "males": 280,
+      "females": 296,
+      "hospitals": [
+        {
+          "name": "General",
+          "capellanes": 10,
+          "empleados": 20,
+          "facultativos": 4,
+          "sirvientes": 10,
+          "enfermos": 29,
+          "enfermas": 36,
+          "locos": 4,
+          "locas": 3,
+          "expositos": 16,
+          "expositas": 47,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        },
+        {
+          "name": "Real",
+          "capellanes": 1,
+          "empleados": 2,
+          "facultativos": 6,
+          "sirvientes": 6,
+          "enfermos": 65,
+          "enfermas": null,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        },
+        {
+          "name": "S. Pedro",
+          "capellanes": null,
+          "empleados": 1,
+          "facultativos": null,
+          "sirvientes": 1,
+          "enfermos": null,
+          "enfermas": null,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [
+        {
+          "name": "De Misericordia",
+          "capellanes": 2,
+          "empleados": 2,
+          "sirvientes": 6,
+          "hombres": 73,
+          "mujeres": 181,
+          "ninos": 20,
+          "ninas": 29,
+          "otros": null,
+          "notes": null
+        }
+      ],
+      "foundling_houses": [],
+      "no_data": false
+    },
+    {
+      "name": "SINEU",
+      "total": 2,
+      "males": 2,
+      "females": null,
+      "hospitals": [
+        {
+          "name": "De la Virgen",
+          "capellanes": null,
+          "empleados": null,
+          "facultativos": null,
+          "sirvientes": 2,
+          "enfermos": null,
+          "enfermas": null,
+          "locos": null,
+          "locas": null,
+          "expositos": null,
+          "expositas": null,
+          "otros_muj": null,
+          "otras_acogidas": null,
+          "notes": null
+        }
+      ],
+      "hospices": [],
+      "foundling_houses": [],
+      "no_data": false
+    }
+  ],
+  "_meta": {
+    "page": 35,
+    "kind": "table_6",
+    "model": "claude-sonnet-4-5",
+    "input_tokens": 2124,
+    "output_tokens": 2155
+  }
+}

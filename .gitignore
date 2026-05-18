@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.local
+.claude/
+
+# Source PDFs and derived page images: large binaries, regenerable
+data/pages/
+
+# Per-page LLM extraction artefacts: regenerable, expensive but cached
+# (committed selectively; see data/extracted/.gitkeep)
+
+# Built DB (regenerable from data/extracted + scripts)
+db/floridablanca.duckdb
+db/floridablanca.duckdb.wal
