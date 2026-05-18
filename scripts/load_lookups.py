@@ -130,6 +130,17 @@ CURRENT_MUNICIPALITIES = [
     (63, "VALLDEMOSA",               "Valldemossa"),
     (64, "VILLACARLOS",              "es Castell"),
     (65, "VILLAFRANCA DE BONANY",    "Vilafranca de Bonany"),
+    # Two municipalities segregated AFTER the INE 1986 facsimile went
+    # to press, so they don't appear in the printed Códigos de los
+    # Municipios Actuales table. We add them as extra codes here and
+    # reroute the affected pueblos in load_all.py:
+    #   - Ariany was part of Petra in the printed list; it had been
+    #     segregated in 1982 already but the INE table used outdated
+    #     1981 census data.
+    #   - Sant Cristòfol (cat. San Cristóbal) on Menorca was part of
+    #     Mercadal; segregated as es Migjorn Gran in 1989.
+    (66, "ARIANY",                   "Ariany"),
+    (67, "ES MIGJORN GRAN",          "es Migjorn Gran"),
 ]
 
 

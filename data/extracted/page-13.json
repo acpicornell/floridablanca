@@ -6,18 +6,6 @@
       "ine_photogram": "25-0020",
       "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
-      "in_table_5": true,
-      "in_table_6": false,
-      "in_table_7": true,
-      "observations": null
-    },
-    {
-      "cod": 2,
-      "manuscript_page": "394",
-      "ine_photogram": "25-0090",
-      "in_table_2": true,
-      "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
@@ -25,12 +13,24 @@
       "observations": null
     },
     {
+      "cod": 2,
+      "manuscript_page": "394",
+      "ine_photogram": "25-0090",
+      "in_table_2": false,
+      "in_table_3": true,
+      "in_table_4": false,
+      "in_table_5": true,
+      "in_table_6": false,
+      "in_table_7": false,
+      "observations": null
+    },
+    {
       "cod": 3,
       "manuscript_page": "391",
       "ine_photogram": "25-0015",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": true,
+      "in_table_4": false,
       "in_table_5": true,
       "in_table_6": false,
       "in_table_7": false,
@@ -52,11 +52,11 @@
       "cod": 5,
       "manuscript_page": "391",
       "ine_photogram": "25-0018",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
-      "in_table_6": false,
+      "in_table_6": true,
       "in_table_7": false,
       "observations": null
     },
@@ -66,8 +66,8 @@
       "ine_photogram": "25-0014",
       "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": true,
-      "in_table_5": false,
+      "in_table_4": false,
+      "in_table_5": true,
       "in_table_6": false,
       "in_table_7": false,
       "observations": "AO trienal nombrado alternamente por la Audiencia y el Obispo de Barcelona"
@@ -82,19 +82,19 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "AO trienal nombrado alternamente por la Audiencia y el Obispo de Barcelona"
+      "observations": null
     },
     {
       "cod": 8,
       "manuscript_page": "391",
       "ine_photogram": "25-0021",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": true,
+      "in_table_4": false,
       "in_table_5": true,
-      "in_table_6": true,
+      "in_table_6": false,
       "in_table_7": false,
-      "observations": "AO trienal nombrado alternamente por la Audiencia y el Obispo de Barcelona"
+      "observations": null
     },
     {
       "cod": 9,
@@ -219,10 +219,10 @@
     {
       "cod": 19,
       "manuscript_page": "391",
-      "ine_photogram": "25-0025",
-      "in_table_2": true,
+      "ine_photogram": "25-0035",
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
+      "in_table_4": true,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
@@ -242,7 +242,7 @@
     },
     {
       "cod": 21,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -255,42 +255,42 @@
     {
       "cod": 22,
       "manuscript_page": "391",
-      "ine_photogram": "25-0029",
-      "in_table_2": true,
+      "ine_photogram": "25-0020",
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
+      "in_table_4": true,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": "Ver observaciones de Andraitz."
     },
     {
       "cod": 23,
       "manuscript_page": "391",
       "ine_photogram": "25-0030",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": true,
+      "in_table_4": false,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": null
     },
     {
       "cod": 24,
       "manuscript_page": "391",
       "ine_photogram": "25-0032",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
-      "in_table_6": true,
+      "in_table_6": false,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": null
     },
     {
       "cod": 25,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -328,12 +328,12 @@
       "cod": 28,
       "manuscript_page": "394",
       "ine_photogram": "25-0101",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
-      "in_table_7": false,
+      "in_table_7": true,
       "observations": null
     },
     {
@@ -364,9 +364,9 @@
       "cod": 31,
       "manuscript_page": "391",
       "ine_photogram": "25-0036",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
+      "in_table_4": true,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
@@ -374,7 +374,7 @@
     },
     {
       "cod": 32,
-      "manuscript_page": "391",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -388,9 +388,9 @@
       "cod": 33,
       "manuscript_page": "391",
       "ine_photogram": "25-0038",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
+      "in_table_4": true,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
@@ -398,7 +398,7 @@
     },
     {
       "cod": 34,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -406,7 +406,7 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": "Ver observaciones de Andraitz."
     },
     {
       "cod": 35,
@@ -418,19 +418,19 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": null
     },
     {
       "cod": 36,
       "manuscript_page": "392",
-      "ine_photogram": "25-0039",
-      "in_table_2": true,
+      "ine_photogram": "25-0030",
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
       "in_table_7": false,
-      "observations": "Ver observaciones de Andratx."
+      "observations": null
     },
     {
       "cod": 37,
@@ -438,8 +438,8 @@
       "ine_photogram": "25-0098",
       "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": true,
-      "in_table_5": false,
+      "in_table_4": false,
+      "in_table_5": true,
       "in_table_6": false,
       "in_table_7": false,
       "observations": "Era del partido de Mercadal."
@@ -454,7 +454,7 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal."
+      "observations": null
     },
     {
       "cod": 39,
@@ -466,7 +466,7 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal."
+      "observations": null
     },
     {
       "cod": 40,
@@ -478,7 +478,7 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal."
+      "observations": null
     },
     {
       "cod": 41,
@@ -490,11 +490,11 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal.\nSeñorio de D. Antonio Puigar de Salas, vecino de Palma."
+      "observations": "Era del partido de Mercadal."
     },
     {
       "cod": 42,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -502,35 +502,35 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal.\nSeñorio de D. Antonio Puigar de Salas, vecino de Palma."
+      "observations": "Señorío de D. Antonio Puñter de Salas, vecino de Palma."
     },
     {
       "cod": 43,
       "manuscript_page": "328",
       "ine_photogram": "25-0001",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
-      "in_table_7": false,
-      "observations": "Era del partido de Mercadal.\nSeñorio de D. Antonio Puigar de Salas, vecino de Palma."
+      "in_table_7": true,
+      "observations": null
     },
     {
       "cod": 44,
       "manuscript_page": "391",
       "ine_photogram": "25-0043",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
-      "in_table_6": false,
+      "in_table_6": true,
       "in_table_7": false,
-      "observations": "Era del partido de Mercadal.\nSeñorio de D. Antonio Puigar de Salas, vecino de Palma."
+      "observations": null
     },
     {
       "cod": 45,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -542,7 +542,7 @@
     },
     {
       "cod": 46,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -550,11 +550,11 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "AP atiende asuntos de regadio, lo demas depende del AN de Palma."
+      "observations": "AP atiende asuntos de regadío, lo demás depende del AN de Palma."
     },
     {
       "cod": 47,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -562,11 +562,11 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "AP atiende asuntos de regadio, lo demas depende del AN de Palma."
+      "observations": null
     },
     {
       "cod": 48,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -574,19 +574,19 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "AP atiende asuntos de regadio, lo demas depende del AN de Palma."
+      "observations": null
     },
     {
       "cod": 49,
-      "manuscript_page": "391",
-      "ine_photogram": "25-0034",
-      "in_table_2": true,
+      "manuscript_page": "392",
+      "ine_photogram": "25-0024",
+      "in_table_2": false,
       "in_table_3": true,
-      "in_table_4": false,
+      "in_table_4": true,
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Sefi. del conde de Ayamans. El AO lo civil, la Audiencia de Palma lo penal."
+      "observations": "Señ. del conde de Ayamans. El AO lo civil, la Audiencia de Palma lo penal."
     },
     {
       "cod": 50,
@@ -598,7 +598,7 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Sefi. del conde de Ayamans. El AO lo civil, la Audiencia de Palma lo penal."
+      "observations": null
     },
     {
       "cod": 51,
@@ -610,47 +610,47 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Sefi. del conde de Ayamans. El AO lo civil, la Audiencia de Palma lo penal."
+      "observations": null
     },
     {
       "cod": 52,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": "25-0047",
-      "in_table_2": true,
-      "in_table_3": true,
-      "in_table_4": true,
-      "in_table_5": true,
-      "in_table_6": false,
-      "in_table_7": false,
-      "observations": "Sefi. del conde de Ayamans. El AO lo civil, la Audiencia de Palma lo penal."
-    },
-    {
-      "cod": 53,
-      "manuscript_page": "393",
-      "ine_photogram": "25-0053",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
       "in_table_7": false,
+      "observations": null
+    },
+    {
+      "cod": 53,
+      "manuscript_page": "392",
+      "ine_photogram": "25-0032",
+      "in_table_2": false,
+      "in_table_3": true,
+      "in_table_4": true,
+      "in_table_5": true,
+      "in_table_6": true,
+      "in_table_7": true,
       "observations": null
     },
     {
       "cod": 54,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": "25-0049",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": true,
-      "in_table_7": false,
+      "in_table_7": true,
       "observations": null
     },
     {
       "cod": 55,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -662,7 +662,7 @@
     },
     {
       "cod": 56,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -674,7 +674,7 @@
     },
     {
       "cod": 57,
-      "manuscript_page": "391",
+      "manuscript_page": "392",
       "ine_photogram": "25-0053",
       "in_table_2": false,
       "in_table_3": true,
@@ -686,7 +686,7 @@
     },
     {
       "cod": 58,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -700,17 +700,17 @@
       "cod": 59,
       "manuscript_page": "394",
       "ine_photogram": "25-0096",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era cabeza de partido."
+      "observations": null
     },
     {
       "cod": 60,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -718,11 +718,11 @@
       "in_table_5": false,
       "in_table_6": false,
       "in_table_7": false,
-      "observations": "Era cabeza de partido."
+      "observations": null
     },
     {
       "cod": 61,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": "25-0053",
       "in_table_2": false,
       "in_table_3": true,
@@ -734,7 +734,7 @@
     },
     {
       "cod": 62,
-      "manuscript_page": "393",
+      "manuscript_page": "392",
       "ine_photogram": null,
       "in_table_2": false,
       "in_table_3": false,
@@ -748,11 +748,11 @@
       "cod": 63,
       "manuscript_page": "391",
       "ine_photogram": "25-0054",
-      "in_table_2": true,
+      "in_table_2": false,
       "in_table_3": true,
       "in_table_4": true,
       "in_table_5": true,
-      "in_table_6": false,
+      "in_table_6": true,
       "in_table_7": false,
       "observations": null
     },
@@ -773,7 +773,7 @@
     "page": 13,
     "kind": "table_1b_part1",
     "model": "claude-sonnet-4-5",
-    "input_tokens": 1948,
-    "output_tokens": 7477
+    "input_tokens": 2050,
+    "output_tokens": 7121
   }
 }

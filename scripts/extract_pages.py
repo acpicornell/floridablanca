@@ -179,6 +179,14 @@ Extract one JSON object per row, output as a JSON array under "refs":
 - in_table_7 (bool)            same for column "7".
 - observations (str|null)      free-text "OBSERVACIONES" column. Verbatim.
 
+CRITICAL: the OBSERVACIONES column is SPARSE — most rows have
+NO text on them at all. Each printed observation belongs to
+EXACTLY ONE COD (the row it visually sits on). Do NOT carry an
+observation forward to the blank rows below it. If a row's
+OBSERVACIONES cell is empty/blank, emit observations=null.
+Repeating the same observation across adjacent rows is wrong;
+the source has one observation per cod, or none.
+
 The bottom of the second page may include rows for the three Ibiza
 parishes ("Pq. de San Salvador" etc.) with no COD — emit them in
 order, cod=null. Output ONLY {"refs": [...]}. No commentary."""

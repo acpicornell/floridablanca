@@ -54,6 +54,26 @@ _JURISDICTION_FIXES = {
     "SF": "SE",
 }
 
+# Pueblos that the printed INE 1986 facsimile maps to one current
+# municipality, but where reality (segregations approved after the
+# facsimile went to press) puts them in a different municipality
+# today. We override the current_municipality_code AFTER extraction
+# so the user sees the live administrative mapping while the source
+# JSON keeps a record of what the facsimile actually printed.
+_POST_1986_MUNICIPALITY_REMAP = {
+    # Ariany was administratively part of Petra in the printed table
+    # but had already been segregated in 1982.
+    7:  (66, "ARIANY",          "Ariany",
+         "Ariany es va segregar de Petra el 1982; el facsímil INE 1986 "
+         "encara la inclou dins de Petra."),
+    # Sant Cristòfol (San Cristóbal) was administratively part of
+    # Mercadal in the printed table; it became es Migjorn Gran in
+    # 1989, after the facsimile.
+    82: (67, "ES MIGJORN GRAN", "es Migjorn Gran",
+         "San Cristóbal s'anomena oficialment es Migjorn Gran des de "
+         "1988 i és municipi propi (segregat de Mercadal) des de 1989."),
+}
+
 
 def _norm(value, fixes):
     """Trim stray trailing punctuation and apply the OCR-fix table."""
@@ -108,6 +128,15 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
             observations = "(*) Pueblo no incluido en el mapa municipal de 1986."
         elif footnote:
             observations = "(*) Pueblo no incluido en el mapa municipal de 1986. " + observations
+
+        # Live administrative override: rewrite current_municipality
+        # for pueblos whose mapping has changed since 1986.
+        current_municipality = pa.get("current_municipality")
+        if cod in _POST_1986_MUNICIPALITY_REMAP:
+            new_cod, _new_name, _new_official, note = _POST_1986_MUNICIPALITY_REMAP[cod]
+            current_municipality = new_cod
+            observations = (observations + " " if observations else "") + note
+
         rows.append((
             cod,
             name_current,
@@ -117,7 +146,7 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
             _validate(_norm(pa.get("jurisdiction"), _JURISDICTION_FIXES), valid_juris, f"cod {cod} jurisdiction"),
             pa.get("intendancy"),
             _validate(pa.get("district"), valid_dist, f"cod {cod} district"),
-            _validate(pa.get("current_municipality"), valid_muni, f"cod {cod} municipality"),
+            _validate(current_municipality, valid_muni, f"cod {cod} municipality"),
             pb.get("manuscript_page"),
             pb.get("ine_photogram"),
             bool(pb.get("in_table_2")),
