@@ -723,10 +723,15 @@ aside.filters h3 {
   margin-bottom: 0.4em;
   border-bottom: 1px solid var(--border);
 }
-.ratio-axis .ax-left   { grid-column: 2; text-align: left; }
-.ratio-axis .ax-center { grid-column: 2; text-align: center; margin-left: -100%; }
-.ratio-axis .ax-right  { grid-column: 2; text-align: right; margin-left: -100%; }
-.ratio-axis > * { white-space: nowrap; }
+.ratio-axis-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+.ratio-axis-inner .ax-left   { text-align: left; }
+.ratio-axis-inner .ax-center { text-align: center; font-weight: 600; color: var(--accent-dark); }
+.ratio-axis-inner .ax-right  { text-align: right; }
+.ratio-axis-inner > * { white-space: nowrap; }
 
 .ratio-chart { display: grid; gap: 0.15em; }
 .ratio-row {
