@@ -937,6 +937,62 @@ aside.filters h3 {
 .ratio-mid-male      { background: #cc8f6e; }   /* mid terracotta */
 .ratio-strong-male   { background: #8b3a2f; }   /* deep terracotta */
 
+/* "Where do these occupations live?" — top-5 pueblos per group. */
+.occ-geography {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.9em;
+}
+.occ-geo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.7em 0.9em 0.5em;
+}
+.occ-geo-card h4 {
+  margin: 0 0 0.2em;
+  font-family: Georgia, serif;
+  font-size: 1em;
+  color: var(--accent-dark);
+  display: flex; align-items: center; gap: 0.45em;
+}
+.occ-geo-card .group-swatch {
+  display: inline-block; width: 0.85em; height: 0.85em;
+  border-radius: 2px;
+}
+.occ-geo-card .group-total {
+  font-size: 0.78em;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.occ-geo-rank {
+  display: grid;
+  grid-template-columns: 1em 1fr 60px 80px;
+  gap: 0.35em;
+  font-size: 0.85em;
+  align-items: center;
+  padding: 0.25em 0;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.occ-geo-rank:hover { background: var(--accent-light); }
+.occ-geo-rank .rank {
+  text-align: center;
+  font-size: 0.78em;
+  color: var(--text-muted);
+}
+.occ-geo-rank .name { color: var(--text); }
+.occ-geo-rank .count { text-align: right; color: var(--accent-dark); font-weight: 600; }
+.occ-geo-rank .share {
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
 /* Canonical occupation-group colours, used in both the legend and
    the per-pueblo stacked bars. */
 .occ-agri     { background: #5b8b4a; }   /* green — pagesia */

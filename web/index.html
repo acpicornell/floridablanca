@@ -25,6 +25,7 @@
   <button class="tab active" data-tab="inici">Inici</button>
   <button class="tab"        data-tab="pobles">Pobles</button>
   <button class="tab"        data-tab="demografia">Demografia</button>
+  <button class="tab"        data-tab="ocupacions">Ocupacions</button>
   <button class="tab"        data-tab="religiosos">Comunitats religioses</button>
   <button class="tab"        data-tab="comentari">Comentari</button>
 </nav>
@@ -206,10 +207,12 @@
   <div class="home-hero">
     <h2>Demografia comparada</h2>
     <p class="home-lead">
-      Els 28 pobles que aporten dades demogràfiques completes sumen
-      <span id="demog-total-pop">…</span> habitants. Aquesta secció els
-      ordena per mida, els compara per illa i mostra la piràmide d'edat
-      i estat civil per al conjunt de l'arxipèlag.
+      Els 32 pobles que aporten dades demogràfiques completes sumen
+      <span id="demog-total-pop">…</span> habitants. La pestanya ordena
+      l'arxipèlag per mida, mostra la piràmide d'edat × sexe, l'estructura
+      matrimonial per cohort, el quocient de masculinitat per poble, i una
+      taula d'indicadors derivats amb les notes acadèmiques de fiabilitat
+      de Juan Vidal (1987).
     </p>
   </div>
 
@@ -228,26 +231,6 @@
       classificada per estat civil, edat i sexe). Els grups d'edat són
       els que apareixen impresos al facsímil INE.
     </p>
-  </div>
-
-  <div class="chart-card occ-stack-card">
-    <div class="occ-header">
-      <h3>Estructura ocupacional per poble</h3>
-      <div class="occ-mode-toggle" role="radiogroup" aria-label="Mode de visualització">
-        <label><input type="radio" name="occ-mode" value="relative" checked> Composició (%)</label>
-        <label><input type="radio" name="occ-mode" value="absolute"> Valors absoluts</label>
-      </div>
-    </div>
-    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;" id="occ-help">
-      Distribució de la població activa declarada (menors i sense
-      professió exclosos) entre set agregats canònics. En mode
-      "Composició" totes les barres ocupen el 100% i mostren la
-      proporció interna; en "Valors absoluts" la llargada és
-      proporcional al total d'actius del poble (Palma ≈ 20.300,
-      escala màxima).
-    </p>
-    <div class="occ-legend" id="occ-legend"></div>
-    <div class="occ-stack" id="occ-stack"></div>
   </div>
 
   <div class="chart-card marital-card">
@@ -385,10 +368,65 @@
       <h3>Estructura per estat civil i sexe (agregat)</h3>
       <div id="chart-marital"></div>
     </div>
-    <div class="chart-card">
-      <h3>Ocupacions declarades (top 15)</h3>
-      <div id="chart-occupations"></div>
+  </div>
+</section>
+
+<!-- ===== OCUPACIONS ===== -->
+<section id="tab-ocupacions" class="tab-content">
+  <div class="home-hero">
+    <h2>Ocupacions i geografia econòmica</h2>
+    <p class="home-lead">
+      Distribució de la població activa declarada al cens entre les
+      ~25 categories professionals que arreplegava Floridablanca.
+      Treu a la llum la diferenciació funcional de l'arxipèlag:
+      Palma com a centre militar-administratiu, Maó com a port
+      mercantil, l'interior mallorquí dominat per llauradors i
+      jornalers.
+    </p>
+  </div>
+
+  <div class="chart-card occ-stack-card">
+    <div class="occ-header">
+      <h3>Estructura ocupacional per poble</h3>
+      <div class="occ-mode-toggle" role="radiogroup" aria-label="Mode de visualització">
+        <label><input type="radio" name="occ-mode" value="relative" checked> Composició (%)</label>
+        <label><input type="radio" name="occ-mode" value="absolute"> Valors absoluts</label>
+      </div>
     </div>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;" id="occ-help">
+      Distribució de la població activa declarada (menors i sense
+      professió exclosos) entre set agregats canònics. En mode
+      "Composició" totes les barres ocupen el 100% i mostren la
+      proporció interna; en "Valors absoluts" la llargada és
+      proporcional al total d'actius del poble (Palma ≈ 20.300,
+      escala màxima).
+    </p>
+    <div class="occ-legend" id="occ-legend"></div>
+    <div class="occ-stack" id="occ-stack"></div>
+  </div>
+
+  <div class="chart-card">
+    <h3>On viuen els qui exerceixen cada ofici?</h3>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
+      Per a cada un dels set agregats canònics, els cinc pobles que
+      concentren més efectius. Mostra la geografia funcional de
+      l'arxipèlag: alguns oficis (fur militar, noblesa, comerç) són
+      gairebé monopoli de la capital, mentre que d'altres (pagesia,
+      artesania de manufactura) tenen una distribució més
+      repartida.
+    </p>
+    <div class="occ-geography" id="occ-geography"></div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Ocupacions declarades a tot l'arxipèlag (top 15)</h3>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
+      Suma de cada professió a través dels ~30 pobles amb dades de
+      la Taula 4. Els jornalers (22.727) i els llauradors (10.691)
+      dominen — el cens fotografia una societat encara
+      majoritàriament agrària.
+    </p>
+    <div id="chart-occupations"></div>
   </div>
 </section>
 

@@ -41,6 +41,7 @@ async function boot() {
   renderMaritalByAge();
   renderOccupationStack();
   bindOccupationToggle();
+  renderOccupationGeography();
   renderRatioChart();
   renderIndicators();
   renderDemografia();
@@ -756,6 +757,50 @@ function renderOccupationStack(mode = "relative") {
 function bindOccupationToggle() {
   $$('input[name="occ-mode"]').forEach((r) =>
     r.addEventListener("change", () => renderOccupationStack(r.value))
+  );
+}
+
+// For each canonical occupational family, surface the five pueblos
+// that concentrate the largest absolute headcount. Reveals the
+// functional geography of the archipelago: military and admin are
+// near-monopolies of Palma; pagesia and artesania spread more
+// evenly across the agricultural villages.
+function renderOccupationGeography() {
+  if (!OCC_ROWS_CACHE) projectOccupationRows();
+  // Total per group across all pueblos with T4 data.
+  const groupTotals = Object.fromEntries(
+    OCC_GROUPS.map(([k]) => [k, OCC_ROWS_CACHE.reduce((s, r) => s + r.groups[k], 0)])
+  );
+
+  const cards = OCC_GROUPS.map(([key, label, cls]) => {
+    const groupTotal = groupTotals[key];
+    const top = [...OCC_ROWS_CACHE]
+      .map((r) => ({ p: r.p, value: r.groups[key] }))
+      .filter((x) => x.value > 0)
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 5);
+    const ranks = top.map((x, i) => {
+      const share = groupTotal ? (x.value / groupTotal) * 100 : 0;
+      return `<div class="occ-geo-rank" data-cod="${x.p.cod}">
+        <span class="rank">${i + 1}</span>
+        <span class="name">${x.p.name_current}</span>
+        <span class="count">${fmt(x.value)}</span>
+        <span class="share">${share.toFixed(1)}%</span>
+      </div>`;
+    }).join("");
+    return `<div class="occ-geo-card">
+      <h4>
+        <span class="group-swatch ${cls}"></span>
+        ${label}
+        <span class="group-total">${fmt(groupTotal)} totals</span>
+      </h4>
+      ${ranks || '<p style="font-size:0.85em; color:var(--text-muted);"><em>Sense dades</em></p>'}
+    </div>`;
+  }).join("");
+
+  $("#occ-geography").innerHTML = cards;
+  $$("#occ-geography .occ-geo-rank").forEach((r) =>
+    r.addEventListener("click", () => openDetail(Number(r.dataset.cod)))
   );
 }
 
