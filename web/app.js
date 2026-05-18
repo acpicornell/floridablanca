@@ -38,6 +38,7 @@ async function boot() {
   renderHome();
   renderPobles();
   renderPyramid();
+  renderOccupationStack();
   renderDemografia();
   renderReligious();
   renderComentari();
@@ -656,6 +657,75 @@ function paintPyramid(codStr) {
     );
   }
   $("#pyramid-chart").innerHTML = cells.join("");
+}
+
+// Occupation stacked bars per pueblo. Collapses the ~25 printed
+// professions into seven canonical groups (pagesia / artesania /
+// servei domèstic / clergat / noblesa-administració / militars /
+// altres) so the chart is readable across 30 pueblos at once.
+// menores_sin_profesion and total are excluded so the bar reflects
+// the active workforce, not pop. distribution.
+const OCC_GROUPS = [
+  ["agri",     "Pagesia",                    "occ-agri",
+   ["labradores", "jornaleros"]],
+  ["craft",    "Artesania, comerç i indústria", "occ-craft",
+   ["artesanos", "fabricantes", "comerciantes"]],
+  ["service",  "Servei domèstic",            "occ-service",
+   ["criados"]],
+  ["clergy",   "Clergat",                    "occ-clergy",
+   ["curas", "beneficiados", "tenientes_de_cura", "sacristanes",
+    "acolitos", "ordenados_titulo_patrimonio", "ordenados_de_menores"]],
+  ["nobility", "Noblesa, administració, justícia", "occ-nobility",
+   ["hidalgos", "abogados", "escribanos", "empleados_sueldo_real",
+    "sindicos_ord_relig", "dep_inquisicion", "depend_cruzada"]],
+  ["military", "Fur militar",                "occ-military",
+   ["fuero_militar"]],
+  ["other",    "Estudiants i altres",        "occ-other",
+   ["estudiantes", "demandantes", "otros"]],
+];
+
+function renderOccupationStack() {
+  // Project each pueblo onto the seven groups.
+  const rows = STATE.pueblos
+    .filter((p) => p.population?.occupation)
+    .map((p) => {
+      const occ = p.population.occupation;
+      const groups = {};
+      let active = 0;
+      for (const [key, _label, _cls, occList] of OCC_GROUPS) {
+        let sum = 0;
+        for (const o of occList) sum += occ[o] || 0;
+        groups[key] = sum;
+        active += sum;
+      }
+      return { p, groups, active };
+    })
+    .filter((x) => x.active > 0)
+    .sort((a, b) => b.active - a.active);
+
+  $("#occ-legend").innerHTML = OCC_GROUPS
+    .map(([_k, label, cls]) =>
+      `<span><span class="swatch ${cls}"></span>${label}</span>`
+    ).join("");
+
+  $("#occ-stack").innerHTML = rows.map(({ p, groups, active }) => {
+    const segments = OCC_GROUPS.map(([key, label, cls]) => {
+      const v = groups[key];
+      if (!v) return "";
+      const pct = (v / active) * 100;
+      const title = `${label}: ${fmt(v)} (${pct.toFixed(1)}%)`;
+      return `<span class="occ-seg ${cls}" style="width:${pct}%" title="${title}"></span>`;
+    }).join("");
+    return `<div class="occ-row" data-cod="${p.cod}">
+      <span class="occ-name">${p.name_current}</span>
+      <span class="occ-bar">${segments}</span>
+      <span class="occ-count">${fmt(active)}</span>
+    </div>`;
+  }).join("");
+
+  $$("#occ-stack .occ-row").forEach((row) =>
+    row.addEventListener("click", () => openDetail(Number(row.dataset.cod)))
+  );
 }
 
 function renderDemografia() {

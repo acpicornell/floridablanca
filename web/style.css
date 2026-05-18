@@ -623,6 +623,60 @@ aside.filters h3 {
   font-variant-numeric: tabular-nums;
 }
 
+/* Occupation stacked-bars per pueblo. */
+.occ-stack-card { margin-bottom: 1.5em; }
+.occ-legend {
+  display: flex; flex-wrap: wrap; gap: 0.4em 1.1em;
+  font-size: 0.82em;
+  margin-bottom: 0.8em;
+  color: var(--text);
+}
+.occ-legend span { display: inline-flex; align-items: center; gap: 0.35em; }
+.occ-legend .swatch {
+  display: inline-block; width: 0.85em; height: 0.85em;
+  border-radius: 2px;
+}
+.occ-stack {
+  display: grid;
+  gap: 0.25em;
+}
+.occ-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 70px;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.85em;
+  padding: 0.2em 0.3em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.occ-row:hover { background: var(--accent-light); }
+.occ-row .occ-name { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.occ-row .occ-bar {
+  display: flex;
+  height: 1.15em;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.occ-row .occ-seg { height: 100%; }
+.occ-row .occ-count {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* Canonical occupation-group colours, used in both the legend and
+   the per-pueblo stacked bars. */
+.occ-agri     { background: #5b8b4a; }   /* green — pagesia */
+.occ-craft    { background: #b5803a; }   /* orange — artesania */
+.occ-service  { background: #6b3a8b; }   /* purple — servei domèstic */
+.occ-clergy   { background: #8b2f3a; }   /* red — clergat */
+.occ-nobility { background: #2f5d8b; }   /* blue — noblesa/admin */
+.occ-military { background: #b59d4a; }   /* gold — militars */
+.occ-other    { background: #8b758b; }   /* mauve — estudiants i altres */
+
 .chart-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
