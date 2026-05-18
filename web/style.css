@@ -1007,6 +1007,7 @@ aside.filters h3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 1.5em;
+  margin-bottom: 1.5em;
 }
 .chart-card {
   background: var(--surface);
