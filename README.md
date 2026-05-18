@@ -198,6 +198,37 @@ python scripts/export_web_data.py
 python -m http.server -d web 8000
 ```
 
+## Deployment
+
+The web layer is a fully static SPA (vanilla JS, no framework, no
+backend). The recommended host is **Cloudflare Pages**, which is what
+the sister project `madoz` uses.
+
+One-time setup (Cloudflare dashboard):
+
+1. Cloudflare → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
+2. Pick the `acpicornell/floridablanca` repo.
+3. Build settings:
+   - **Framework preset**: *None*.
+   - **Build command**: *(leave empty — the site is pre-built)*.
+   - **Build output directory**: `web`.
+4. Save and deploy. Cloudflare publishes at `https://<project>.pages.dev`.
+
+After that, every `git push` to `main` triggers an automatic deploy.
+The `web/_headers` file ships HTTP cache and CSP rules: every asset
+revalidates on each request (instant cache invalidation when
+`web/data.json` changes), and a strict Content-Security-Policy (no
+external resources) closes the typical XSS surface.
+
+Re-running the pipeline locally and pushing is enough — no separate
+deploy step:
+
+```bash
+python scripts/load_all.py
+python scripts/export_web_data.py
+git add web/data.json && git commit -m 'data refresh' && git push
+```
+
 ## Sources
 
 The INE publishes the full 1986 facsimile of the Floridablanca census
