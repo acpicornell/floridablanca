@@ -38,6 +38,7 @@ async function boot() {
   renderHome();
   renderPobles();
   renderPyramid();
+  renderMaritalByAge();
   renderOccupationStack();
   bindOccupationToggle();
   renderRatioChart();
@@ -755,6 +756,123 @@ function bindOccupationToggle() {
   $$('input[name="occ-mode"]').forEach((r) =>
     r.addEventListener("change", () => renderOccupationStack(r.value))
   );
+}
+
+// Marital × age × sex stacked pyramid. Mirrors the pyramid layout
+// (V on the left, M on the right, age band at the centre) but each
+// bar is normalised to 100% width and split into segments for
+// solters / casats / vidus, so the marital composition per age-band
+// jumps out at a glance.
+const MARITAL_STATUSES = ["single", "married", "widowed"];
+const MS_CLASS = {
+  single: "ms-single",
+  married: "ms-married",
+  widowed: "ms-widowed",
+};
+const MS_LABEL_M = {
+  single: "Solters",
+  married: "Casats",
+  widowed: "Vidus",
+};
+const MS_LABEL_F = {
+  single: "Solteres",
+  married: "Casades",
+  widowed: "Vídues",
+};
+
+function aggregateMaritalByAge(pueblos) {
+  const ages = PYRAMID_AGES;       // ["<7", "7-16", ..., ">50"]
+  const rows = ages.map((age) => ({
+    age,
+    male:   { single: 0, married: 0, widowed: 0 },
+    female: { single: 0, married: 0, widowed: 0 },
+  }));
+  for (const p of pueblos) {
+    const m = p.population?.marital;
+    if (!m) continue;
+    for (const row of rows) {
+      for (const ms of MARITAL_STATUSES) {
+        row.male[ms]   += m[ms]?.[row.age]?.V || 0;
+        row.female[ms] += m[ms]?.[row.age]?.M || 0;
+      }
+    }
+  }
+  return rows;
+}
+
+function renderMaritalByAge() {
+  const sel = $("#marital-select");
+  const opts = ['<option value="">Tot l\'arxipèlag</option>']
+    .concat(
+      pueblosWithMaritalData()
+        .sort((a, b) => a.name_current.localeCompare(b.name_current, "ca"))
+        .map((p) => `<option value="${p.cod}">${p.name_current}</option>`)
+    );
+  sel.innerHTML = opts.join("");
+  sel.addEventListener("change", () => paintMaritalByAge(sel.value));
+  paintMaritalByAge("");
+}
+
+function paintMaritalByAge(codStr) {
+  const target = codStr
+    ? STATE.pueblos.filter((p) => String(p.cod) === codStr)
+    : pueblosWithMaritalData();
+  const rows = aggregateMaritalByAge(target);
+
+  // Totals.
+  let totV = 0, totM = 0, totMar = 0, totWid = 0;
+  for (const r of rows) {
+    for (const ms of MARITAL_STATUSES) {
+      totV += r.male[ms];
+      totM += r.female[ms];
+      if (ms === "married") totMar += r.male[ms] + r.female[ms];
+      if (ms === "widowed") totWid += r.male[ms] + r.female[ms];
+    }
+  }
+  const totAll = totV + totM;
+  const where = codStr
+    ? STATE.pueblos.find((p) => String(p.cod) === codStr)?.name_current || codStr
+    : `${target.length} pobles amb dades`;
+  $("#marital-meta").innerHTML =
+    `<b>${where}</b> · Total ${fmt(totAll)} habitants · ` +
+    `Casats/des: <b>${(totMar / totAll * 100).toFixed(1)}%</b> · ` +
+    `Vidus/dues: <b>${(totWid / totAll * 100).toFixed(1)}%</b>`;
+
+  // Header row.
+  const cells = [
+    '<div class="mc-header left">Varons (100 %)</div>',
+    '<div class="mc-header">Edat</div>',
+    '<div class="mc-header right">Dones (100 %)</div>',
+  ];
+
+  for (const row of rows) {
+    const sumV = row.male.single + row.male.married + row.male.widowed;
+    const sumM = row.female.single + row.female.married + row.female.widowed;
+
+    const segV = MARITAL_STATUSES.map((ms) => {
+      const v = row.male[ms];
+      if (!v) return "";
+      const pct = (v / sumV) * 100;
+      const title = `${MS_LABEL_M[ms]} ${row.age}: ${fmt(v)} (${pct.toFixed(1)}%)`;
+      return `<span class="ms-seg ${MS_CLASS[ms]}" style="width:${pct}%" title="${title}"></span>`;
+    }).join("");
+    const segM = MARITAL_STATUSES.map((ms) => {
+      const v = row.female[ms];
+      if (!v) return "";
+      const pct = (v / sumM) * 100;
+      const title = `${MS_LABEL_F[ms]} ${row.age}: ${fmt(v)} (${pct.toFixed(1)}%)`;
+      return `<span class="ms-seg ${MS_CLASS[ms]}" style="width:${pct}%" title="${title}"></span>`;
+    }).join("");
+
+    cells.push(
+      `<div class="marital-count left">${fmt(sumV)}</div>`,
+      `<div class="marital-bar left">${segV}</div>`,
+      `<div class="marital-age">${row.age}</div>`,
+      `<div class="marital-bar right">${segM}</div>`,
+      `<div class="marital-count right">${fmt(sumM)}</div>`,
+    );
+  }
+  $("#marital-chart").innerHTML = cells.join("");
 }
 
 // Sex-ratio diverging bars. For every pueblo with marital_status=total

@@ -707,6 +707,81 @@ aside.filters h3 {
   color: var(--text-muted);
 }
 
+/* Marital × age × sex stacked-bar pyramid. Same skeleton as the
+   population pyramid (V left / age centre / M right) but each bar
+   is at 100% width and split into solters / casats / vidus, so the
+   composition per age-band is visible at a glance. */
+.marital-card { margin-bottom: 1.5em; }
+.marital-header {
+  display: flex; flex-wrap: wrap; gap: 0.4em 1.5em;
+  align-items: baseline; margin: 0 0 0.4em;
+}
+.marital-header h3 { margin: 0; }
+.ms-legend {
+  display: flex; flex-wrap: wrap; gap: 0.5em 1.2em;
+  font-size: 0.82em;
+  margin: 0 0 0.4em;
+}
+.ms-legend span { display: inline-flex; align-items: center; gap: 0.35em; }
+.ms-legend .swatch {
+  display: inline-block; width: 0.85em; height: 0.85em;
+  border-radius: 2px;
+}
+.ms-single  { background: #c9a878; }   /* sandy tan — youth */
+.ms-married { background: #2f5d8b; }   /* accent blue — paired */
+.ms-widowed { background: #6e2620; }   /* dark terracotta — loss */
+
+.marital-meta {
+  margin: 0 0 0.5em;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+.marital-meta b { color: var(--accent-dark); }
+
+.marital-chart {
+  display: grid;
+  grid-template-columns: 65px 1fr 80px 1fr 65px;
+  gap: 0.45em 0.4em;
+  align-items: center;
+}
+.marital-chart .mc-header {
+  text-align: center;
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+.marital-chart .mc-header.left  { text-align: right; padding-right: 0.4em; grid-column: 1 / 3; }
+.marital-chart .mc-header.right { text-align: left;  padding-left: 0.4em;  grid-column: 4 / 6; }
+
+.marital-count {
+  font-size: 0.78em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.marital-count.left  { text-align: right; }
+.marital-count.right { text-align: left; }
+.marital-age {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92em;
+  color: var(--accent-dark);
+}
+.marital-bar {
+  display: flex;
+  height: 1.05em;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.marital-bar.left { flex-direction: row-reverse; }
+.marital-bar .ms-seg { height: 100%; }
+
 /* Sex-ratio diverging bars per pueblo. Centred at 100 (parity), with
    the bar extending left for female-skewed pueblos and right for
    male-skewed. Five colour buckets convey the magnitude. */

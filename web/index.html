@@ -250,6 +250,31 @@
     <div class="occ-stack" id="occ-stack"></div>
   </div>
 
+  <div class="chart-card marital-card">
+    <div class="marital-header">
+      <h3>Estructura matrimonial per edat</h3>
+      <label class="pyramid-controls">
+        <span>Mostra</span>
+        <select id="marital-select"></select>
+      </label>
+    </div>
+    <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
+      Per a cada grup d'edat, barres divergents (varons a l'esquerra,
+      dones a la dreta), normalitzades al 100% i partides en solters /
+      casats / vidus. Es veu el salt de "solter" a "casat" entre
+      16-25 i 25-40 (edat típica de matrimoni), la viduïtat femenina
+      acumulada a >50 (per mortalitat masculina diferencial), i
+      detalls com el celibat clerical (varons >50 mai casats).
+    </p>
+    <div class="ms-legend">
+      <span><span class="swatch ms-single"></span>Solters / Solteres</span>
+      <span><span class="swatch ms-married"></span>Casats / Casades</span>
+      <span><span class="swatch ms-widowed"></span>Vidus / Vídues</span>
+    </div>
+    <p class="marital-meta" id="marital-meta">…</p>
+    <div class="marital-chart" id="marital-chart"></div>
+  </div>
+
   <div class="chart-card ratio-card">
     <h3>Quocient de masculinitat per poble</h3>
     <p style="font-size:0.88em; color:var(--text-muted); margin:0 0 0.7em;">
