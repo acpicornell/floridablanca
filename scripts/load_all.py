@@ -33,9 +33,28 @@ def _read(name: str) -> dict | None:
 _FOOTNOTE_RE = re.compile(r"\s*\(\*+\)\s*$")
 
 
+# In-string OCR fixes for the name_1787 column. The 1986 facsimile
+# uses an "ñ" with a narrow tilde that the model occasionally reads
+# as an "r" — e.g. PORMAÑY (the historical Ibizan quartón of
+# Portmany) extracted as PORMARY.
+_NAME_TEXT_FIXES = [
+    ("PORMARY", "PORMAÑY"),
+]
+
+
+def _apply_text_fixes(s: str | None) -> str | None:
+    if not s:
+        return s
+    out = s
+    for bad, good in _NAME_TEXT_FIXES:
+        out = out.replace(bad, good)
+    return out
+
+
 def _clean_name(s: str | None) -> tuple[str | None, bool]:
     if not s:
         return s, False
+    s = _apply_text_fixes(s)
     if _FOOTNOTE_RE.search(s):
         return _FOOTNOTE_RE.sub("", s).strip(), True
     return s.strip(), False
@@ -59,16 +78,41 @@ _JURISDICTION_FIXES = {
 # confusing the leading "0" of a three-digit code with a "1", so
 # 012 → 013 etc.). These are OCR fixes — the facsimile prints the
 # correct code, we just mis-read it.
-_MUNICIPALITY_OCR_FIXES = {
-    # cod 107 ULLARO: facsimile prints 012 (CAMPANET); the model
-    # read 013 (CAMPOS DEL PUERTO). Ullaró is a hamlet of Campanet
-    # in es Raiguer, confirmed by enciclopedia.cat and Viquipèdia.
-    107: 12,
-    # cod 9 BALANZAT: a historic Ibizan quartón (Balansat) that is
-    # now part of Sant Joan de Labritja (the village of Sant Miquel
-    # de Balansat). The model also misread its district as MAL
-    # (see _DISTRICT_OCR_FIXES below).
-    9: 50,                # 050 SAN JUAN BAUTISTA = Sant Joan de Labritja
+#
+# Semantic note: the column in the source is NOMBRE ACTUAL — i.e.,
+# the current toponym of THIS specific place when (and only when)
+# the place itself is one of the 67 current municipalities. It is
+# NOT the municipality that the historical pueblo is administratively
+# part of today. A pueblo that survived as a small hamlet inside a
+# larger municipality (Ullaró ⊂ Campanet, Balanzat ⊂ Sant Joan de
+# Labritja, etc.) carries no code here, even though it has a
+# "containing municipality" in the modern map.
+_MUNICIPALITY_OCR_FIXES: dict[int, int] = {
+    # No active remaps right now. Previous entries (107 ULLARO → 12,
+    # 9 BALANZAT → 50) were removed once we realised the column means
+    # NOMBRE ACTUAL, not "municipality the place belongs to" — see
+    # _MUNICIPALITY_CLEAR below for those.
+}
+
+# Pueblos for which the extraction set a current_municipality code,
+# but where the value should be NULL under the NOMBRE ACTUAL
+# semantics. Either the facsimile itself was mistaken / the model
+# hallucinated, OR the place exists today but as a hamlet inside a
+# larger municipality (so it has no code in the 67-municipality
+# table even though it still has a modern toponym).
+_MUNICIPALITY_CLEAR: set[int] = {
+    # cod 107 ULLARO: the facsimile prints 013 (Campos del Puerto),
+    # but Ullaró is a small hamlet inside Campanet that retains its
+    # own name. It is not itself a current municipality, so the
+    # NOMBRE ACTUAL cell should be empty.
+    107,
+    # cod 9 BALANZAT (*): the historical Ibizan quartón is today
+    # the village Sant Miquel de Balansat inside Sant Joan de
+    # Labritja. It still carries the Balanzat / Balansat toponym
+    # and is not itself a current municipality. The model already
+    # extracted NULL from the printed "..." cell; this entry just
+    # documents the case alongside its district OCR fix.
+    9,
 }
 
 # OCR-driven fixes to district codes. The printed PARTIDO column
@@ -162,6 +206,8 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
         district = pa.get("district")
         if cod in _MUNICIPALITY_OCR_FIXES:
             current_municipality = _MUNICIPALITY_OCR_FIXES[cod]
+        if cod in _MUNICIPALITY_CLEAR:
+            current_municipality = None
         if cod in _DISTRICT_OCR_FIXES:
             district = _DISTRICT_OCR_FIXES[cod]
         if cod in _POST_1986_MUNICIPALITY_REMAP:

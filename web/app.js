@@ -337,7 +337,7 @@ function renderDetailHTML(p) {
     ["Jurisdicció",         p.jurisdiction ? `${p.jurisdiction} — ${p.jurisdiction_label || ""}` : null],
     ["Intendència",         p.intendancy],
     ["Partit",              p.district_label],
-    ["Municipi actual",     p.current_municipality_name_official
+    ["Nom actual",          p.current_municipality_name_official
                               ? `${String(p.current_municipality_code).padStart(3,"0")} ${p.current_municipality_name_official}`
                               + (p.current_municipality_name && p.current_municipality_name !== p.current_municipality_name_official
                                   ? ` <small style="font-weight:400; color:var(--text-muted);">(INE 1986: ${p.current_municipality_name})</small>`

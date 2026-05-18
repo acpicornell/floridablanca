@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-05-18T20:04:52.243758+00:00",
+  "generated_at": "2026-05-18T20:18:41.972755+00:00",
   "source": "INE (1986) — Censo de 1787, Floridablanca. Tomo VI: Provincia de Baleares. Madrid: INE.",
   "totals": {
    "pueblos": 111,
@@ -2023,9 +2023,9 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 50,
-   "current_municipality_name": "SAN JUAN BAUTISTA",
-   "current_municipality_name_official": "Sant Joan de Labritja",
+   "current_municipality_code": null,
+   "current_municipality_name": null,
+   "current_municipality_name_official": null,
    "manuscript_page": "328",
    "ine_photogram": null,
    "in_tables": {
@@ -10952,7 +10952,7 @@
   {
    "cod": 78,
    "name_current": "SAN AGUSTIN",
-   "name_1787": "SAN AGUSTIN EN PORMARY",
+   "name_1787": "SAN AGUSTIN EN PORMAÑY",
    "category": null,
    "category_label": null,
    "authority": "AP",
@@ -11166,7 +11166,7 @@
   {
    "cod": 79,
    "name_current": "SAN ANTONIO ABAD",
-   "name_1787": "SAN ANTONIO EN PORMARY",
+   "name_1787": "SAN ANTONIO EN PORMAÑY",
    "category": null,
    "category_label": null,
    "authority": "AP",
@@ -11660,7 +11660,7 @@
   {
    "cod": 83,
    "name_current": "SAN JOSE",
-   "name_1787": "SAN JOSE EN PORMARY",
+   "name_1787": "SAN JOSE EN PORMAÑY",
    "category": null,
    "category_label": null,
    "authority": "AP",
@@ -15515,9 +15515,9 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 12,
-   "current_municipality_name": "CAMPANET",
-   "current_municipality_name_official": "Campanet",
+   "current_municipality_code": null,
+   "current_municipality_name": null,
+   "current_municipality_name_official": null,
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
