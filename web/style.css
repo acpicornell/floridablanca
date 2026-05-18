@@ -707,6 +707,76 @@ aside.filters h3 {
   color: var(--text-muted);
 }
 
+/* Sex-ratio diverging bars per pueblo. Centred at 100 (parity), with
+   the bar extending left for female-skewed pueblos and right for
+   male-skewed. Five colour buckets convey the magnitude. */
+.ratio-card { margin-bottom: 1.5em; }
+.ratio-axis {
+  display: grid;
+  grid-template-columns: 160px 1fr 60px;
+  gap: 0.6em;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding-bottom: 0.3em;
+  margin-bottom: 0.4em;
+  border-bottom: 1px solid var(--border);
+}
+.ratio-axis .ax-left   { grid-column: 2; text-align: left; }
+.ratio-axis .ax-center { grid-column: 2; text-align: center; margin-left: -100%; }
+.ratio-axis .ax-right  { grid-column: 2; text-align: right; margin-left: -100%; }
+.ratio-axis > * { white-space: nowrap; }
+
+.ratio-chart { display: grid; gap: 0.15em; }
+.ratio-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 60px;
+  gap: 0.6em;
+  align-items: center;
+  font-size: 0.85em;
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.ratio-row:hover { background: var(--accent-light); }
+.ratio-row .ratio-name { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ratio-row .ratio-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.ratio-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 1.1em;
+  align-items: center;
+}
+.ratio-bar::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: -3px; bottom: -3px;
+  width: 1px;
+  background: var(--text);
+  transform: translateX(-50%);
+}
+.ratio-bar .neg-wrap { display: flex; justify-content: flex-end; height: 100%; }
+.ratio-bar .pos-wrap { display: flex; justify-content: flex-start; height: 100%; }
+.ratio-bar .neg,
+.ratio-bar .pos {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.ratio-strong-female { background: #2f5d8b; }   /* deep blue */
+.ratio-mid-female    { background: #6e9bcc; }   /* mid blue */
+.ratio-light-female  { background: #b9d0e6; }   /* light blue */
+.ratio-light-male    { background: #e6c9b9; }   /* light terracotta */
+.ratio-mid-male      { background: #cc8f6e; }   /* mid terracotta */
+.ratio-strong-male   { background: #8b3a2f; }   /* deep terracotta */
+
 /* Canonical occupation-group colours, used in both the legend and
    the per-pueblo stacked bars. */
 .occ-agri     { background: #5b8b4a; }   /* green — pagesia */

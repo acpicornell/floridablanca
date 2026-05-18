@@ -40,6 +40,7 @@ async function boot() {
   renderPyramid();
   renderOccupationStack();
   bindOccupationToggle();
+  renderRatioChart();
   renderDemografia();
   renderReligious();
   renderComentari();
@@ -753,6 +754,62 @@ function renderOccupationStack(mode = "relative") {
 function bindOccupationToggle() {
   $$('input[name="occ-mode"]').forEach((r) =>
     r.addEventListener("change", () => renderOccupationStack(r.value))
+  );
+}
+
+// Sex-ratio diverging bars. For every pueblo with marital_status=total
+// age_group=all data, compute V/M*100 (men per 100 women) and draw a
+// horizontal bar that diverges left of 100 (female-skewed) or right
+// (male-skewed). Magnitude → one of five colour buckets.
+function ratioBucket(r) {
+  if (r >= 110) return ["ratio-strong-male",   "male"];
+  if (r >= 103) return ["ratio-mid-male",      "male"];
+  if (r >  100) return ["ratio-light-male",    "male"];
+  if (r ===100) return ["ratio-light-male",    "male"];
+  if (r >= 97)  return ["ratio-light-female",  "female"];
+  if (r >= 90)  return ["ratio-mid-female",    "female"];
+  return ["ratio-strong-female", "female"];
+}
+
+function renderRatioChart() {
+  const rows = STATE.pueblos
+    .filter((p) => p.population?.marital?.total?.all)
+    .map((p) => {
+      const all = p.population.marital.total.all;
+      const v = all.V || 0;
+      const m = all.M || 0;
+      if (m === 0) return null;
+      return { p, v, m, ratio: (v / m) * 100 };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.ratio - a.ratio);
+
+  // The half-bar scale: largest deviation from 100 anchors the
+  // farthest-out bar at ~95% of the available half-width, so the
+  // smaller-skew rows stay visually proportional.
+  const maxDev = rows.reduce(
+    (m, r) => Math.max(m, Math.abs(r.ratio - 100)), 1,
+  );
+
+  $("#ratio-chart").innerHTML = rows.map(({ p, v, m, ratio }) => {
+    const [cls, side] = ratioBucket(ratio);
+    const dev = Math.abs(ratio - 100);
+    const widthPct = Math.min(100, (dev / maxDev) * 95);
+    const segHTML = (side === "male")
+      ? `<span class="neg-wrap"></span>
+         <span class="pos-wrap"><span class="pos ${cls}" style="width:${widthPct}%"></span></span>`
+      : `<span class="neg-wrap"><span class="neg ${cls}" style="width:${widthPct}%"></span></span>
+         <span class="pos-wrap"></span>`;
+    const title = `V=${fmt(v)} · M=${fmt(m)} · ${ratio.toFixed(1)} homes per cada 100 dones`;
+    return `<div class="ratio-row" data-cod="${p.cod}" title="${title}">
+      <span class="ratio-name">${p.name_current}</span>
+      <span class="ratio-bar">${segHTML}</span>
+      <span class="ratio-value">${ratio.toFixed(1)}</span>
+    </div>`;
+  }).join("");
+
+  $$("#ratio-chart .ratio-row").forEach((row) =>
+    row.addEventListener("click", () => openDetail(Number(row.dataset.cod)))
   );
 }
 
