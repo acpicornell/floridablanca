@@ -37,6 +37,7 @@ async function boot() {
   bindDetail();
   renderHome();
   renderPobles();
+  renderPyramid();
   renderDemografia();
   renderReligious();
   renderComentari();
@@ -573,6 +574,89 @@ function renderOtherCentresHTML(p) {
 }
 
 // ===== demografia ==========================================================
+
+// Population pyramid (age × sex). Aggregates by default, can be
+// filtered to any single pueblo that has Table 3 (marital × age ×
+// sex) data via the selector dropdown.
+const PYRAMID_AGES = ["<7", "7-16", "16-25", "25-40", "40-50", ">50"];
+
+function pueblosWithMaritalData() {
+  return STATE.pueblos.filter((p) =>
+    p.population && p.population.marital
+    && p.population.marital.total
+    && Object.keys(p.population.marital.total).length > 0
+  );
+}
+
+function pyramidAggregate(pueblos) {
+  const rows = PYRAMID_AGES.map((age) => ({ age, V: 0, M: 0 }));
+  for (const p of pueblos) {
+    const t = p.population.marital.total || {};
+    for (const row of rows) {
+      row.V += t[row.age]?.V || 0;
+      row.M += t[row.age]?.M || 0;
+    }
+  }
+  return rows;
+}
+
+function renderPyramid() {
+  const sel = $("#pyramid-select");
+  const opts = ['<option value="">Tot l\'arxipèlag</option>']
+    .concat(
+      pueblosWithMaritalData()
+        .sort((a, b) => a.name_current.localeCompare(b.name_current, "ca"))
+        .map((p) => `<option value="${p.cod}">${p.name_current}</option>`)
+    );
+  sel.innerHTML = opts.join("");
+  sel.addEventListener("change", () => paintPyramid(sel.value));
+  paintPyramid("");
+}
+
+function paintPyramid(codStr) {
+  const target = codStr
+    ? STATE.pueblos.filter((p) => String(p.cod) === codStr)
+    : pueblosWithMaritalData();
+  const rows = pyramidAggregate(target);
+
+  const sumV = rows.reduce((s, r) => s + r.V, 0);
+  const sumM = rows.reduce((s, r) => s + r.M, 0);
+  const total = sumV + sumM;
+  const max = rows.reduce((m, r) => Math.max(m, r.V, r.M), 1);
+
+  const ratio = sumM ? (sumV / sumM * 100) : null;
+  const ratioTxt = ratio ? `${ratio.toFixed(0)} varons per cada 100 dones` : "—";
+
+  const where = codStr
+    ? STATE.pueblos.find((p) => String(p.cod) === codStr)?.name_current || codStr
+    : `${target.length} pobles amb dades`;
+
+  $("#pyramid-meta").innerHTML =
+    `<b>${where}</b> · Total: ${fmt(total)} habitants ` +
+    `(<b>${fmt(sumV)}</b> varons, <b>${fmt(sumM)}</b> dones) · ${ratioTxt}.`;
+
+  const cells = ['<div class="py-header left">Varons</div>',
+                 '<div class="py-header">Edat</div>',
+                 '<div class="py-header right">Dones</div>'];
+  for (const r of rows) {
+    const wV = r.V ? Math.max(2, (r.V / max) * 100) : 0;
+    const wM = r.M ? Math.max(2, (r.M / max) * 100) : 0;
+    const pV = total ? (r.V / total * 100).toFixed(1) : "0.0";
+    const pM = total ? (r.M / total * 100).toFixed(1) : "0.0";
+    cells.push(
+      `<div class="pyramid-row-left">
+         <span>${fmt(r.V)} <small>(${pV}%)</small></span>
+         <span class="pyramid-bar-male" style="width:${wV}%"></span>
+       </div>`,
+      `<div class="pyramid-age">${r.age}</div>`,
+      `<div class="pyramid-row-right">
+         <span class="pyramid-bar-female" style="width:${wM}%"></span>
+         <span><small>(${pM}%)</small> ${fmt(r.M)}</span>
+       </div>`,
+    );
+  }
+  $("#pyramid-chart").innerHTML = cells.join("");
+}
 
 function renderDemografia() {
   const pueblos = STATE.pueblos.filter((p) => housingTotal(p) != null);

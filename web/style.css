@@ -544,6 +544,85 @@ aside.filters h3 {
 }
 
 /* === DEMOGRAFIA ===================================================== */
+
+/* Population pyramid: 3-column grid (V bars · age label · M bars). */
+.pyramid-card { margin-bottom: 1.5em; }
+.pyramid-header {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6em 1.5em;
+  margin-bottom: 0.4em;
+}
+.pyramid-header h3 { margin: 0; }
+.pyramid-controls {
+  font-size: 0.88em; color: var(--text-muted);
+  display: flex; align-items: center; gap: 0.4em;
+}
+.pyramid-controls select {
+  font-family: inherit; font-size: 0.92em;
+  padding: 0.3em 0.5em;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--text);
+}
+.pyramid-controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+.pyramid-meta {
+  margin: 0 0 0.8em;
+  font-size: 0.88em;
+  color: var(--text-muted);
+}
+.pyramid-meta b { color: var(--accent-dark); }
+
+.pyramid-chart {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0.5em 0.4em;
+  align-items: center;
+}
+.pyramid-chart .py-header {
+  text-align: center;
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--border);
+}
+.pyramid-chart .py-header.left  { text-align: right; padding-right: 0.4em; }
+.pyramid-chart .py-header.right { text-align: left;  padding-left: 0.4em; }
+
+.pyramid-row-left {
+  display: flex; align-items: center; justify-content: flex-end; gap: 0.5em;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82em;
+  color: var(--text-muted);
+}
+.pyramid-row-right {
+  display: flex; align-items: center; justify-content: flex-start; gap: 0.5em;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82em;
+  color: var(--text-muted);
+}
+.pyramid-bar-male,
+.pyramid-bar-female {
+  height: 1.05em;
+  border-radius: 2px;
+  min-width: 2px;
+}
+.pyramid-bar-male   { background: #2f5d8b; }   /* accent blue */
+.pyramid-bar-female { background: #a8845b; }   /* sandy brown */
+.pyramid-age {
+  text-align: center;
+  font-size: 0.85em;
+  font-family: Georgia, serif;
+  color: var(--accent-dark);
+  font-variant-numeric: tabular-nums;
+}
+
 .chart-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
