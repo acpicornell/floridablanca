@@ -161,6 +161,7 @@ function bindFilters() {
     $("#f-auth").value = "";
     applyFilters(); renderPobles();
   });
+  $("#btn-export").addEventListener("click", exportCSV);
 
   $$(".pobles-table th.sortable").forEach((th) => {
     th.addEventListener("click", () => {
@@ -227,6 +228,63 @@ function renderPobles() {
   $$("#pobles-tbody tr").forEach((tr) =>
     tr.addEventListener("click", () => openDetail(Number(tr.dataset.cod)))
   );
+}
+
+// ===== CSV export ===========================================================
+
+// One row per pueblo with the most useful flat columns. Honours the
+// current filter selection so the downloaded file matches what the
+// user sees on screen.
+const CSV_COLUMNS = [
+  ["cod",                       (p) => p.cod],
+  ["name_current",              (p) => p.name_current],
+  ["name_1787",                 (p) => p.name_1787],
+  ["category",                  (p) => p.category],
+  ["category_label",            (p) => p.category_label],
+  ["authority",                 (p) => p.authority],
+  ["authority_label",           (p) => p.authority_label],
+  ["jurisdiction",              (p) => p.jurisdiction],
+  ["jurisdiction_label",        (p) => p.jurisdiction_label],
+  ["district",                  (p) => p.district],
+  ["district_label",            (p) => p.district_label],
+  ["current_municipality_code", (p) => p.current_municipality_code],
+  ["current_municipality_name", (p) => p.current_municipality_name],
+  ["manuscript_page_1787",      (p) => p.manuscript_page],
+  ["ine_photogram",             (p) => p.ine_photogram],
+  ["population_total",          (p) => housingTotal(p)],
+  ["population_males",          (p) => p.population?.housing?.total?.V],
+  ["population_females",        (p) => p.population?.housing?.total?.M],
+  ["population_family_housing", (p) => p.population?.housing?.family?.T],
+  ["population_collective_religious", (p) => p.population?.housing?.collective_religious?.T],
+  ["population_collective_other",     (p) => p.population?.housing?.collective_other?.T],
+  ["religious_communities",     (p) => p.religious?.length || 0],
+  ["welfare_centres",           (p) => p.welfare?.length || 0],
+  ["other_centres",             (p) => p.other_centres?.length || 0],
+  ["observations",              (p) => p.observations],
+];
+
+function csvCell(v) {
+  if (v == null) return "";
+  const s = String(v);
+  return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+function exportCSV() {
+  const header = CSV_COLUMNS.map((c) => c[0]).join(",");
+  const lines = [header];
+  for (const p of STATE.filtered) {
+    lines.push(CSV_COLUMNS.map(([, fn]) => csvCell(fn(p))).join(","));
+  }
+  // BOM so Excel opens the file as UTF-8 directly (catalans, eñes, …).
+  const blob = new Blob(["﻿" + lines.join("\n") + "\n"],
+                       { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `floridablanca_balears_${STATE.filtered.length}_pobles.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
 }
 
 // ===== poble detail =========================================================

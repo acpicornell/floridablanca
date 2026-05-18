@@ -256,16 +256,28 @@ aside.filters h3 {
   color: var(--text-muted);
   font-style: italic;
 }
-.btn-clear {
+.filter-actions {
+  display: flex; gap: 0.4em; margin-top: 0.5em;
+}
+.btn-clear, .btn-export {
+  flex: 1;
   background: transparent;
   color: var(--text-muted);
   border: 1px solid var(--border);
-  padding: 0.35em 0.7em;
+  padding: 0.4em 0.6em;
   border-radius: 3px;
+  font: inherit;
   font-size: 0.82em;
   cursor: pointer;
 }
-.btn-clear:hover { color: var(--accent); border-color: var(--accent); }
+.btn-clear:hover, .btn-export:hover { color: var(--accent); border-color: var(--accent); }
+.btn-export {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.btn-export:hover { background: var(--accent); color: white; }
 
 .hint-banner {
   margin: 0 0 0.8em;
