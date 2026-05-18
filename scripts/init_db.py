@@ -19,13 +19,6 @@ def main() -> None:
     schema_sql = SCHEMA.read_text(encoding="utf-8")
     con = duckdb.connect(str(DB_PATH))
     con.execute(schema_sql)
-    # Migration: pre-existing DBs predate the name_official column.
-    cols = {r[0] for r in con.execute(
-        "SELECT column_name FROM information_schema.columns "
-        "WHERE table_name = 'current_municipalities'"
-    ).fetchall()}
-    if "name_official" not in cols:
-        con.execute("ALTER TABLE current_municipalities ADD COLUMN name_official TEXT")
     tables = con.execute(
         "SELECT table_name FROM information_schema.tables "
         "WHERE table_schema = 'main' ORDER BY table_name"

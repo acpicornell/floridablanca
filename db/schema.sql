@@ -8,8 +8,7 @@
 --   - A facsimile of the original 1787 manuscript questionnaire for
 --     Palma (the capital), as preserved at the Real Academia de la
 --     Historia.
---   - The glossary of abbreviations and a code table for present-day
---     (1986) municipalities.
+--   - The glossary of abbreviations.
 --   - Seven tabulations (Tables 1-7) covering 111 pueblos plus a
 --     provincial summary.
 --
@@ -55,19 +54,6 @@ CREATE TABLE IF NOT EXISTS district_codes (
     label  TEXT NOT NULL
 );
 
--- 1986 municipalities (printed code table, pp. 5638). 65 rows: the
--- INE facsimile uses the Castilian / administrative form in force in
--- 1986 ("ANDRAITX", "MAHON", "POLLENSA", "VILLACARLOS", …). The
--- `name_official` column carries the current official Catalan form
--- ("Andratx", "Maó", "Pollença", "es Castell", …) as fixed by Decret
--- 36/1988 and subsequent corrections; populated by load_lookups.py
--- from the Viquipèdia "Llista de municipis de les Illes Balears".
-CREATE TABLE IF NOT EXISTS current_municipalities (
-    code           INTEGER PRIMARY KEY,           -- 1..65
-    name           TEXT NOT NULL,                 -- INE 1986 form (Castilian)
-    name_official  TEXT                           -- current official Catalan form
-);
-
 -- Pueblos --------------------------------------------------------------
 
 -- One row per 1787 pueblo as catalogued in Table 1a/1b (cod 1..111).
@@ -84,7 +70,6 @@ CREATE TABLE IF NOT EXISTS pueblos (
     jurisdiction_code         TEXT REFERENCES jurisdiction_codes(code),
     intendancy                TEXT,                 -- always "RdM" (Reino de Mallorca)
     district_code             TEXT REFERENCES district_codes(code),
-    current_municipality_code INTEGER REFERENCES current_municipalities(code),
     -- References (table 1b).
     manuscript_page           TEXT,                 -- "PAGINA M. 1787" (Real Academia ms.)
     ine_photogram             TEXT,                 -- "FOTOGRAMA INE", e.g. "25-0020"
@@ -102,7 +87,6 @@ CREATE TABLE IF NOT EXISTS pueblos (
 
 CREATE INDEX IF NOT EXISTS idx_pueblos_name_current ON pueblos(name_current);
 CREATE INDEX IF NOT EXISTS idx_pueblos_district     ON pueblos(district_code);
-CREATE INDEX IF NOT EXISTS idx_pueblos_municipality ON pueblos(current_municipality_code);
 
 -- Table 2: Population by housing type and sex --------------------------
 -- "POBLACION SEGUN TIPO DE ALOJAMIENTO Y SEXO".

@@ -50,15 +50,14 @@ web/
 ## Schema
 
 Lookups: `category_codes`, `authority_codes`, `jurisdiction_codes`,
-`district_codes`, `current_municipalities` (decode the printed
-glossary at pp. 5637-5638).
+`district_codes` (decode the printed glossary at p. 5637).
 
 Core entity: `pueblos` (one row per 1787 pueblo, 111 numbered rows
 plus 3 supplemental Ibiza parishes). Carries the administrative
 metadata from **Table 1a** (categoría, autoridad, jurisdicción,
-intendencia, partido, municipio actual) and the bibliographic
-references from **Table 1b** (página manuscrito 1787, fotograma INE,
-presence-flags for tables 2-7, observaciones).
+intendencia, partido) and the bibliographic references from
+**Table 1b** (página manuscrito 1787, fotograma INE, presence-flags
+for tables 2-7, observaciones).
 
 Long-form facts (one fact per row):
 - `population_by_housing`        (Table 2 — pueblo × housing type × sex)

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-05-18T20:18:41.972755+00:00",
+  "generated_at": "2026-05-18T20:36:45.860962+00:00",
   "source": "INE (1986) — Censo de 1787, Floridablanca. Tomo VI: Provincia de Baleares. Madrid: INE.",
   "totals": {
    "pueblos": 111,
@@ -133,343 +133,6 @@
     "code": "MEN",
     "label": "Menorca"
    }
-  ],
-  "current_municipalities": [
-   {
-    "code": 1,
-    "name": "ALARO",
-    "name_official": "Alaró"
-   },
-   {
-    "code": 2,
-    "name": "ALAYOR",
-    "name_official": "Alaior"
-   },
-   {
-    "code": 3,
-    "name": "ALCUDIA",
-    "name_official": "Alcúdia"
-   },
-   {
-    "code": 4,
-    "name": "ALGAIDA",
-    "name_official": "Algaida"
-   },
-   {
-    "code": 5,
-    "name": "ANDRAITX",
-    "name_official": "Andratx"
-   },
-   {
-    "code": 6,
-    "name": "ARTA",
-    "name_official": "Artà"
-   },
-   {
-    "code": 7,
-    "name": "BAÑALBUFAR",
-    "name_official": "Banyalbufar"
-   },
-   {
-    "code": 8,
-    "name": "BINISALEM",
-    "name_official": "Binissalem"
-   },
-   {
-    "code": 9,
-    "name": "BUGER",
-    "name_official": "Búger"
-   },
-   {
-    "code": 10,
-    "name": "BUÑOLA",
-    "name_official": "Bunyola"
-   },
-   {
-    "code": 11,
-    "name": "CALVIA",
-    "name_official": "Calvià"
-   },
-   {
-    "code": 12,
-    "name": "CAMPANET",
-    "name_official": "Campanet"
-   },
-   {
-    "code": 13,
-    "name": "CAMPOS DEL PUERTO",
-    "name_official": "Campos"
-   },
-   {
-    "code": 14,
-    "name": "CAPDEPERA",
-    "name_official": "Capdepera"
-   },
-   {
-    "code": 15,
-    "name": "CIUDADELA",
-    "name_official": "Ciutadella de Menorca"
-   },
-   {
-    "code": 16,
-    "name": "CONSELL",
-    "name_official": "Consell"
-   },
-   {
-    "code": 17,
-    "name": "COSTITX",
-    "name_official": "Costitx"
-   },
-   {
-    "code": 18,
-    "name": "DEYA",
-    "name_official": "Deià"
-   },
-   {
-    "code": 19,
-    "name": "ESCORCA",
-    "name_official": "Escorca"
-   },
-   {
-    "code": 20,
-    "name": "ESPORLAS",
-    "name_official": "Esporles"
-   },
-   {
-    "code": 21,
-    "name": "ESTELLENCHS",
-    "name_official": "Estellencs"
-   },
-   {
-    "code": 22,
-    "name": "FELANITX",
-    "name_official": "Felanitx"
-   },
-   {
-    "code": 23,
-    "name": "FERRERIAS",
-    "name_official": "Ferreries"
-   },
-   {
-    "code": 24,
-    "name": "FORMENTERA",
-    "name_official": "Formentera"
-   },
-   {
-    "code": 25,
-    "name": "FORNALUTX",
-    "name_official": "Fornalutx"
-   },
-   {
-    "code": 26,
-    "name": "IBIZA",
-    "name_official": "Eivissa"
-   },
-   {
-    "code": 27,
-    "name": "INCA",
-    "name_official": "Inca"
-   },
-   {
-    "code": 28,
-    "name": "LLORET DE VISTA ALEGRE",
-    "name_official": "Lloret de Vistalegre"
-   },
-   {
-    "code": 29,
-    "name": "LLOSETA",
-    "name_official": "Lloseta"
-   },
-   {
-    "code": 30,
-    "name": "LLUBI",
-    "name_official": "Llubí"
-   },
-   {
-    "code": 31,
-    "name": "LLUCHMAYOR",
-    "name_official": "Llucmajor"
-   },
-   {
-    "code": 32,
-    "name": "MAHON",
-    "name_official": "Maó"
-   },
-   {
-    "code": 33,
-    "name": "MANACOR",
-    "name_official": "Manacor"
-   },
-   {
-    "code": 34,
-    "name": "MANCOR DEL VALLE",
-    "name_official": "Mancor de la Vall"
-   },
-   {
-    "code": 35,
-    "name": "MARIA DE LA SALUD",
-    "name_official": "Maria de la Salut"
-   },
-   {
-    "code": 36,
-    "name": "MARRATXI",
-    "name_official": "Marratxí"
-   },
-   {
-    "code": 37,
-    "name": "MERCADAL",
-    "name_official": "es Mercadal"
-   },
-   {
-    "code": 38,
-    "name": "MONTUIRI",
-    "name_official": "Montuïri"
-   },
-   {
-    "code": 39,
-    "name": "MURO",
-    "name_official": "Muro"
-   },
-   {
-    "code": 40,
-    "name": "PALMA DE MALLORCA",
-    "name_official": "Palma"
-   },
-   {
-    "code": 41,
-    "name": "PETRA",
-    "name_official": "Petra"
-   },
-   {
-    "code": 42,
-    "name": "POLLENSA",
-    "name_official": "Pollença"
-   },
-   {
-    "code": 43,
-    "name": "PORRERAS",
-    "name_official": "Porreres"
-   },
-   {
-    "code": 44,
-    "name": "PUEBLA, LA",
-    "name_official": "sa Pobla"
-   },
-   {
-    "code": 45,
-    "name": "PUIGPUÑENT",
-    "name_official": "Puigpunyent"
-   },
-   {
-    "code": 46,
-    "name": "SAN ANTONIO ABAD",
-    "name_official": "Sant Antoni de Portmany"
-   },
-   {
-    "code": 47,
-    "name": "SANCELLAS",
-    "name_official": "Sencelles"
-   },
-   {
-    "code": 48,
-    "name": "SAN JOSE",
-    "name_official": "Sant Josep de sa Talaia"
-   },
-   {
-    "code": 49,
-    "name": "SAN JUAN",
-    "name_official": "Sant Joan"
-   },
-   {
-    "code": 50,
-    "name": "SAN JUAN BAUTISTA",
-    "name_official": "Sant Joan de Labritja"
-   },
-   {
-    "code": 51,
-    "name": "SAN LORENZO DEL CARDESSAR",
-    "name_official": "Sant Llorenç des Cardassar"
-   },
-   {
-    "code": 52,
-    "name": "SAN LUIS",
-    "name_official": "Sant Lluís"
-   },
-   {
-    "code": 53,
-    "name": "SANTA EUGENIA",
-    "name_official": "Santa Eugènia"
-   },
-   {
-    "code": 54,
-    "name": "SANTA EULALIA DEL RIO",
-    "name_official": "Santa Eulària des Riu"
-   },
-   {
-    "code": 55,
-    "name": "SANTA MARGARITA",
-    "name_official": "Santa Margalida"
-   },
-   {
-    "code": 56,
-    "name": "SANTA MARIA DEL CAMI",
-    "name_official": "Santa Maria del Camí"
-   },
-   {
-    "code": 57,
-    "name": "SANTAÑY",
-    "name_official": "Santanyí"
-   },
-   {
-    "code": 58,
-    "name": "SELVA",
-    "name_official": "Selva"
-   },
-   {
-    "code": 59,
-    "name": "SES SALINES",
-    "name_official": "ses Salines"
-   },
-   {
-    "code": 60,
-    "name": "SINEU",
-    "name_official": "Sineu"
-   },
-   {
-    "code": 61,
-    "name": "SOLLER",
-    "name_official": "Sóller"
-   },
-   {
-    "code": 62,
-    "name": "SON SERVERA",
-    "name_official": "Son Servera"
-   },
-   {
-    "code": 63,
-    "name": "VALLDEMOSA",
-    "name_official": "Valldemossa"
-   },
-   {
-    "code": 64,
-    "name": "VILLACARLOS",
-    "name_official": "es Castell"
-   },
-   {
-    "code": 65,
-    "name": "VILLAFRANCA DE BONANY",
-    "name_official": "Vilafranca de Bonany"
-   },
-   {
-    "code": 66,
-    "name": "ARIANY",
-    "name_official": "Ariany"
-   },
-   {
-    "code": 67,
-    "name": "ES MIGJORN GRAN",
-    "name_official": "es Migjorn Gran"
-   }
   ]
  },
  "pueblos": [
@@ -486,9 +149,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 1,
-   "current_municipality_name": "ALARO",
-   "current_municipality_name_official": "Alaró",
    "manuscript_page": "391",
    "ine_photogram": "25-0020",
    "in_tables": {
@@ -700,9 +360,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 2,
-   "current_municipality_name": "ALAYOR",
-   "current_municipality_name_official": "Alaior",
    "manuscript_page": "394",
    "ine_photogram": "25-0090",
    "in_tables": {
@@ -977,9 +634,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 3,
-   "current_municipality_name": "ALCUDIA",
-   "current_municipality_name_official": "Alcúdia",
    "manuscript_page": "391",
    "ine_photogram": "25-0015",
    "in_tables": {
@@ -1229,9 +883,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 29,
-   "current_municipality_name": "LLOSETA",
-   "current_municipality_name_official": "Lloseta",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -1416,9 +1067,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 4,
-   "current_municipality_name": "ALGAIDA",
-   "current_municipality_name_official": "Algaida",
    "manuscript_page": "391",
    "ine_photogram": "25-0018",
    "in_tables": {
@@ -1516,9 +1164,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 5,
-   "current_municipality_name": "ANDRAITX",
-   "current_municipality_name_official": "Andratx",
    "manuscript_page": "391",
    "ine_photogram": "25-0014",
    "in_tables": {
@@ -1730,9 +1375,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 66,
-   "current_municipality_name": "ARIANY",
-   "current_municipality_name_official": "Ariany",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -1743,7 +1385,7 @@
     "6": false,
     "7": false
    },
-   "observations": "Ariany es va segregar de Petra el 1982; el facsímil INE 1986 encara la inclou dins de Petra.",
+   "observations": null,
    "parent_cod": null,
    "population": null,
    "religious": [],
@@ -1763,9 +1405,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 6,
-   "current_municipality_name": "ARTA",
-   "current_municipality_name_official": "Artà",
    "manuscript_page": "391",
    "ine_photogram": "25-0021",
    "in_tables": {
@@ -2023,9 +1662,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "328",
    "ine_photogram": null,
    "in_tables": {
@@ -2056,9 +1692,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 7,
-   "current_municipality_name": "BAÑALBUFAR",
-   "current_municipality_name_official": "Banyalbufar",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2089,9 +1722,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 8,
-   "current_municipality_name": "BINISALEM",
-   "current_municipality_name_official": "Binissalem",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2112,7 +1742,7 @@
   {
    "cod": 12,
    "name_current": "BINIALI",
-   "name_1787": "BIWIALI",
+   "name_1787": "BINIALI",
    "category": "L",
    "category_label": "Lugar",
    "authority": "AP",
@@ -2122,9 +1752,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2155,9 +1782,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 58,
-   "current_municipality_name": "SELVA",
-   "current_municipality_name_official": "Selva",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2188,9 +1812,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 61,
-   "current_municipality_name": "SOLLER",
-   "current_municipality_name_official": "Sóller",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2221,9 +1842,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 58,
-   "current_municipality_name": "SELVA",
-   "current_municipality_name_official": "Selva",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2244,7 +1862,7 @@
   {
    "cod": 16,
    "name_current": "BINIFOUBELL",
-   "name_1787": "BINIPAUVELL",
+   "name_1787": "BINIFAUVELL",
    "category": "A",
    "category_label": "Aldea",
    "authority": "S/A",
@@ -2254,9 +1872,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2287,9 +1902,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 8,
-   "current_municipality_name": "BINISALEM",
-   "current_municipality_name_official": "Binissalem",
    "manuscript_page": "391",
    "ine_photogram": "25-0023",
    "in_tables": {
@@ -2501,9 +2113,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 9,
-   "current_municipality_name": "BUGER",
-   "current_municipality_name_official": "Búger",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2523,8 +2132,8 @@
   },
   {
    "cod": 19,
-   "name_current": "BUROLA",
-   "name_1787": "BUROLA",
+   "name_current": "BUÑOLA",
+   "name_1787": "BUÑOLA",
    "category": "L",
    "category_label": "Lugar",
    "authority": "AO",
@@ -2534,9 +2143,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 10,
-   "current_municipality_name": "BUÑOLA",
-   "current_municipality_name_official": "Bunyola",
    "manuscript_page": "391",
    "ine_photogram": "25-0035",
    "in_tables": {
@@ -2748,9 +2354,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 58,
-   "current_municipality_name": "SELVA",
-   "current_municipality_name_official": "Selva",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -2781,9 +2384,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 19,
-   "current_municipality_name": "ESCORCA",
-   "current_municipality_name_official": "Escorca",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -2814,9 +2414,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 11,
-   "current_municipality_name": "CALVIA",
-   "current_municipality_name_official": "Calvià",
    "manuscript_page": "391",
    "ine_photogram": "25-0020",
    "in_tables": {
@@ -3028,9 +2625,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 12,
-   "current_municipality_name": "CAMPANET",
-   "current_municipality_name_official": "Campanet",
    "manuscript_page": "391",
    "ine_photogram": "25-0030",
    "in_tables": {
@@ -3242,9 +2836,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 13,
-   "current_municipality_name": "CAMPOS DEL PUERTO",
-   "current_municipality_name_official": "Campos",
    "manuscript_page": "391",
    "ine_photogram": "25-0032",
    "in_tables": {
@@ -3494,9 +3085,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 11,
-   "current_municipality_name": "CALVIA",
-   "current_municipality_name_official": "Calvià",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -3527,9 +3115,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 14,
-   "current_municipality_name": "CAPDEPERA",
-   "current_municipality_name_official": "Capdepera",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -3560,9 +3145,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -3593,9 +3175,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 15,
-   "current_municipality_name": "CIUDADELA",
-   "current_municipality_name_official": "Ciutadella de Menorca",
    "manuscript_page": "394",
    "ine_photogram": "25-0101",
    "in_tables": {
@@ -4000,9 +3579,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 16,
-   "current_municipality_name": "CONSELL",
-   "current_municipality_name_official": "Consell",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -4033,9 +3609,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 17,
-   "current_municipality_name": "COSTITX",
-   "current_municipality_name_official": "Costitx",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -4066,9 +3639,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 18,
-   "current_municipality_name": "DEYA",
-   "current_municipality_name_official": "Deià",
    "manuscript_page": "391",
    "ine_photogram": "25-0036",
    "in_tables": {
@@ -4280,9 +3850,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 20,
-   "current_municipality_name": "ESPORLAS",
-   "current_municipality_name_official": "Esporles",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -4313,9 +3880,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 20,
-   "current_municipality_name": "ESPORLAS",
-   "current_municipality_name_official": "Esporles",
    "manuscript_page": "391",
    "ine_photogram": "25-0038",
    "in_tables": {
@@ -4527,9 +4091,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 40,
-   "current_municipality_name": "PALMA DE MALLORCA",
-   "current_municipality_name_official": "Palma",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -4592,9 +4153,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 21,
-   "current_municipality_name": "ESTELLENCHS",
-   "current_municipality_name_official": "Estellencs",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -4625,9 +4183,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 22,
-   "current_municipality_name": "FELANITX",
-   "current_municipality_name_official": "Felanitx",
    "manuscript_page": "392",
    "ine_photogram": "25-0030",
    "in_tables": {
@@ -4885,9 +4440,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 23,
-   "current_municipality_name": "FERRERIAS",
-   "current_municipality_name_official": "Ferreries",
    "manuscript_page": "394",
    "ine_photogram": "25-0098",
    "in_tables": {
@@ -5099,9 +4651,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 41,
-   "current_municipality_name": "PETRA",
-   "current_municipality_name_official": "Petra",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -5132,9 +4681,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 24,
-   "current_municipality_name": "FORMENTERA",
-   "current_municipality_name_official": "Formentera",
    "manuscript_page": "328",
    "ine_photogram": "25-0122",
    "in_tables": {
@@ -5346,9 +4892,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 25,
-   "current_municipality_name": "FORNALUTX",
-   "current_municipality_name_official": "Fornalutx",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -5368,8 +4911,8 @@
   },
   {
    "cod": 41,
-   "name_current": "PORNELLS",
-   "name_1787": "PORNELLS",
+   "name_current": "FORNELLS",
+   "name_1787": "FORNELLS",
    "category": "Ar",
    "category_label": "Arrabal",
    "authority": null,
@@ -5379,9 +4922,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 37,
-   "current_municipality_name": "MERCADAL",
-   "current_municipality_name_official": "es Mercadal",
    "manuscript_page": "394",
    "ine_photogram": null,
    "in_tables": {
@@ -5412,9 +4952,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -5445,9 +4982,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 26,
-   "current_municipality_name": "IBIZA",
-   "current_municipality_name_official": "Eivissa",
    "manuscript_page": "328",
    "ine_photogram": "25-0001",
    "in_tables": {
@@ -5744,9 +5278,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 27,
-   "current_municipality_name": "INCA",
-   "current_municipality_name_official": "Inca",
    "manuscript_page": "391",
    "ine_photogram": "25-0043",
    "in_tables": {
@@ -5998,9 +5529,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -6031,9 +5559,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -6064,9 +5589,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 40,
-   "current_municipality_name": "PALMA DE MALLORCA",
-   "current_municipality_name_official": "Palma",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -6097,9 +5619,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 60,
-   "current_municipality_name": "SINEU",
-   "current_municipality_name_official": "Sineu",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -6130,9 +5649,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 29,
-   "current_municipality_name": "LLOSETA",
-   "current_municipality_name_official": "Lloseta",
    "manuscript_page": "392",
    "ine_photogram": "25-0024",
    "in_tables": {
@@ -6344,9 +5860,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 30,
-   "current_municipality_name": "LLUBI",
-   "current_municipality_name_official": "Llubí",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -6377,9 +5890,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 18,
-   "current_municipality_name": "DEYA",
-   "current_municipality_name_official": "Deià",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -6410,9 +5920,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 31,
-   "current_municipality_name": "LLUCHMAYOR",
-   "current_municipality_name_official": "Llucmajor",
    "manuscript_page": "392",
    "ine_photogram": "25-0047",
    "in_tables": {
@@ -6675,9 +6182,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 32,
-   "current_municipality_name": "MAHON",
-   "current_municipality_name_official": "Maó",
    "manuscript_page": "392",
    "ine_photogram": "25-0032",
    "in_tables": {
@@ -6970,9 +6474,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 33,
-   "current_municipality_name": "MANACOR",
-   "current_municipality_name_official": "Manacor",
    "manuscript_page": "392",
    "ine_photogram": "25-0049",
    "in_tables": {
@@ -7247,9 +6748,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 34,
-   "current_municipality_name": "MANCOR DEL VALLE",
-   "current_municipality_name_official": "Mancor de la Vall",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -7280,9 +6778,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 35,
-   "current_municipality_name": "MARIA DE LA SALUD",
-   "current_municipality_name_official": "Maria de la Salut",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -7313,9 +6808,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 36,
-   "current_municipality_name": "MARRATXI",
-   "current_municipality_name_official": "Marratxí",
    "manuscript_page": "392",
    "ine_photogram": "25-0053",
    "in_tables": {
@@ -7527,9 +7019,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -7560,9 +7049,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 37,
-   "current_municipality_name": "MERCADAL",
-   "current_municipality_name_official": "es Mercadal",
    "manuscript_page": "394",
    "ine_photogram": "25-0096",
    "in_tables": {
@@ -7825,9 +7311,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 43,
-   "current_municipality_name": "PORRERAS",
-   "current_municipality_name_official": "Porreres",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -7858,9 +7341,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 38,
-   "current_municipality_name": "MONTUIRI",
-   "current_municipality_name_official": "Montuïri",
    "manuscript_page": "392",
    "ine_photogram": "25-0053",
    "in_tables": {
@@ -8072,9 +7552,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 58,
-   "current_municipality_name": "SELVA",
-   "current_municipality_name_official": "Selva",
    "manuscript_page": "392",
    "ine_photogram": null,
    "in_tables": {
@@ -8105,9 +7582,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 39,
-   "current_municipality_name": "MURO",
-   "current_municipality_name_official": "Muro",
    "manuscript_page": "391",
    "ine_photogram": "25-0054",
    "in_tables": {
@@ -8357,9 +7831,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 43,
-   "current_municipality_name": "PORRERAS",
-   "current_municipality_name_official": "Porreres",
    "manuscript_page": null,
    "ine_photogram": "25-0113",
    "in_tables": {
@@ -8571,9 +8042,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 10,
-   "current_municipality_name": "BUÑOLA",
-   "current_municipality_name_official": "Bunyola",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -8604,9 +8072,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 40,
-   "current_municipality_name": "PALMA DE MALLORCA",
-   "current_municipality_name_official": "Palma",
    "manuscript_page": "391",
    "ine_photogram": "25-0003",
    "in_tables": {
@@ -9437,9 +8902,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 41,
-   "current_municipality_name": "PETRA",
-   "current_municipality_name_official": "Petra",
    "manuscript_page": "393",
    "ine_photogram": "25-0058",
    "in_tables": {
@@ -9689,9 +9151,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 4,
-   "current_municipality_name": "ALGAIDA",
-   "current_municipality_name_official": "Algaida",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -9722,9 +9181,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 42,
-   "current_municipality_name": "POLLENSA",
-   "current_municipality_name_official": "Pollença",
    "manuscript_page": "393",
    "ine_photogram": "25-0061",
    "in_tables": {
@@ -9974,9 +9430,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 43,
-   "current_municipality_name": "PORRERAS",
-   "current_municipality_name_official": "Porreres",
    "manuscript_page": "393",
    "ine_photogram": "25-0064",
    "in_tables": {
@@ -10188,9 +9641,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 36,
-   "current_municipality_name": "MARRATXI",
-   "current_municipality_name_official": "Marratxí",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -10221,9 +9671,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 44,
-   "current_municipality_name": "PUEBLA, LA",
-   "current_municipality_name_official": "sa Pobla",
    "manuscript_page": "393",
    "ine_photogram": "25-0065",
    "in_tables": {
@@ -10435,9 +9882,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 45,
-   "current_municipality_name": "PUIGPUÑENT",
-   "current_municipality_name_official": "Puigpunyent",
    "manuscript_page": "393",
    "ine_photogram": "25-0066",
    "in_tables": {
@@ -10649,9 +10093,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 4,
-   "current_municipality_name": "ALGAIDA",
-   "current_municipality_name_official": "Algaida",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -10682,9 +10123,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 11,
-   "current_municipality_name": "CALVIA",
-   "current_municipality_name_official": "Calvià",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -10715,9 +10153,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -10748,9 +10183,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 24,
-   "current_municipality_name": "FORMENTERA",
-   "current_municipality_name_official": "Formentera",
    "manuscript_page": "328",
    "ine_photogram": "25-0112",
    "in_tables": {
@@ -10962,9 +10394,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 48,
-   "current_municipality_name": "SAN JOSE",
-   "current_municipality_name_official": "Sant Josep de sa Talaia",
    "manuscript_page": null,
    "ine_photogram": "25-0111",
    "in_tables": {
@@ -11176,9 +10605,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 46,
-   "current_municipality_name": "SAN ANTONIO ABAD",
-   "current_municipality_name_official": "Sant Antoni de Portmany",
    "manuscript_page": null,
    "ine_photogram": "25-0109",
    "in_tables": {
@@ -11390,9 +10816,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 54,
-   "current_municipality_name": "SANTA EULALIA DEL RIO",
-   "current_municipality_name_official": "Santa Eulària des Riu",
    "manuscript_page": null,
    "ine_photogram": "25-0119",
    "in_tables": {
@@ -11604,9 +11027,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 37,
-   "current_municipality_name": "MERCADAL",
-   "current_municipality_name_official": "es Mercadal",
    "manuscript_page": "394",
    "ine_photogram": null,
    "in_tables": {
@@ -11637,9 +11057,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 67,
-   "current_municipality_name": "ES MIGJORN GRAN",
-   "current_municipality_name_official": "es Migjorn Gran",
    "manuscript_page": "394",
    "ine_photogram": null,
    "in_tables": {
@@ -11650,7 +11067,7 @@
     "6": false,
     "7": false
    },
-   "observations": "San Cristóbal s'anomena oficialment es Migjorn Gran des de 1988 i és municipi propi (segregat de Mercadal) des de 1989.",
+   "observations": null,
    "parent_cod": null,
    "population": null,
    "religious": [],
@@ -11670,9 +11087,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 48,
-   "current_municipality_name": "SAN JOSE",
-   "current_municipality_name_official": "Sant Josep de sa Talaia",
    "manuscript_page": null,
    "ine_photogram": "25-0110",
    "in_tables": {
@@ -11884,9 +11298,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 49,
-   "current_municipality_name": "SAN JUAN",
-   "current_municipality_name_official": "Sant Joan",
    "manuscript_page": "393",
    "ine_photogram": "25-0068",
    "in_tables": {
@@ -12098,9 +11509,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 54,
-   "current_municipality_name": "SANTA EULALIA DEL RIO",
-   "current_municipality_name_official": "Santa Eulària des Riu",
    "manuscript_page": null,
    "ine_photogram": "25-0120",
    "in_tables": {
@@ -12312,9 +11720,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 51,
-   "current_municipality_name": "SAN LORENZO DEL CARDESSAR",
-   "current_municipality_name_official": "Sant Llorenç des Cardassar",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -12345,9 +11750,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 52,
-   "current_municipality_name": "SAN LUIS",
-   "current_municipality_name_official": "Sant Lluís",
    "manuscript_page": "394",
    "ine_photogram": null,
    "in_tables": {
@@ -12378,9 +11780,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 46,
-   "current_municipality_name": "SAN ANTONIO ABAD",
-   "current_municipality_name_official": "Sant Antoni de Portmany",
    "manuscript_page": null,
    "ine_photogram": "25-0116",
    "in_tables": {
@@ -12592,9 +11991,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 50,
-   "current_municipality_name": "SAN JUAN BAUTISTA",
-   "current_municipality_name_official": "Sant Joan de Labritja",
    "manuscript_page": null,
    "ine_photogram": "25-0115",
    "in_tables": {
@@ -12806,9 +12202,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 46,
-   "current_municipality_name": "SAN ANTONIO ABAD",
-   "current_municipality_name_official": "Sant Antoni de Portmany",
    "manuscript_page": "328",
    "ine_photogram": "25-0114",
    "in_tables": {
@@ -13020,9 +12413,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 47,
-   "current_municipality_name": "SANCELLAS",
-   "current_municipality_name_official": "Sencelles",
    "manuscript_page": "303",
    "ine_photogram": "25-0075",
    "in_tables": {
@@ -13234,9 +12624,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 40,
-   "current_municipality_name": "PALMA DE MALLORCA",
-   "current_municipality_name_official": "Palma",
    "manuscript_page": "391",
    "ine_photogram": null,
    "in_tables": {
@@ -13267,9 +12654,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 53,
-   "current_municipality_name": "SANTA EUGENIA",
-   "current_municipality_name_official": "Santa Eugènia",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -13300,9 +12684,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 54,
-   "current_municipality_name": "SANTA EULALIA DEL RIO",
-   "current_municipality_name_official": "Santa Eulària des Riu",
    "manuscript_page": "328",
    "ine_photogram": "25-0121",
    "in_tables": {
@@ -13514,9 +12895,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 54,
-   "current_municipality_name": "SANTA EULALIA DEL RIO",
-   "current_municipality_name_official": "Santa Eulària des Riu",
    "manuscript_page": null,
    "ine_photogram": "25-0118",
    "in_tables": {
@@ -13728,9 +13106,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 46,
-   "current_municipality_name": "SAN ANTONIO ABAD",
-   "current_municipality_name_official": "Sant Antoni de Portmany",
    "manuscript_page": null,
    "ine_photogram": "25-0117",
    "in_tables": {
@@ -13942,9 +13317,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 55,
-   "current_municipality_name": "SANTA MARGARITA",
-   "current_municipality_name_official": "Santa Margalida",
    "manuscript_page": "303",
    "ine_photogram": "25-0060",
    "in_tables": {
@@ -14156,9 +13528,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 56,
-   "current_municipality_name": "SANTA MARIA DEL CAMI",
-   "current_municipality_name_official": "Santa Maria del Camí",
    "manuscript_page": "391",
    "ine_photogram": "25-0071",
    "in_tables": {
@@ -14408,9 +13777,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 57,
-   "current_municipality_name": "SANTAÑY",
-   "current_municipality_name_official": "Santanyí",
    "manuscript_page": "393",
    "ine_photogram": "25-0073",
    "in_tables": {
@@ -14622,9 +13988,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 58,
-   "current_municipality_name": "SELVA",
-   "current_municipality_name_official": "Selva",
    "manuscript_page": "393",
    "ine_photogram": "25-0074",
    "in_tables": {
@@ -14836,9 +14199,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 60,
-   "current_municipality_name": "SINEU",
-   "current_municipality_name_official": "Sineu",
    "manuscript_page": "393",
    "ine_photogram": "25-0076",
    "in_tables": {
@@ -15131,9 +14491,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 61,
-   "current_municipality_name": "SOLLER",
-   "current_municipality_name_official": "Sóller",
    "manuscript_page": "393",
    "ine_photogram": "25-0081",
    "in_tables": {
@@ -15383,9 +14740,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15416,9 +14770,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 56,
-   "current_municipality_name": "SANTA MARIA DEL CAMI",
-   "current_municipality_name_official": "Santa Maria del Camí",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15449,9 +14800,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 62,
-   "current_municipality_name": "SON SERVERA",
-   "current_municipality_name_official": "Son Servera",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15482,9 +14830,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15515,9 +14860,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15548,9 +14890,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 42,
-   "current_municipality_name": "POLLENSA",
-   "current_municipality_name_official": "Pollença",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15581,9 +14920,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 63,
-   "current_municipality_name": "VALLDEMOSA",
-   "current_municipality_name_official": "Valldemossa",
    "manuscript_page": "393",
    "ine_photogram": "25-0085",
    "in_tables": {
@@ -15862,9 +15198,6 @@
    "intendancy": "RdM",
    "district": "MAL",
    "district_label": "Mallorca",
-   "current_municipality_code": 65,
-   "current_municipality_name": "VILLAFRANCA DE BONANY",
-   "current_municipality_name_official": "Vilafranca de Bonany",
    "manuscript_page": "393",
    "ine_photogram": null,
    "in_tables": {
@@ -15895,9 +15228,6 @@
    "intendancy": "RdM",
    "district": "MEN",
    "district_label": "Menorca",
-   "current_municipality_code": 64,
-   "current_municipality_name": "VILLACARLOS",
-   "current_municipality_name_official": "es Castell",
    "manuscript_page": "394",
    "ine_photogram": "25-0100",
    "in_tables": {
@@ -16109,9 +15439,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 26,
-   "current_municipality_name": "IBIZA",
-   "current_municipality_name_official": "Eivissa",
    "manuscript_page": null,
    "ine_photogram": "25-0104",
    "in_tables": {
@@ -16323,9 +15650,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 26,
-   "current_municipality_name": "IBIZA",
-   "current_municipality_name_official": "Eivissa",
    "manuscript_page": null,
    "ine_photogram": "25-0105",
    "in_tables": {
@@ -16537,9 +15861,6 @@
    "intendancy": "RdM",
    "district": "IBI",
    "district_label": "Ibiza",
-   "current_municipality_code": 26,
-   "current_municipality_name": "IBIZA",
-   "current_municipality_name_official": "Eivissa",
    "manuscript_page": null,
    "ine_photogram": "25-0108",
    "in_tables": {

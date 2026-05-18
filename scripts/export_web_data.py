@@ -4,8 +4,7 @@ The output is a single JSON file consumed by web/app.js. Shape:
 
     {
       "meta":           { generated_at, source, totals: {...} },
-      "lookups":        { categories, authorities, jurisdictions,
-                          districts, current_municipalities },
+      "lookups":        { categories, authorities, jurisdictions, districts },
       "pueblos":        [ { cod, name_current, ..., population: {...},
                             religious: [...], welfare: [...],
                             other: [...] }, ... ],
@@ -38,16 +37,11 @@ def export() -> dict:
     auths = dict(con.execute("SELECT code, label FROM authority_codes").fetchall())
     juris = dict(con.execute("SELECT code, label FROM jurisdiction_codes").fetchall())
     dists = dict(con.execute("SELECT code, label FROM district_codes").fetchall())
-    muni_rows = con.execute(
-        "SELECT code, name, name_official FROM current_municipalities ORDER BY code"
-    ).fetchall()
-    munis          = {r[0]: r[1] for r in muni_rows}
-    munis_official = {r[0]: r[2] for r in muni_rows}
 
     pueblos_rows = con.execute(
         "SELECT cod, name_current, name_1787, category_code, authority_code, "
         "       jurisdiction_code, intendancy, district_code, "
-        "       current_municipality_code, manuscript_page, ine_photogram, "
+        "       manuscript_page, ine_photogram, "
         "       in_table_2, in_table_3, in_table_4, in_table_5, in_table_6, "
         "       in_table_7, observations, parent_cod "
         "FROM pueblos ORDER BY cod"
@@ -56,7 +50,7 @@ def export() -> dict:
     pueblos: list[dict] = []
     by_cod: dict[int, dict] = {}
     for r in pueblos_rows:
-        (cod, name_cur, name_1787, cat, auth, jur, intd, dist, mcod, mpage,
+        (cod, name_cur, name_1787, cat, auth, jur, intd, dist, mpage,
          photo, t2, t3, t4, t5, t6, t7, obs, parent) = r
         p = {
             "cod": cod,
@@ -71,9 +65,6 @@ def export() -> dict:
             "intendancy": intd,
             "district": dist,
             "district_label": dists.get(dist),
-            "current_municipality_code": mcod,
-            "current_municipality_name":          munis.get(mcod),
-            "current_municipality_name_official": munis_official.get(mcod),
             "manuscript_page": mpage,
             "ine_photogram": photo,
             "in_tables": {
@@ -222,9 +213,6 @@ def export() -> dict:
             "authorities":    [{"code": k, "label": v} for k, v in auths.items()],
             "jurisdictions":  [{"code": k, "label": v} for k, v in juris.items()],
             "districts":      [{"code": k, "label": v} for k, v in dists.items()],
-            "current_municipalities":
-                [{"code": k, "name": v, "name_official": munis_official.get(k)}
-                 for k, v in munis.items()],
         },
         "pueblos": pueblos,
         "comentario": docs.get("comentario", ""),

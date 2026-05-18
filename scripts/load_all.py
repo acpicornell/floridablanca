@@ -33,12 +33,17 @@ def _read(name: str) -> dict | None:
 _FOOTNOTE_RE = re.compile(r"\s*\(\*+\)\s*$")
 
 
-# In-string OCR fixes for the name_1787 column. The 1986 facsimile
-# uses an "ñ" with a narrow tilde that the model occasionally reads
-# as an "r" — e.g. PORMAÑY (the historical Ibizan quartón of
-# Portmany) extracted as PORMARY.
+# In-string OCR fixes for pueblo name strings. The 1986 facsimile
+# uses a typewriter face that confuses several glyph pairs (Ñ/R, F/P,
+# N/W…), and the same misreads recur across pages. Applied to both
+# name_current and name_1787, in load_table_1 and in the name → cod
+# lookups used by tables 3-6.
 _NAME_TEXT_FIXES = [
-    ("PORMARY", "PORMAÑY"),
+    ("PORMARY",     "PORMAÑY"),     # historical Ibizan quartón
+    ("BIWIALI",     "BINIALI"),     # the model reads "NI" as "WI"
+    ("BINIPAUVELL", "BINIFAUVELL"),
+    ("BUROLA",      "BUÑOLA"),      # Ñ → R misread, present in many tables
+    ("PORNELLS",    "FORNELLS"),    # F → P misread; both columns affected
 ]
 
 
@@ -73,75 +78,12 @@ _JURISDICTION_FIXES = {
     "SF": "SE",
 }
 
-# Hand-verified corrections to current_municipality_code values
-# that the LLM mis-extracted from the printed table (typically by
-# confusing the leading "0" of a three-digit code with a "1", so
-# 012 → 013 etc.). These are OCR fixes — the facsimile prints the
-# correct code, we just mis-read it.
-#
-# Semantic note: the column in the source is NOMBRE ACTUAL — i.e.,
-# the current toponym of THIS specific place when (and only when)
-# the place itself is one of the 67 current municipalities. It is
-# NOT the municipality that the historical pueblo is administratively
-# part of today. A pueblo that survived as a small hamlet inside a
-# larger municipality (Ullaró ⊂ Campanet, Balanzat ⊂ Sant Joan de
-# Labritja, etc.) carries no code here, even though it has a
-# "containing municipality" in the modern map.
-_MUNICIPALITY_OCR_FIXES: dict[int, int] = {
-    # No active remaps right now. Previous entries (107 ULLARO → 12,
-    # 9 BALANZAT → 50) were removed once we realised the column means
-    # NOMBRE ACTUAL, not "municipality the place belongs to" — see
-    # _MUNICIPALITY_CLEAR below for those.
-}
-
-# Pueblos for which the extraction set a current_municipality code,
-# but where the value should be NULL under the NOMBRE ACTUAL
-# semantics. Either the facsimile itself was mistaken / the model
-# hallucinated, OR the place exists today but as a hamlet inside a
-# larger municipality (so it has no code in the 67-municipality
-# table even though it still has a modern toponym).
-_MUNICIPALITY_CLEAR: set[int] = {
-    # cod 107 ULLARO: the facsimile prints 013 (Campos del Puerto),
-    # but Ullaró is a small hamlet inside Campanet that retains its
-    # own name. It is not itself a current municipality, so the
-    # NOMBRE ACTUAL cell should be empty.
-    107,
-    # cod 9 BALANZAT (*): the historical Ibizan quartón is today
-    # the village Sant Miquel de Balansat inside Sant Joan de
-    # Labritja. It still carries the Balanzat / Balansat toponym
-    # and is not itself a current municipality. The model already
-    # extracted NULL from the printed "..." cell; this entry just
-    # documents the case alongside its district OCR fix.
-    9,
-}
-
 # OCR-driven fixes to district codes. The printed PARTIDO column
 # uses three-letter abbreviations (MAL / MEN / IBI) and the model
 # occasionally mis-reads them when the cell is faded.
 _DISTRICT_OCR_FIXES = {
     9: "IBI",             # BALANZAT — historic Ibizan quartón,
                           # not Mallorca as the extraction said.
-}
-
-
-# Pueblos that the printed INE 1986 facsimile maps to one current
-# municipality, but where reality (segregations approved after the
-# facsimile went to press) puts them in a different municipality
-# today. We override the current_municipality_code AFTER extraction
-# so the user sees the live administrative mapping while the source
-# JSON keeps a record of what the facsimile actually printed.
-_POST_1986_MUNICIPALITY_REMAP = {
-    # Ariany was administratively part of Petra in the printed table
-    # but had already been segregated in 1982.
-    7:  (66, "ARIANY",          "Ariany",
-         "Ariany es va segregar de Petra el 1982; el facsímil INE 1986 "
-         "encara la inclou dins de Petra."),
-    # Sant Cristòfol (San Cristóbal) was administratively part of
-    # Mercadal in the printed table; it became es Migjorn Gran in
-    # 1989, after the facsimile.
-    82: (67, "ES MIGJORN GRAN", "es Migjorn Gran",
-         "San Cristóbal s'anomena oficialment es Migjorn Gran des de "
-         "1988 i és municipi propi (segregat de Mercadal) des de 1989."),
 }
 
 
@@ -168,7 +110,6 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
     valid_auth  = {r[0] for r in con.execute("SELECT code FROM authority_codes").fetchall()}
     valid_juris = {r[0] for r in con.execute("SELECT code FROM jurisdiction_codes").fetchall()}
     valid_dist  = {r[0] for r in con.execute("SELECT code FROM district_codes").fetchall()}
-    valid_muni  = {r[0] for r in con.execute("SELECT code FROM current_municipalities").fetchall()}
 
     a1 = _read("page-12.json") or {"pueblos": []}
     a2 = _read("page-14.json") or {"pueblos": []}
@@ -199,21 +140,9 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
         elif footnote:
             observations = "(*) Pueblo no incluido en el mapa municipal de 1986. " + observations
 
-        # First apply any OCR fix (the facsimile printed value the
-        # model misread), then the live-administrative remap (the
-        # printed value is correct, but reality has moved on).
-        current_municipality = pa.get("current_municipality")
         district = pa.get("district")
-        if cod in _MUNICIPALITY_OCR_FIXES:
-            current_municipality = _MUNICIPALITY_OCR_FIXES[cod]
-        if cod in _MUNICIPALITY_CLEAR:
-            current_municipality = None
         if cod in _DISTRICT_OCR_FIXES:
             district = _DISTRICT_OCR_FIXES[cod]
-        if cod in _POST_1986_MUNICIPALITY_REMAP:
-            new_cod, _new_name, _new_official, note = _POST_1986_MUNICIPALITY_REMAP[cod]
-            current_municipality = new_cod
-            observations = (observations + " " if observations else "") + note
 
         rows.append((
             cod,
@@ -224,7 +153,6 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
             _validate(_norm(pa.get("jurisdiction"), _JURISDICTION_FIXES), valid_juris, f"cod {cod} jurisdiction"),
             pa.get("intendancy"),
             _validate(district, valid_dist, f"cod {cod} district"),
-            _validate(current_municipality, valid_muni, f"cod {cod} municipality"),
             pb.get("manuscript_page"),
             pb.get("ine_photogram"),
             bool(pb.get("in_table_2")),
@@ -265,7 +193,6 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
             _validate(_norm(pa.get("jurisdiction"), _JURISDICTION_FIXES), valid_juris, f"parish {i} jurisdiction"),
             pa.get("intendancy"),
             _validate(pa.get("district"), valid_dist, f"parish {i} district"),
-            _validate(pa.get("current_municipality"), valid_muni, f"parish {i} municipality"),
             pb.get("manuscript_page"),
             pb.get("ine_photogram"),
             bool(pb.get("in_table_2")),
@@ -282,7 +209,7 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
     # them first so DuckDB lets us truncate the parent rows.
     con.executemany(
         "INSERT INTO pueblos VALUES "
-        "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         rows,
     )
     print(f"  pueblos: {len(rows)} rows")
@@ -350,7 +277,7 @@ def _resolve_cod(p: dict, name_to_cod: dict[str, int],
     cod = p.get("cod")
     if cod is not None:
         return cod
-    name = (p.get("name") or "").strip()
+    name = _apply_text_fixes((p.get("name") or "").strip())
     if not name:
         return None
     parish_cod = _is_parish(name)
@@ -464,7 +391,7 @@ def load_table_5(con: duckdb.DuckDBPyConnection) -> None:
         if not d:
             continue
         for p in d.get("pueblos", []):
-            name = (p.get("name") or "").strip().upper()
+            name = _apply_text_fixes((p.get("name") or "").strip()).upper()
             if not name:
                 continue
             cur = pueblos.setdefault(
@@ -489,7 +416,6 @@ def load_table_5(con: duckdb.DuckDBPyConnection) -> None:
     # Manual map for spellings that differ between table 5 and table 1.
     name_aliases = {
         "ALGAYDA": "ALGAIDA",
-        "BUÑOLA": "BUROLA",
     }
 
     rid = 0
@@ -546,7 +472,7 @@ def load_table_6(con: duckdb.DuckDBPyConnection) -> None:
     }
     rid = 0
     for p in table6.get("pueblos", []):
-        name = (p.get("name") or "").strip().upper()
+        name = _apply_text_fixes((p.get("name") or "").strip()).upper()
         cod = name_to_cod.get(name)
         if cod is None:
             print(f"    [warn] table 6 pueblo {name!r} not matched")
