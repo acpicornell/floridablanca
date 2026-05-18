@@ -1,14 +1,14 @@
 {
  "meta": {
-  "generated_at": "2026-05-18T19:59:11.524752+00:00",
+  "generated_at": "2026-05-18T20:04:52.243758+00:00",
   "source": "INE (1986) — Censo de 1787, Floridablanca. Tomo VI: Provincia de Baleares. Madrid: INE.",
   "totals": {
    "pueblos": 111,
    "pueblos_with_table_3": 59,
    "total_population": 122974,
    "by_district": {
-    "IBI": 14,
-    "MAL": 87,
+    "IBI": 15,
+    "MAL": 86,
     "MEN": 10
    }
   }
@@ -2021,11 +2021,11 @@
    "jurisdiction": "R",
    "jurisdiction_label": "Realengo",
    "intendancy": "RdM",
-   "district": "MAL",
-   "district_label": "Mallorca",
-   "current_municipality_code": null,
-   "current_municipality_name": null,
-   "current_municipality_name_official": null,
+   "district": "IBI",
+   "district_label": "Ibiza",
+   "current_municipality_code": 50,
+   "current_municipality_name": "SAN JUAN BAUTISTA",
+   "current_municipality_name_official": "Sant Joan de Labritja",
    "manuscript_page": "328",
    "ine_photogram": null,
    "in_tables": {

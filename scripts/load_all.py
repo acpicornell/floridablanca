@@ -64,6 +64,19 @@ _MUNICIPALITY_OCR_FIXES = {
     # read 013 (CAMPOS DEL PUERTO). Ullaró is a hamlet of Campanet
     # in es Raiguer, confirmed by enciclopedia.cat and Viquipèdia.
     107: 12,
+    # cod 9 BALANZAT: a historic Ibizan quartón (Balansat) that is
+    # now part of Sant Joan de Labritja (the village of Sant Miquel
+    # de Balansat). The model also misread its district as MAL
+    # (see _DISTRICT_OCR_FIXES below).
+    9: 50,                # 050 SAN JUAN BAUTISTA = Sant Joan de Labritja
+}
+
+# OCR-driven fixes to district codes. The printed PARTIDO column
+# uses three-letter abbreviations (MAL / MEN / IBI) and the model
+# occasionally mis-reads them when the cell is faded.
+_DISTRICT_OCR_FIXES = {
+    9: "IBI",             # BALANZAT — historic Ibizan quartón,
+                          # not Mallorca as the extraction said.
 }
 
 
@@ -146,8 +159,11 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
         # model misread), then the live-administrative remap (the
         # printed value is correct, but reality has moved on).
         current_municipality = pa.get("current_municipality")
+        district = pa.get("district")
         if cod in _MUNICIPALITY_OCR_FIXES:
             current_municipality = _MUNICIPALITY_OCR_FIXES[cod]
+        if cod in _DISTRICT_OCR_FIXES:
+            district = _DISTRICT_OCR_FIXES[cod]
         if cod in _POST_1986_MUNICIPALITY_REMAP:
             new_cod, _new_name, _new_official, note = _POST_1986_MUNICIPALITY_REMAP[cod]
             current_municipality = new_cod
@@ -161,7 +177,7 @@ def load_table_1(con: duckdb.DuckDBPyConnection) -> None:
             _validate(_norm(pa.get("authority"),    _AUTHORITY_FIXES),    valid_auth,  f"cod {cod} authority"),
             _validate(_norm(pa.get("jurisdiction"), _JURISDICTION_FIXES), valid_juris, f"cod {cod} jurisdiction"),
             pa.get("intendancy"),
-            _validate(pa.get("district"), valid_dist, f"cod {cod} district"),
+            _validate(district, valid_dist, f"cod {cod} district"),
             _validate(current_municipality, valid_muni, f"cod {cod} municipality"),
             pb.get("manuscript_page"),
             pb.get("ine_photogram"),
