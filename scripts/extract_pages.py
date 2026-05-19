@@ -33,10 +33,10 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES_DIR = ROOT / "data" / "pages"
 OUT_DIR = ROOT / "data" / "extracted"
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-opus-4-7"
 # Table 3 packs ~720 numeric cells per page; the verbose long-form
-# JSON we ask for can run past 30K output tokens. Sonnet 4.6 supports
-# up to 64K so this gives us headroom for the densest table.
+# JSON we ask for can run past 30K output tokens. Opus 4.7 supports
+# up to 32K so this gives us headroom for the densest table.
 MAX_TOKENS = 32000
 
 
