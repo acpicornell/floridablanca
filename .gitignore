@@ -15,3 +15,9 @@ data/pages/
 # Built DB (regenerable from data/extracted + scripts)
 db/floridablanca.duckdb
 db/floridablanca.duckdb.wal
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
