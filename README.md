@@ -178,6 +178,19 @@ printed V and T) that we patched by hand against the source. The
 final state: **0 internal inconsistencies across all 4 956 cells
 of Table 3.**
 
+Table 4 (occupations, pages 25-27) showed the same pattern when
+checked against simple sanity rules: 43 of 114 pueblos had
+Σ-of-columns ≠ printed total, 7 had a Table 4 total disagreeing
+with the Table 3 population by more than 10 (ESPORLAS off by 2 782!),
+and FORMENTERA appeared to have 184 estudiantes on a rural island
+of 1 054 inhabitants. The 184 was real — but it was the
+`labradores` cell, not `estudiantes`; Sonnet had shifted the row
+down by one. Re-extracting pages 25-27 with Opus dropped the
+column-sum mismatches from 43 to 4 (all Δ≤24, source-side drift),
+fixed every Table 4 / Table 3 population disagreement, and turned
+FORMENTERA's 184 estudiantes into 184 labradores with 0 students,
+which is what the source actually says.
+
 The pipeline still saves the raw response on parse failure
 (`data/extracted/page-NN.raw.txt`) so any cell-level error can be
 patched by hand or by a `--force` re-run.
