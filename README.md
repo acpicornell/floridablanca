@@ -168,12 +168,15 @@ pages (Tables 1, 2, 4-7) but the pipeline now uses Opus uniformly
 for simplicity.
 
 Opus is still non-deterministic on a handful of cells per page —
-a second `--force` re-extraction of pages where any mismatch
-remained shaved the count further to **13 mismatches across 4
-pueblos** (FELANITX, SAN MATEO, SAN RAFAEL, SANTA MARGARITA). Two
-of those (SAN MATEO Δ=1, SAN RAFAEL Δ=2) reproduce identically on
-every re-run, so they are almost certainly drift in the printed
-facsimile itself rather than extraction error.
+a second `--force` re-extraction of the pages where any mismatch
+remained shaved the count further from 29 to 13. The final 13
+mismatches turned out to be a handful of single-cell errors
+(FELANITX V/M swap, SAN MATEO and SAN RAFAEL phantom `married <7`
+rows that should have been NULL, and a missing M cell on SANTA
+MARGARITA erased in the facsimile but recoverable from the
+printed V and T) that we patched by hand against the source. The
+final state: **0 internal inconsistencies across all 4 956 cells
+of Table 3.**
 
 The pipeline still saves the raw response on parse failure
 (`data/extracted/page-NN.raw.txt`) so any cell-level error can be
