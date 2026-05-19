@@ -27,7 +27,7 @@ const housingTotal = (p) =>
 // ===== boot =================================================================
 
 async function boot() {
-  const res = await fetch("data.json", { cache: "no-cache" });
+  const res = await fetch("data.json", { cache: "no-store" });
   STATE.data = await res.json();
   STATE.pueblos = STATE.data.pueblos.filter((p) => !p.parent_cod);
   STATE.filtered = [...STATE.pueblos];

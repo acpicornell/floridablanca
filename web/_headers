@@ -1,22 +1,25 @@
 # Cloudflare Pages headers config. One rule per block, path + indented
 # header lines. Glob '*' supported.
 #
-# Strategy: every asset revalidates on every request. Cloudflare attaches
-# an ETag automatically, so unchanged files come back as 304 Not Modified
-# (no payload re-download). New deploys propagate instantly — no stale
-# data.json after we run scripts/export_web_data.py and push.
+# Strategy: 'no-store' on every asset. The browser never writes the
+# response to disk and the bfcache is bypassed, so a plain reload (or
+# even a back/forward navigation) always fetches the live deploy.
+# Trade-off vs. 'max-age=0, must-revalidate': we lose the 304 short
+# circuit, so every visit re-downloads the full payload. The site is
+# small (data.json ~1 MB, the rest <50 KB) and the project's whole
+# point is showing fresh data after a push, so the cost is fine.
 
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
 /*.json
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
 /*.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
 /*.css
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-store
 
 # Security headers — site is read-only static, no auth, no forms.
 #
