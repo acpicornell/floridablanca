@@ -183,6 +183,11 @@ nav.tabs {
 .home-prose p { margin: 0 0 0.9em; }
 .home-prose strong { color: var(--accent-dark); }
 .home-prose em { font-style: italic; }
+.source-links {
+  margin: 0 0 1em;
+  padding-left: 1.3em;
+}
+.source-links li { margin: 0 0 0.35em; }
 
 .sources-grid {
   display: grid;
@@ -1048,7 +1053,6 @@ aside.filters h3 {
 
 /* === COMENTARI ====================================================== */
 .prose {
-  max-width: 820px;
   font-family: Georgia, serif;
   font-size: 1.02em;
   line-height: 1.7;
