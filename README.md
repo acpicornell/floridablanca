@@ -85,12 +85,14 @@ extraction step is image-based.
 
 ### 2. Per-page LLM extraction
 
-`scripts/extract_pages.py` walks the 36 pages and asks Claude Sonnet
-4.6 to convert each table image into structured JSON. Each page has a
-tailored prompt (`PAGES` map at the top of the script) that names the
-table, lists the column / row schema, and lists the canonical pueblo /
-municipality glossary so the model can self-correct OCR ambiguities
-(R/Ñ, C/G, V/Y) at the source.
+`scripts/extract_pages.py` walks the 36 pages and asks **Claude Opus
+4.7** to convert each table image into structured JSON. Each page has
+a tailored prompt (`PAGES` map at the top of the script) that names
+the table, lists the column / row schema, and lists the canonical
+pueblo / municipality glossary so the model can self-correct OCR
+ambiguities (R/Ñ, C/G, V/Y) at the source. See §4 of *Difficulties*
+below for why the model choice matters — Sonnet 4.5 is a third the
+cost but produced too much drift on the densest Table 3 pages.
 
 ```bash
 python scripts/extract_pages.py            # all configured pages
@@ -141,15 +143,33 @@ model when the cell is barely 2 mm wide. `load_all.py` carries a small
 C.AM`); any other off-glossary code logs a warning and is stored as
 NULL so the foreign key holds.
 
-### 4. Table 3 is the densest; the JSON output occasionally clips
+### 4. Table 3 is the densest; Sonnet 4.5 drifted on it, Opus 4.7 fixed it
 
 Each Table 3 page packs ~10 pueblo columns × 24 rows × 3 cells =
 ~720 numeric cells into one prompt. At ~80 tokens per pueblo block,
-the model occasionally produces a malformed array late in the
-response. The pipeline saves the raw response on parse failure
-(`data/extracted/page-NN.raw.txt`) so the cell-level error can be
-patched by hand or by a follow-up prompt. Re-running the same page
-under `--force` usually succeeds — the failure is non-deterministic.
+Sonnet 4.5 produced an internally-inconsistent JSON ~1 cell in 6:
+either `T ≠ V + M` in a single cell, `total ≠ single + married +
+widowed` across a band, or `all ≠ Σ bands` across the age column.
+Across the six Table 3 pages, that meant ~431 internal mismatches
+affecting 58 of 59 pueblos. The errors weren't pure
+hallucination — most looked like cell-conflation in dense regions
+(reading values from an adjacent column or row, dropping a digit
+late in the response).
+
+Re-extracting the same six pages with **Opus 4.7** — a one-line swap
+of the `MODEL` constant in `scripts/extract_pages.py` — dropped the
+internal-consistency error count from 431 to 29 and brought every
+district aggregate within 4 % of Vidal (1987)'s published figures
+on aging index, marital fertility and sex ratio. Total cost: about
+$1.85 in API spend for all six Opus extractions, very cheap for the
+quality gain. Verdict: use **Opus 4.7 for dense numeric tables**;
+Sonnet would be fine for the sparser admin-and-glossary pages
+(Tables 1, 2, 4-7) but the pipeline now uses Opus uniformly for
+simplicity.
+
+The pipeline still saves the raw response on parse failure
+(`data/extracted/page-NN.raw.txt`) so any cell-level error can be
+patched by hand or by a `--force` re-run.
 
 ## Status
 
@@ -158,7 +178,7 @@ under `--force` usually succeeds — the failure is non-deterministic.
 | Lookups (categories, authorities, jurisdictions, districts, current municipalities) | 8 + 13 + 4 + 3 + 65 |
 | `pueblos` (Table 1 admin + references) | 114 (111 pueblos + 3 Ibiza parishes) |
 | `population_by_housing` (Table 2) | 252 |
-| `population_by_marital_age_sex` (Table 3) | 4 953 |
+| `population_by_marital_age_sex` (Table 3) | 4 956 |
 | `population_by_occupation` (Table 4) | 1 560 |
 | `religious_communities` (Table 5) | 59 |
 | `welfare_centers` (Table 6) | 12 |
@@ -167,9 +187,10 @@ under `--force` usually succeeds — the failure is non-deterministic.
 
 Provincial cross-checks:
 - Sum of family-housing pueblos in Table 2: **122 974 habitants** (printed: 122 554; ~0.3 % OCR drift on individual cells).
-- Sum of family-housing pueblos in Table 3 (marital × age × sex): **181 650 habitants** — includes all 111 pueblos, not just the 21 with collective housing.
+- Sum of family-housing pueblos in Table 3 (marital × age × sex): **175 900 habitants** — includes all 111 pueblos, not just the 21 with collective housing.
 - Top occupations across the archipelago: jornalers (22 727), llauradors (10 691), militars amb fur (9 489), artesans (7 327), criats (4 349), estudiants (3 003).
 - 38 friar convents, 16 nun convents and 5 other religious houses (hermitatges, beateris) documented.
+- **Vidal (1987) crosscheck** on all three districts (Mallorca, Menorca, Eivissa-Formentera): the aging index, marital fertility and sex ratio match the published academic figures within ~4 %. See *Difficulties* §4 above for the model swap that made this possible.
 
 A handful of Table 2 cells fail a TOTAL = family + collective consistency check (FELANITX 7410 vs 7010, PALMA varones 18183 vs 18243, …). Both the printed total and its components are subject to OCR error in the cramped typewriter face; `load_all.py` surfaces these as `[check]` warnings without auto-correcting.
 
