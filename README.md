@@ -158,14 +158,22 @@ late in the response).
 
 Re-extracting the same six pages with **Opus 4.7** — a one-line swap
 of the `MODEL` constant in `scripts/extract_pages.py` — dropped the
-internal-consistency error count from 431 to 29 and brought every
-district aggregate within 4 % of Vidal (1987)'s published figures
-on aging index, marital fertility and sex ratio. Total cost: about
-$1.85 in API spend for all six Opus extractions, very cheap for the
-quality gain. Verdict: use **Opus 4.7 for dense numeric tables**;
-Sonnet would be fine for the sparser admin-and-glossary pages
-(Tables 1, 2, 4-7) but the pipeline now uses Opus uniformly for
-simplicity.
+internal-consistency error count from 431 to under 30 and brought
+every district aggregate within 4 % of Vidal (1987)'s published
+figures on aging index, marital fertility and sex ratio. Total cost:
+about $1.85 in API spend for all six Opus extractions, very cheap
+for the quality gain. Verdict: use **Opus 4.7 for dense numeric
+tables**; Sonnet would be fine for the sparser admin-and-glossary
+pages (Tables 1, 2, 4-7) but the pipeline now uses Opus uniformly
+for simplicity.
+
+Opus is still non-deterministic on a handful of cells per page —
+a second `--force` re-extraction of pages where any mismatch
+remained shaved the count further to **13 mismatches across 4
+pueblos** (FELANITX, SAN MATEO, SAN RAFAEL, SANTA MARGARITA). Two
+of those (SAN MATEO Δ=1, SAN RAFAEL Δ=2) reproduce identically on
+every re-run, so they are almost certainly drift in the printed
+facsimile itself rather than extraction error.
 
 The pipeline still saves the raw response on parse failure
 (`data/extracted/page-NN.raw.txt`) so any cell-level error can be
