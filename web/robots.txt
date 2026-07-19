@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://floridablanca.corpusbalear.org/sitemap.xml
