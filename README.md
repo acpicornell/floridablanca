@@ -1,5 +1,7 @@
 # Floridablanca · Balearic volume
 
+[![Deploy](https://github.com/acpicornell/floridablanca/actions/workflows/deploy.yml/badge.svg)](https://github.com/acpicornell/floridablanca/actions/workflows/deploy.yml)
+
 A re-digitisation of the **Balearic volume (Tomo VI)** of the
 [Floridablanca Census of 1787](https://en.wikipedia.org/wiki/Census_of_Floridablanca),
 as published in facsimile by the Instituto Nacional de Estadística
