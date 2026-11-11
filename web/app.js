@@ -2,7 +2,8 @@
  *
  * Vanilla JS, single data.json source, no framework. Renders 111
  * pueblos with sortable/filterable list, per-pueblo detail panel, and
- * three aggregate views (demografia, comunitats religioses, comentari).
+ * four aggregate views (demografia, ocupacions, comunitats religioses,
+ * comentari).
  */
 
 const STATE = {

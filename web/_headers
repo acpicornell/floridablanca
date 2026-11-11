@@ -1,4 +1,4 @@
-# Cloudflare Pages headers config. One rule per block, path + indented
+# Cloudflare Workers static-assets headers config (same format as Pages). One rule per block, path + indented
 # header lines. Glob '*' supported.
 #
 # Strategy: 'no-store' on every asset. The browser never writes the

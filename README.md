@@ -247,27 +247,19 @@ python -m http.server -d web 8000
 ## Deployment
 
 The web layer is a fully static SPA (vanilla JS, no framework, no
-backend). The recommended host is **Cloudflare Pages**, which is what
-the sister project `madoz` uses.
+backend), served as a static-assets-only **Cloudflare Worker**
+(`wrangler.jsonc`, assets directory `web`).
 
-One-time setup (Cloudflare dashboard):
+`.github/workflows/deploy.yml` deploys on every push to `main`: it runs
+`scripts/check_site.py web` against the site's own security policy and
+then deploys with wrangler. It needs a `CLOUDFLARE_API_TOKEN` repository
+secret and skips the deploy (green) while that is missing.
 
-1. Cloudflare → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
-2. Pick the `acpicornell/floridablanca` repo.
-3. Build settings:
-   - **Framework preset**: *None*.
-   - **Build command**: *(leave empty — the site is pre-built)*.
-   - **Build output directory**: `web`.
-4. Save and deploy. Cloudflare publishes at `https://<project>.pages.dev`.
+`web/_headers` sets `Cache-Control: no-store` on every HTML, JSON, JS
+and CSS file, so a reload always fetches the live deploy, plus a strict
+Content-Security-Policy (no external resources).
 
-After that, every `git push` to `main` triggers an automatic deploy.
-The `web/_headers` file ships HTTP cache and CSP rules: every asset
-revalidates on each request (instant cache invalidation when
-`web/data.json` changes), and a strict Content-Security-Policy (no
-external resources) closes the typical XSS surface.
-
-Re-running the pipeline locally and pushing is enough — no separate
-deploy step:
+Re-running the pipeline locally and pushing is enough:
 
 ```bash
 python scripts/load_all.py

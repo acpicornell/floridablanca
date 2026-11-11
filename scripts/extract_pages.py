@@ -1,7 +1,7 @@
 """Extract structured data from each PDF page using Claude Vision.
 
 The source PDF (data/pdfs/floridablanca_tomo6_baleares.pdf) was rendered
-to data/pages/page-NN.jpg by pdftoppm at 200 DPI. The PDF has no text
+to data/pages/page-NN.jpg by pdftoppm at 300 DPI. The PDF has no text
 layer so we send each page image to Claude with a content-specific
 system prompt and parse the JSON it returns.
 
