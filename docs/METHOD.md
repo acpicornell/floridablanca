@@ -118,7 +118,7 @@ patched by hand or by a `--force` re-run.
 
 Provincial cross-checks:
 - Sum of family-housing pueblos in Table 2: **122 974 habitants** (printed: 122 554; ~0.3 % OCR drift on individual cells).
-- Sum of family-housing pueblos in Table 3 (marital × age × sex): **175 900 habitants** — includes all 111 pueblos, not just the 21 with collective housing.
+- Table 3 (marital × age × sex) is loaded for **59 units** — 56 of the 111 pueblos plus the 3 Ibiza parishes (ESCORCA's column is extracted but not matched to a pueblo) — and sums to **179 453 habitants**, against the 179 066 Floridablanca gives for the whole archipelago. Table 2, by contrast, covers only 21 pueblos, 20 of which report collective housing.
 - Top occupations across the archipelago: jornalers (22 727), llauradors (10 691), militars amb fur (9 489), artesans (7 327), criats (4 349), estudiants (3 003).
 - 38 friar convents, 16 nun convents and 5 other religious houses (hermitatges, beateris) documented.
 - **Vidal (1987) crosscheck** on all three districts (Mallorca, Menorca, Eivissa-Formentera): the aging index, marital fertility and sex ratio match the published academic figures within ~4 %. See *Difficulties* §4 above for the model swap that made this possible.
