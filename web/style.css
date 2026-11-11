@@ -365,7 +365,7 @@ aside.filters h3 {
   border-color: var(--accent);
   font-weight: 600;
 }
-.btn-export:hover { background: var(--accent); color: white; }
+.btn-export:hover { background: var(--accent); color: var(--on-accent); }
 
 .hint-banner {
   margin: 0 0 0.8em;
@@ -739,7 +739,7 @@ aside.filters h3 {
 }
 .occ-mode-toggle label:has(input:checked) {
   background: var(--accent);
-  color: white;
+  color: var(--on-accent);
 }
 .occ-mode-toggle label:hover:not(:has(input:checked)) {
   background: var(--accent-light);
