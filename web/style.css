@@ -11,7 +11,88 @@
   --accent-dark: #20415e;
   --num-bg: #f7f3eb;
   --pill-bg: #efe7d3;
+  --header-top: #f0e7d0;
+  --hero-end: #f4ecd6;
+  --on-accent: #fff;
+  --pill-r-bg: #d9e7d8; --pill-r: #2d5e2a;
+  --pill-s-bg: #f0dfc8; --pill-s: #6e4520;
+  --pill-se-bg: #ecd3d0; --pill-se: #6e2a25;
+  --pill-ss-bg: #e0d3eb; --pill-ss: #4c2d6e;
+  --note-bg: #fff7e0; --note-line: #b88a2a; --note-em: #4a3a20;
+  --warm: #8b3a2f; --cool: #2f5d8b; --flag: #b88a2a;
+  --data-navy: #1f3a5e; --data-wine: #6e2620;
 }
+
+/* Dark theme, as on the sibling sites: defined once for "the system is dark
+   and the reader has not chosen light" and once for "the reader chose dark"
+   (theme.js sets data-theme on <html> before the first paint). The data
+   colours of the charts are mid-tones shared by both themes, except the two
+   darkest, which would vanish on a dark page. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14130f;
+    --surface: #1d1c17;
+    --border: #38352b;
+    --text: #ece7dc;
+    --text-muted: #aba295;
+    --accent: #82b1df;
+    --accent-light: #1c2a38;
+    --accent-dark: #abcbec;
+    --num-bg: #23211b;
+    --pill-bg: #2e2a20;
+    --header-top: #221f17;
+    --hero-end: #24211a;
+    --on-accent: #0f1720;
+    --pill-r-bg: #1f3220; --pill-r: #a8d4a0;
+    --pill-s-bg: #3a2b1a; --pill-s: #e6bf8f;
+    --pill-se-bg: #3a2220; --pill-se: #eba79f;
+    --pill-ss-bg: #2d2238; --pill-ss: #cdb2e6;
+    --note-bg: #29231a; --note-line: #c99a3a; --note-em: #e3cf9f;
+    --warm: #e2876f; --cool: #82b1df; --flag: #d9ac4c;
+    --data-navy: #4f74a6; --data-wine: #b0544a;
+    color-scheme: dark;
+}
+}
+:root[data-theme="dark"] {
+  --bg: #14130f;
+  --surface: #1d1c17;
+  --border: #38352b;
+  --text: #ece7dc;
+  --text-muted: #aba295;
+  --accent: #82b1df;
+  --accent-light: #1c2a38;
+  --accent-dark: #abcbec;
+  --num-bg: #23211b;
+  --pill-bg: #2e2a20;
+  --header-top: #221f17;
+  --hero-end: #24211a;
+  --on-accent: #0f1720;
+  --pill-r-bg: #1f3220; --pill-r: #a8d4a0;
+  --pill-s-bg: #3a2b1a; --pill-s: #e6bf8f;
+  --pill-se-bg: #3a2220; --pill-se: #eba79f;
+  --pill-ss-bg: #2d2238; --pill-ss: #cdb2e6;
+  --note-bg: #29231a; --note-line: #c99a3a; --note-em: #e3cf9f;
+  --warm: #e2876f; --cool: #82b1df; --flag: #d9ac4c;
+  --data-navy: #4f74a6; --data-wine: #b0544a;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
+
+/* Light/dark toggle (theme.js). */
+.theme {
+  float: right;
+  margin-left: 12px;
+  display: grid;
+  place-items: center;
+  background: none;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px;
+  color: var(--text-muted);
+}
+.theme:hover { color: var(--accent); border-color: var(--accent); }
+.theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 * { box-sizing: border-box; }
 
@@ -29,7 +110,7 @@ a:hover { text-decoration: underline; }
 
 header {
   border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, #f0e7d0 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--header-top) 0%, var(--bg) 100%);
   padding: 1.5em 0 1em;
 }
 .header-content { max-width: 1400px; margin: 0 auto; padding: 0 2em; }
@@ -74,7 +155,7 @@ nav.tabs {
 
 /* === HOME ============================================================ */
 .home-hero {
-  background: linear-gradient(135deg, var(--accent-light) 0%, #f4ecd6 100%);
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--hero-end) 100%);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 2.5em 2em 2em;
@@ -163,7 +244,7 @@ nav.tabs {
 }
 .featured-open {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   border: 1px solid var(--accent-dark);
   border-radius: 4px;
   padding: 0.55em 1em;
@@ -340,10 +421,10 @@ aside.filters h3 {
   color: var(--accent-dark);
   font-weight: 600;
 }
-.pill.r  { background: #d9e7d8; color: #2d5e2a; }
-.pill.s  { background: #f0dfc8; color: #6e4520; }
-.pill.se { background: #ecd3d0; color: #6e2a25; }
-.pill.ss { background: #e0d3eb; color: #4c2d6e; }
+.pill.r  { background: var(--pill-r-bg); color: var(--pill-r); }
+.pill.s  { background: var(--pill-s-bg); color: var(--pill-s); }
+.pill.se { background: var(--pill-se-bg); color: var(--pill-se); }
+.pill.ss { background: var(--pill-ss-bg); color: var(--pill-ss); }
 
 /* === POBLE DETAIL ==================================================== */
 .detail-overlay {
@@ -508,7 +589,7 @@ aside.filters h3 {
 .ord-trinitarian { background: #7a4a2f; }   /* brown */
 .ord-jeronymite  { background: #3a8b6b; }   /* dark green */
 .ord-cistercian  { background: #8b2f3a; }   /* dark red */
-.ord-cartusian   { background: #1f3a5e; }   /* navy */
+.ord-cartusian   { background: var(--data-navy); }   /* navy */
 .ord-vincentian  { background: #5e8baf; }   /* light blue */
 .ord-other-clergy{ background: #8b758b; }   /* mauve */
 .ord-secular     { background: #b5a875; }   /* sand (hermitatges/beateris) */
@@ -544,8 +625,8 @@ aside.filters h3 {
 
 .observations-note {
   padding: 0.7em 1em;
-  background: #fff7e0;
-  border-left: 3px solid #b88a2a;
+  background: var(--note-bg);
+  border-left: 3px solid var(--note-line);
   font-size: 0.92em;
   margin-bottom: 1em;
 }
@@ -755,27 +836,27 @@ aside.filters h3 {
 .indicators-table th.num { text-align: right; }
 /* Compact spacing inside cells with a colour swatch. */
 .indicators-table .cell-warm {
-  color: #8b3a2f;
+  color: var(--warm);
   font-weight: 600;
 }
 .indicators-table .cell-cool {
-  color: #2f5d8b;
+  color: var(--cool);
   font-weight: 600;
 }
 .indicators-table .vidal-flag {
   display: inline-block;
   margin-left: 0.3em;
-  color: #b88a2a;
+  color: var(--flag);
   cursor: help;
   font-size: 0.95em;
 }
-.indicators-table .vidal-flag:hover { color: #8b3a2f; }
+.indicators-table .vidal-flag:hover { color: var(--warm); }
 
 .vidal-notes {
   margin-top: 1em;
   padding: 0.7em 1em;
-  background: #fff7e0;
-  border-left: 3px solid #b88a2a;
+  background: var(--note-bg);
+  border-left: 3px solid var(--note-line);
   border-radius: 3px;
   font-size: 0.88em;
   line-height: 1.5;
@@ -791,7 +872,7 @@ aside.filters h3 {
 .vidal-notes summary:hover { color: var(--accent); }
 .vidal-notes ul { margin: 0.4em 0 0.6em 0; padding-left: 1.4em; }
 .vidal-notes li { margin-bottom: 0.55em; }
-.vidal-notes em { color: #4a3a20; }
+.vidal-notes em { color: var(--note-em); }
 .vidal-notes strong { color: var(--accent-dark); }
 
 /* Marital × age × sex stacked-bar pyramid. Same skeleton as the
@@ -816,7 +897,7 @@ aside.filters h3 {
 }
 .ms-single  { background: #c9a878; }   /* sandy tan — youth */
 .ms-married { background: #2f5d8b; }   /* accent blue — paired */
-.ms-widowed { background: #6e2620; }   /* dark terracotta — loss */
+.ms-widowed { background: var(--data-wine); }   /* dark terracotta — loss */
 
 .marital-meta {
   margin: 0 0 0.5em;
