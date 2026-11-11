@@ -119,6 +119,20 @@ CREATE TABLE IF NOT EXISTS population_by_marital_age_sex (
     PRIMARY KEY (pueblo_cod, marital_status, age_group, sex)
 );
 
+-- Table 3 without double counting. The three Ibiza parishes (pueblos with
+-- a parent_cod, all children of IBIZA, cod 43) carry their own Table 3
+-- columns, and IBIZA's row is exactly their sum (2 102 + 780 + 671 =
+-- 3 553). Summing the base table therefore counts Ibiza twice (179 453
+-- habitants, more than the 179 066 of the whole archipelago). Aggregate
+-- over this view instead: it keeps IBIZA and drops its parishes, as the
+-- site does, and gives 175 900 over 56 pueblos. Use the base table only
+-- to read a single parish.
+CREATE OR REPLACE VIEW population_by_marital_age_sex_agg AS
+SELECT t.*
+FROM population_by_marital_age_sex AS t
+JOIN pueblos AS p ON p.cod = t.pueblo_cod
+WHERE p.parent_cod IS NULL;
+
 -- Table 4: Population by occupation ------------------------------------
 -- "CLASIFICACION POR OCUPACIONES". 25 standard occupation rows plus a
 -- "MENORES/SIN PROF. ES." catch-all and a TOTAL.

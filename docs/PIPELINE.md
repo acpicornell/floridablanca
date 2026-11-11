@@ -33,6 +33,9 @@ for tables 2-7, observaciones).
 Long-form facts (one fact per row):
 - `population_by_housing`        (Table 2 — pueblo × housing type × sex)
 - `population_by_marital_age_sex` (Table 3 — pueblo × marital status × age × sex)
+  - view `population_by_marital_age_sex_agg`: the same rows without the three
+    Ibiza parishes, whose sum is already IBIZA's row. Aggregate over the view,
+    not the table, or Ibiza is counted twice (see METHOD.md, cross-checks).
 - `population_by_occupation`      (Table 4 — pueblo × occupation)
 - `religious_communities`         (Table 5 — one row per convent / casa)
 - `welfare_centers`               (Table 6 — one row per hospital / hospicio)
